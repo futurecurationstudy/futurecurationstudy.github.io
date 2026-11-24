@@ -56,11 +56,19 @@ em{font-style:normal}
     radial-gradient(46% 40% at 0% 96%, rgba(94,58,44,.07), transparent 72%)}
 
 /* ── hud ─────────────────────────────────────────────────── */
-.hud{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:flex-start;
+.hud{position:fixed;top:0;left:0;right:0;z-index:66;display:flex;align-items:flex-start;
   justify-content:space-between;gap:16px;padding:clamp(14px,2.4vh,26px) clamp(16px,3vw,40px);
   pointer-events:none}
 .hud>*{pointer-events:auto}
-.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;
+  background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-align:left;
+  -webkit-appearance:none;appearance:none;cursor:pointer;transition:transform .35s var(--ease)}
+.brand:hover{transform:translateY(-1px)}
+.brand:focus-visible{outline:1px solid rgba(212,175,55,.55);outline-offset:6px;border-radius:8px}
+.brand b,.brand em,.brand i{transition:color .35s var(--ease),opacity .35s var(--ease)}
+.brand:hover b{color:var(--gold3);text-shadow:0 0 22px rgba(212,175,55,.55)}
+.brand:hover em{color:#fff}
+.brand:active{transform:translateY(0)}
 .brand b{font-family:var(--disp);font-weight:400;font-size:13px;letter-spacing:.22em;color:var(--gold2);text-transform:uppercase;white-space:nowrap}
 .brand i{width:clamp(16px,2vw,34px);height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent)}
 .brand em{font-family:var(--serif);font-size:clamp(12px,1.1vw,14px);letter-spacing:.12em;color:var(--ivory);white-space:nowrap}
@@ -563,7 +571,7 @@ em{font-style:normal}
 .lb-nav button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);color:var(--muted);
   display:grid;place-items:center;font-size:13px;transition:.22s}
 .lb-nav button:hover{color:var(--gold2);border-color:var(--gold-dim)}
-.lb .closex{top:max(3vh,18px);right:max(3vw,18px)}
+.lb .closex{top:max(7.6vh,66px);right:max(3vw,18px)}
 
 /* ══════════ 06 · next (다음 시즌 단독 페이지) ══════════ */
 .next-card{width:min(1180px,94vw);max-height:min(86vh,880px)}
@@ -771,10 +779,10 @@ em{font-style:normal}
 <div class="vignette" aria-hidden="true"></div>
 
 <header class="hud">
-  <div class="brand">
+  <button class="brand" id="brandHome" type="button" aria-label="2026 퓨처큐레이션 — 처음 화면으로 돌아가기" title="처음 화면으로 (Home)">
     <b>2026 퓨처큐레이션</b><i></i><em>윤리하다</em>
     <span>Season 1 · 소책자 순서 1–6</span>
-  </div>
+  </button>
   <div class="hud-r">
     <span class="hud-hint" id="hudHint"><b>노드를 클릭</b> · ← → · 1–6 · Esc</span>
     <button class="iconbtn" id="btnFs" type="button" aria-label="전체화면 전환" title="전체화면 (F)">⤢</button>
@@ -897,7 +905,7 @@ em{font-style:normal}
 </div>
 
 <!-- ══════════ 04 · 10 · 12 · 46 · 24 아카이브 ══════════ -->
-<div class="ov ov-arc" id="ovArc" role="dialog" aria-modal="true" aria-label="아카이브 — 10 · 12 · 46 · 24">
+<div class="ov ov-arc" id="ovArc" role="dialog" aria-modal="true" aria-label="아카이브 — 10 · 12 · 46 · 1 · 24">
   <div class="scrim" data-close></div>
   <div class="card arc-card">
     <button class="closex" type="button" data-close aria-label="닫기">✕</button>
@@ -916,7 +924,7 @@ em{font-style:normal}
         <b data-n="46">0</b><span>개의 생각<em>Thoughts</em></span><i class="fill"></i>
       </button>
       <button class="anum" type="button" role="tab" data-tab="sum" aria-selected="false">
-        <b class="glyph" data-glyph="한">한</b><span>줄 정리<em>One line</em></span><i class="fill"></i>
+        <b data-n="1">0</b><span>줄 정리<em>One line</em></span><i class="fill"></i>
       </button>
       <button class="anum" type="button" role="tab" data-tab="24" aria-selected="false">
         <b data-n="24">0</b><span>쪽의 소책자<em>Pages</em></span><i class="fill"></i>
@@ -1130,7 +1138,6 @@ em{font-style:normal}
         <p>시즌 2는 서울시교육청 학부모지원센터 미래교육과정을 수료한 학부모와 함께 시작합니다 · 참여 문의는 메일로</p>
       </div>
     </div>
-    <div class="fin-credit"><i></i><span>제작 · Directed by</span><b>yiruri studio</b><i></i></div>
   </div>
 </div>
 
@@ -1530,7 +1537,7 @@ function build(){
     ['10','열 번의 질문','Ten questions',-95,'10'],
     ['12','열두 명의 글자','Twelve letters',-32,'12'],
     ['46','마흔여섯 개의 생각','Thoughts',26,'46'],
-    ['한','한 줄 정리','One line',72,'sum'],
+    ['1','한 줄 정리','One line',72,'sum'],
     ['24','24쪽 소책자','Pages',104,'24']
   ];
   const subN={};
@@ -1545,7 +1552,7 @@ function build(){
   });
 
   /* 한 줄 정리 — 빈칸 채우기 서브 점 (04 아카이브 성단) */
-  const SSUM=subN['한'], aSum=72;
+  const SSUM=subN['1'], aSum=72;
   BLANKS.forEach((b,i)=>{
     const p=pol(SSUM.x,SSUM.y,aSum+(i-1)*26,100);
     const n=mk({id:'bl'+i,type:'spot',x:p.x,y:p.y,amp:24,r:4.2,color:'#D9BE6A',
@@ -2347,6 +2354,44 @@ function closeOv(id,silent){
 }
 function closeOverlays(){ Object.keys(OVS).forEach(id=>closeOv(id,true)); activeOv=null; markStep(-1); }
 function closeAll(){ closeOverlays(); selected=null; }
+
+/* ── 상단 타이틀 → 처음 뉴런 우주 화면으로 복귀 ─────────────── */
+function goHome(){
+  /* ① 하위 상세창 · 라이트박스 먼저 */
+  Twelve.closeDetail();      /* 12인 작품 상세 */
+  T46.close();               /* 46 생각 상세 */
+  Time.closeLb();            /* 활동 사진 라이트박스 */
+  /* ② 오버레이 6종 + 발표 도크 선택 초기화 */
+  closeOverlays();
+  selected=null; hover=null;
+  tip.classList.remove('on');
+  if(cv) cv.style.cursor='grab';
+  /* ③ 시점(줌·이동) 초기화 */
+  panX=0; panY=0; zoomT=1; shiftT=0;
+  /* ④ QR 패널 접기 */
+  const qr=$('#qr'), qb=$('#qrBtn');
+  if(qr && qr.classList.contains('open')){
+    qr.classList.remove('open');
+    if(qb){
+      qb.setAttribute('aria-expanded','false');
+      const ic=qb.querySelector('i'); if(ic) ic.textContent='＋';
+    }
+  }
+  /* ⑤ 첫 화면의 떠오르는 연출을 한 번 다시 */
+  if(!reduced) introT=0;
+  hudHintHome();
+}
+function hudHintHome(){
+  const h=$('#hudHint');
+  if(!h) return;
+  if(!hudHintHome._html) hudHintHome._html=h.innerHTML;
+  h.innerHTML='<b>처음 화면</b> · 상단 타이틀을 누르면 언제든 돌아옵니다';
+  h.style.opacity='1';
+  clearTimeout(hudHintHome._t);
+  hudHintHome._t=setTimeout(()=>{ h.innerHTML=hudHintHome._html; h.style.opacity='.32'; }, 4200);
+}
+const brandEl=$('#brandHome');
+if(brandEl) brandEl.addEventListener('click',goHome);
 $$('.ov').forEach(ov=>{
   ov.addEventListener('click',e=>{
     if(e.target===ov||e.target.closest('[data-close]')||e.target.classList.contains('scrim')){
@@ -2989,6 +3034,7 @@ document.addEventListener('keydown',e=>{
     return;
   }
   if(/^[1-6]$/.test(k) && !e.metaKey && !e.ctrlKey){ goStep(Number(k)-1); return; }
+  if(k==='Home'){ e.preventDefault(); goHome(); return; }
   if(k==='f'||k==='F'){ $('#btnFs').click(); return; }
   if(k==='ArrowRight'||k==='ArrowLeft'){
     const dir=k==='ArrowRight'?1:-1;
@@ -3018,11 +3064,11 @@ setTimeout(()=>{ const h=$('#hudHint'); if(h) h.style.opacity='.32'; },10000);
 
 /* 검증용 */
 window.__neuron={
-  pos:()=>nodes.map(n=>({id:n.id||'hub',type:n.type,x:n.x,y:n.y,tx:n.tx,ty:n.ty,sx:n.sx,sy:n.sy,ox:n.ox,oy:n.oy})),
+  pos:()=>nodes.map(n=>({id:n.id||'hub',type:n.type,x:n.x,y:n.y,tx:n.tx,ty:n.ty,sx:n.sx,sy:n.sy,ox:n.ox,oy:n.oy,glyph:n.glyph,label:n.label})),
   count:()=>({nodes:nodes.length,links:links.length}),
-  step:i=>goStep(i), open:id=>openOv(id), close:()=>closeAll(),
+  step:i=>goStep(i), open:id=>openOv(id), close:()=>closeAll(), home:()=>goHome(),
   arc:t=>{ openOv('arc'); Arc.select(t); },
-  state:()=>({curStep, activeOv, tab:Arc.tab, merged:Arc.merged,
+  state:()=>({curStep, activeOv, tab:Arc.tab, merged:Arc.merged, panX, panY, zoom, zoomT,
     nums:$$('.anum b').map(b=>b.dataset.n?+b.textContent:b.textContent),
     cards:Arc.cards()}),
   click:id=>{ const n=byId[id]; if(n) activate(n); }
