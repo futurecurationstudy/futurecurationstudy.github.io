@@ -2816,7 +2816,9 @@ const Flip=(function(){
     return true;
   }
   function open(){ buildViews(); v=0; render(); animating=false; }
-  function close(){ clearTimeout(tmr); animating=false; }
+  function close(){ clearTimeout(tmr); animating=false;
+    leaf.hidden=true; leaf.classList.remove('shading');
+    leaf.style.transition='none'; leaf.style.transform='rotateY(0deg)'; }
 
   $('#flipNext').addEventListener('click',e=>{ e.stopPropagation(); step(1); });
   $('#flipPrev').addEventListener('click',e=>{ e.stopPropagation(); step(-1); });
