@@ -92,10 +92,13 @@ em{font-style:normal}
 .dnav:hover{color:var(--gold2);background:rgba(246,242,233,.05)}
 
 /* ── credit · qr ─────────────────────────────────────────── */
-.credit{position:fixed;left:clamp(16px,3vw,40px);bottom:14px;z-index:40;
-  font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(246,242,233,.28);pointer-events:none;white-space:nowrap}
-.credit b{font-family:var(--disp);font-weight:400;font-size:10.5px;letter-spacing:.24em;color:rgba(235,212,143,.5);
-  text-transform:none;margin-left:5px}
+.credit{position:fixed;left:clamp(16px,3vw,40px);bottom:16px;z-index:41;
+  display:flex;align-items:baseline;gap:9px;
+  font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(235,212,143,.82);
+  pointer-events:none;white-space:nowrap;text-shadow:0 2px 14px rgba(0,0,0,.9)}
+.credit b{font-family:var(--disp);font-weight:500;font-size:clamp(15px,1.3vw,19px);letter-spacing:.13em;
+  color:var(--gold3);text-transform:none;
+  text-shadow:0 0 26px rgba(212,175,55,.55),0 0 6px rgba(0,0,0,.9)}
 .qr{position:fixed;right:clamp(14px,2.4vw,28px);bottom:12px;z-index:45;
   display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 .qr-btn{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;position:relative;
@@ -141,11 +144,19 @@ em{font-style:normal}
   background:linear-gradient(90deg,transparent,rgba(235,212,143,.5),transparent)}
 .card::after{content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(70% 50% at 50% -20%,rgba(212,175,55,.07),transparent 70%)}
-.closex{position:absolute;top:14px;right:16px;z-index:9;width:30px;height:30px;border-radius:50%;
-  display:grid;place-items:center;font-size:18px;line-height:1;color:var(--muted);
-  background:rgba(255,255,255,.03);border:1px solid var(--line2);transition:.25s}
-.closex:hover{color:var(--gold2);border-color:var(--gold-dim);background:rgba(212,175,55,.08)}
-.closex.sm{width:26px;height:26px;font-size:15px}
+.closex{position:absolute;top:12px;right:14px;z-index:12;min-width:44px;min-height:44px;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 15px 0 13px;
+  font-family:var(--sans);font-size:15px;line-height:1;color:var(--gold3);
+  background:linear-gradient(180deg,rgba(212,175,55,.26),rgba(212,175,55,.10));
+  border:1px solid rgba(235,212,143,.78);border-radius:999px;
+  box-shadow:0 10px 26px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12), 0 0 22px rgba(212,175,55,.16);
+  backdrop-filter:blur(10px);transition:.24s var(--ease)}
+.closex::after{content:'닫기';font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.04em;line-height:1}
+.closex:hover{color:#141006;background:linear-gradient(180deg,var(--gold3),var(--gold));border-color:var(--gold3);
+  box-shadow:0 10px 32px rgba(212,175,55,.38)}
+.closex:active{transform:scale(.96)}
+.closex.sm{min-width:44px;min-height:44px;top:10px;right:10px;font-size:13px;padding:0 12px 0 11px}
+.closex.sm::after{font-size:11px}
 .eyebrow{font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
 .ov-title{font-family:var(--serif);font-weight:300;font-size:clamp(21px,2.6vw,36px);line-height:1.34;
   letter-spacing:-.02em;margin:0}
@@ -246,7 +257,7 @@ em{font-style:normal}
 /* ══════════ 04 · archive ══════════ */
 .arc-card{width:min(1400px,95vw);height:min(86vh,800px);padding-bottom:clamp(10px,1.4vh,16px)}
 .arc-head{flex:0 0 auto}
-.arc-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1vw,14px);
+.arc-nums{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(6px,.8vw,12px);
   margin:clamp(12px,1.8vh,20px) 0 clamp(10px,1.6vh,16px);flex:0 0 auto}
 .anum{position:relative;text-align:left;padding:clamp(8px,1.1vw,14px) clamp(10px,1.2vw,16px) clamp(12px,1.5vw,16px);
   border-radius:12px;border:1px solid var(--line2);overflow:hidden;
@@ -284,6 +295,20 @@ em{font-style:normal}
 .pane-note em{font-style:normal;color:rgba(235,212,143,.6);margin-left:8px}
 .pane-foot{flex:0 0 auto;padding-top:8px;margin-top:6px;border-top:1px solid var(--line2);
   font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);text-align:right}
+
+/* ④ 한 줄 정리 (빈칸 채우기) */
+.anum b.glyph{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.2vw,44px)}
+.sum-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:8px;
+  scrollbar-width:thin;scrollbar-color:rgba(212,175,55,.3) transparent}
+.sum-scroll::-webkit-scrollbar{width:3px}
+.sum-scroll::-webkit-scrollbar-thumb{background:rgba(212,175,55,.3);border-radius:3px}
+.sum-lead{margin:0 0 10px;font-family:var(--serif);font-size:clamp(11px,.95vw,12.5px);line-height:1.85;
+  color:rgba(246,242,233,.6)}
+.sum-lead em{color:var(--gold2);font-style:italic}
+.sum-scroll .blanks{margin-top:0}
+.sum-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;text-transform:none}
+.sum-foot .dbtn{flex:0 0 auto;font-size:9.5px;padding:5px 12px}
+.sum-foot span{font-size:9px;letter-spacing:.04em;color:var(--muted2)}
 
 /* ① 10 */
 .a10-list{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:8px;
@@ -540,12 +565,46 @@ em{font-style:normal}
 .lb-nav button:hover{color:var(--gold2);border-color:var(--gold-dim)}
 .lb .closex{top:max(3vh,18px);right:max(3vw,18px)}
 
-/* ══════════ 06 · next ══════════ */
-.next-card{width:min(1180px,94vw)}
-.next-head{max-width:760px}
-.one-lead{font-family:var(--serif);font-size:12.5px;line-height:1.9;color:rgba(246,242,233,.6);margin:12px 0 0}
-.one-lead small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted2);margin-top:8px}
+/* ══════════ 06 · next (다음 시즌 단독 페이지) ══════════ */
+.next-card{width:min(1180px,94vw);max-height:min(86vh,880px)}
+.n2-wrap{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:clamp(8px,1.5vh,16px);
+  overflow-y:auto;overscroll-behavior:contain;padding-right:6px;
+  scrollbar-width:thin;scrollbar-color:rgba(212,175,55,.28) transparent}
+.n2-wrap::-webkit-scrollbar{width:3px}
+.n2-wrap::-webkit-scrollbar-thumb{background:rgba(212,175,55,.28);border-radius:3px}
+.n2-head{padding-right:96px}
+.n2-lead{font-family:var(--serif);font-size:clamp(12px,.95vw,13.5px);line-height:1.95;
+  color:rgba(246,242,233,.66);margin:12px 0 0}
+.n2-lead em{color:var(--gold2);font-style:italic}
+.n2-track{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:clamp(8px,1.2vw,20px)}
+.n2-season{position:relative;padding:clamp(13px,1.4vw,20px) clamp(14px,1.5vw,22px);border-radius:16px;
+  border:1px solid var(--line2);background:linear-gradient(168deg,rgba(255,255,255,.03),rgba(255,255,255,.008));
+  display:flex;flex-direction:column;transition:.35s var(--ease)}
+.n2-season:hover{border-color:rgba(212,175,55,.24)}
+.n2-season.next{border-color:rgba(212,175,55,.34);
+  background:linear-gradient(168deg,rgba(212,175,55,.11),rgba(212,175,55,.02));
+  box-shadow:0 20px 50px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.07)}
+.n2-season .k{font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.n2-season b{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(19px,2.1vw,30px);
+  color:var(--ivory);letter-spacing:.02em;line-height:1.22;margin-top:3px}
+.n2-season.next b{color:var(--gold3);text-shadow:0 0 30px rgba(212,175,55,.35)}
+.n2-season p{margin:7px 0 0;font-size:clamp(10px,.85vw,11.5px);line-height:1.72;color:var(--muted)}
+.n2-word{margin-top:auto;padding-top:10px;font-family:var(--serif);font-size:clamp(9px,.78vw,11px);
+  letter-spacing:.04em;color:rgba(235,212,143,.68)}
+.n2-arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 2px}
+.n2-arrow i{width:1px;height:clamp(10px,1.6vh,18px);background:linear-gradient(180deg,transparent,var(--gold))}
+.n2-arrow i:last-child{background:linear-gradient(180deg,var(--gold),transparent)}
+.n2-arrow span{font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);
+  writing-mode:vertical-rl;white-space:nowrap}
+.n2-hope,.n2-join{padding-top:clamp(8px,1.2vh,14px);border-top:1px solid var(--line2)}
+.n2-hope .k,.n2-join .k{font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px}
+.n2-hope-row,.n2-join-row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1vw,16px)}
+.n2-hope-row div{display:flex;flex-direction:column;gap:3px}
+.n2-hope-row b{font-family:var(--serif);font-weight:400;font-size:clamp(12px,1vw,14px);color:var(--ivory)}
+.n2-hope-row span{font-size:10px;line-height:1.6;color:var(--muted2)}
+.n2-join-row b{display:block;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.n2-join-row span{font-size:10.5px;color:rgba(246,242,233,.72);word-break:break-all}
+.n2-join p{margin:10px 0 0;font-size:9.5px;letter-spacing:.02em;color:var(--muted2)}
 .blanks{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px);margin-top:clamp(16px,2.4vh,26px);flex:0 1 auto;min-height:0}
 .blank{border:1px solid var(--line2);border-radius:14px;padding:clamp(12px,1.3vw,18px);
   background:rgba(255,255,255,.018);transition:.35s;display:flex;flex-direction:column;min-height:0}
@@ -567,20 +626,13 @@ em{font-style:normal}
   border-radius:6px;border:1px solid transparent;transition:.22s}
 .opt:hover{color:var(--ivory);background:rgba(246,242,233,.05)}
 .opt.on{color:var(--gold3);border-color:rgba(212,175,55,.32);background:rgba(212,175,55,.08)}
-.next-season{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
-  margin-top:clamp(14px,2.2vh,22px);padding-top:clamp(12px,1.8vh,18px);border-top:1px solid var(--line2)}
-.ns-l .k{font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
-.ns-l b{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.4vw,32px);color:var(--gold3);margin:2px 0 4px}
-.ns-l p{margin:0;font-size:11px;line-height:1.7;color:var(--muted)}
-.ns-r{text-align:right}
-.ns-r span{display:block;font-family:var(--serif);font-size:12.5px;color:rgba(246,242,233,.78)}
-.ns-r span em{color:var(--gold2);font-style:italic}
-.ns-r b{display:block;font-family:var(--disp);font-weight:400;font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase;color:rgba(235,212,143,.6);margin-top:5px}
-.fin-credit{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:clamp(8px,1.4vh,14px);opacity:.9}
-.fin-credit i{width:26px;height:1px;background:var(--gold-dim)}
-.fin-credit span{font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted2)}
-.fin-credit b{font-family:var(--disp);font-weight:400;font-size:12px;letter-spacing:.2em;color:var(--gold2)}
+.fin-credit{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,18px);
+  margin-top:clamp(10px,1.6vh,18px);padding-top:clamp(8px,1.4vh,12px);border-top:1px solid var(--line2)}
+.fin-credit i{width:clamp(22px,4vw,64px);height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.fin-credit i:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+.fin-credit span{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(246,242,233,.6)}
+.fin-credit b{font-family:var(--disp);font-weight:500;font-size:clamp(17px,1.9vw,26px);letter-spacing:.13em;
+  color:var(--gold3);text-shadow:0 0 30px rgba(212,175,55,.5)}
 
 /* ── tooltip ─────────────────────────────────────────────── */
 .tip{position:fixed;left:0;top:0;z-index:70;pointer-events:none;max-width:300px;
@@ -593,6 +645,9 @@ em{font-style:normal}
 .tip b i{font-style:normal;font-family:var(--disp);font-size:9px;letter-spacing:.18em;color:var(--gold);margin-right:6px}
 
 /* ── responsive ──────────────────────────────────────────── */
+@media (max-width:1200px){
+  .credit{left:clamp(14px,2.6vw,26px);bottom:64px}
+}
 @media (max-width:1180px){
   .why-grid{grid-template-columns:1fr;gap:18px}
   .how-flow{grid-template-columns:repeat(2,1fr)}
@@ -607,7 +662,7 @@ em{font-style:normal}
   .tw-detail{right:0;left:0;bottom:0;top:auto;width:100%;max-height:62vh;transform:translateY(24px);
     border-radius:18px 18px 0 0}
   .tw-detail.on{transform:none}
-  .arc-nums{grid-template-columns:repeat(4,1fr)}
+  .arc-nums{grid-template-columns:repeat(5,1fr)}
   .a10-list{grid-template-columns:1fr}
   .t46-detail{width:min(320px,48%)}
   .time-card{height:min(90vh,760px)}
@@ -620,8 +675,11 @@ em{font-style:normal}
   .dock{bottom:8px;padding:4px 5px;max-width:96vw}
   .dstep{padding:7px 7px;font-size:9px;gap:4px}
   .dstep span{display:none}
-  .credit{left:12px;bottom:56px;font-size:7.5px;letter-spacing:.24em}
-  .credit b{font-size:8.5px}
+  .credit{left:12px;bottom:64px;font-size:8.5px;letter-spacing:.2em;gap:6px}
+  .credit b{font-size:13px}
+  .closex{top:10px;right:10px;min-width:44px;min-height:44px;font-size:13px;padding:0 12px 0 11px}
+  .closex::after{font-size:11px}
+  .anum b.glyph{font-size:22px}
   .qr{right:10px;bottom:56px}
   .qr-btn{width:32px;height:32px;border-radius:10px}
   .qr-panel{width:min(280px,88vw)}
@@ -678,8 +736,15 @@ em{font-style:normal}
   .tl-legend{display:none}
   .how-flow{grid-template-columns:1fr;gap:6px}
   .how-step .d{font-size:10px}
-  .next-season{flex-direction:column;align-items:flex-start;gap:8px}
-  .ns-r{text-align:left}
+  .n2-track{grid-template-columns:1fr;gap:8px}
+  .n2-arrow{flex-direction:row;gap:10px}
+  .n2-arrow i{width:26px;height:1px}
+  .n2-arrow i:first-child{background:linear-gradient(90deg,transparent,var(--gold))}
+  .n2-arrow i:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+  .n2-arrow span{writing-mode:horizontal-tb}
+  .n2-hope-row,.n2-join-row{grid-template-columns:1fr;gap:8px}
+  .n2-head{padding-right:0}
+  .n2-season b{font-size:19px}
   .opt{font-size:9.5px}
   .blank{padding:10px 12px}
   .blank .bq{font-size:10px;min-height:0}
@@ -720,7 +785,7 @@ em{font-style:normal}
   <button class="dnav" id="dNext" type="button" aria-label="다음 단계">›</button>
 </nav>
 
-<div class="credit">Directed by <b>yiruri studio</b></div>
+<div class="credit">제작 · Directed by <b>yiruri studio</b></div>
 
 <div class="qr" id="qr">
   <div class="qr-panel" id="qrPanel">
@@ -747,7 +812,7 @@ em{font-style:normal}
 <div class="ov ov-intro" id="ovIntro" role="dialog" aria-modal="true" aria-label="퓨처큐레이션 공동체 소개">
   <div class="scrim" data-close></div>
   <div class="card intro-card">
-    <button class="closex" type="button" data-close aria-label="닫기">×</button>
+    <button class="closex" type="button" data-close aria-label="닫기">✕</button>
     <div class="intro-grid">
       <div class="intro-l">
         <div class="intro-book">
@@ -777,7 +842,7 @@ em{font-style:normal}
 <div class="ov ov-why" id="ovWhy" role="dialog" aria-modal="true" aria-label="왜 윤리하다였는지">
   <div class="scrim" data-close></div>
   <div class="card why-card">
-    <button class="closex" type="button" data-close aria-label="닫기">×</button>
+    <button class="closex" type="button" data-close aria-label="닫기">✕</button>
     <div class="why-grid">
       <div class="why-l">
         <div class="eyebrow">02 · Why — 시즌 1 〈윤리하다〉</div>
@@ -816,7 +881,7 @@ em{font-style:normal}
 <div class="ov ov-how" id="ovHow" role="dialog" aria-modal="true" aria-label="어떻게 학습했는지">
   <div class="scrim" data-close></div>
   <div class="card how-card">
-    <button class="closex" type="button" data-close aria-label="닫기">×</button>
+    <button class="closex" type="button" data-close aria-label="닫기">✕</button>
     <div class="eyebrow">03 · How — 데이터베이스 기반 4단계 학습 프로세스</div>
     <h2 class="ov-title">맞이하고, 쓰고, 나누고, <em>남깁니다</em></h2>
     <div class="how-flow" id="howFlow"></div>
@@ -833,7 +898,7 @@ em{font-style:normal}
 <div class="ov ov-arc" id="ovArc" role="dialog" aria-modal="true" aria-label="아카이브 — 10 · 12 · 46 · 24">
   <div class="scrim" data-close></div>
   <div class="card arc-card">
-    <button class="closex" type="button" data-close aria-label="닫기">×</button>
+    <button class="closex" type="button" data-close aria-label="닫기">✕</button>
     <div class="arc-head">
       <div class="eyebrow">04 · Archive — 소책자 p.8 – 24</div>
       <h2 class="ov-title">질문이 쌓여 생각이 되고, 생각이 모여 <em>한 권</em>이 되었습니다</h2>
@@ -847,6 +912,9 @@ em{font-style:normal}
       </button>
       <button class="anum" type="button" role="tab" data-tab="46" aria-selected="false">
         <b data-n="46">0</b><span>개의 생각<em>Thoughts</em></span><i class="fill"></i>
+      </button>
+      <button class="anum" type="button" role="tab" data-tab="sum" aria-selected="false">
+        <b class="glyph" data-glyph="한">한</b><span>줄 정리<em>One line</em></span><i class="fill"></i>
       </button>
       <button class="anum" type="button" role="tab" data-tab="24" aria-selected="false">
         <b data-n="24">0</b><span>쪽의 소책자<em>Pages</em></span><i class="fill"></i>
@@ -899,7 +967,7 @@ em{font-style:normal}
             <div class="t46-core"><span>46</span><i>thoughts</i></div>
           </div>
           <div class="t46-detail" id="t46Detail">
-            <button class="closex sm" id="t46Close" type="button" aria-label="생각 닫기">×</button>
+            <button class="closex sm" id="t46Close" type="button" aria-label="생각 닫기">✕</button>
             <div class="t46d-kicker" id="t46Kicker"></div>
             <h3 id="t46Title"></h3>
             <div class="t46d-body" id="t46Body"></div>
@@ -908,7 +976,20 @@ em{font-style:normal}
         <div class="t46-chips" id="t46Chips"></div>
       </section>
 
-      <!-- ④ 24 -->
+      <!-- ④ 한 줄 정리 (빈칸 채우기) -->
+      <section class="apane" data-pane="sum" role="tabpanel" aria-label="한 줄 정리 — 빈칸 채우기">
+        <div class="pane-note">소책자 p.21 · 빈칸을 채우면 당신의 윤리가 됩니다 <em>정답은 없습니다 · 다른 표현을 골라도 좋습니다</em></div>
+        <div class="sum-scroll">
+          <p class="sum-lead">열 번의 만남에서 우리가 서로에게 남긴 문장들입니다. 빈칸을 눌러 <em>지금의 내 언어</em>로 채워 보세요.</p>
+          <div class="blanks" id="blanks"></div>
+        </div>
+        <div class="pane-foot sum-foot">
+          <button class="dbtn" id="sumReset" type="button">빈칸 다시 채우기</button>
+          <span>고른 문장은 이 화면에만 남습니다 · 소책자 p.21</span>
+        </div>
+      </section>
+
+      <!-- ⑤ 24 -->
       <section class="apane" data-pane="24" role="tabpanel" aria-label="24쪽 소책자">
         <div class="flip-wrap">
           <div class="flip-book" id="flipBook">
@@ -933,7 +1014,7 @@ em{font-style:normal}
 
     <!-- 12인 상세 -->
     <div class="tw-detail" id="twDetail" aria-live="polite">
-      <button class="closex sm" id="twDClose" type="button" aria-label="상세 닫기">×</button>
+      <button class="closex sm" id="twDClose" type="button" aria-label="상세 닫기">✕</button>
       <div class="twd-art"><img id="twdImg" alt=""><div class="twd-ltr" id="twdLtr"></div></div>
       <div class="twd-body">
         <div class="eyebrow">Letter — 열두 개의 글자</div>
@@ -956,7 +1037,7 @@ em{font-style:normal}
 <div class="ov ov-time" id="ovTime" role="dialog" aria-modal="true" aria-label="우리의 활동 모습">
   <div class="scrim" data-close></div>
   <div class="card time-card">
-    <button class="closex" type="button" data-close aria-label="닫기">×</button>
+    <button class="closex" type="button" data-close aria-label="닫기">✕</button>
     <div class="time-head">
       <div class="eyebrow">05 · Our activities — 소책자 p.22 · 2026</div>
       <h2 class="ov-title">배움은 <em>시간</em>을 타고 흐릅니다</h2>
@@ -995,33 +1076,59 @@ em{font-style:normal}
     <div class="lb-cap"><b id="lbTitle"></b><span id="lbDesc"></span>
       <div class="lb-nav"><button type="button" id="lbPrev">‹</button><button type="button" id="lbNext">›</button></div>
     </div>
-    <button class="closex sm" id="lbClose" type="button" aria-label="사진 닫기">×</button>
+    <button class="closex sm" id="lbClose" type="button" aria-label="사진 닫기">✕</button>
   </div>
 </div>
 
-<!-- ══════════ 06 · 다음 시즌 ══════════ -->
+<!-- ══════════ 06 · 다음 시즌 (단독 페이지) ══════════ -->
 <div class="ov ov-next" id="ovNext" role="dialog" aria-modal="true" aria-label="다음 시즌 안내">
   <div class="scrim" data-close></div>
   <div class="card next-card">
-    <button class="closex" type="button" data-close aria-label="닫기">×</button>
-    <div class="next-head">
-      <div class="eyebrow">06 · Next season — 시즌 1의 여운</div>
-      <h2 class="ov-title">빈칸을 채우면, <em>당신의 윤리</em>가 됩니다</h2>
-      <p class="one-lead">열 번의 만남에서 우리가 서로에게 남긴 문장들입니다. 빈칸을 눌러 지금의 내 언어로 채워 보세요.<small>정답은 없습니다 · 다른 표현을 골라도 좋습니다</small></p>
-    </div>
-    <div class="blanks" id="blanks"></div>
-    <div class="next-season">
-      <div class="ns-l">
-        <div class="k">Season 2 · Coming</div>
-        <b>〈〇〇하다〉</b>
-        <p>시즌 1이 남긴 질문 위에, 다음 시즌의 질문을 올립니다.<br>함께 읽고, 묻고, 우리 아이들의 내일을 큐레이션합니다.</p>
+    <button class="closex" type="button" data-close aria-label="닫기">✕</button>
+    <div class="n2-wrap">
+      <div class="n2-head">
+        <div class="eyebrow">06 · Next season — 시즌 1의 끝에서</div>
+        <h2 class="ov-title">〈윤리하다〉에서,<br><em>〈〇〇하다〉</em>로</h2>
+        <p class="n2-lead">열 번의 만남이 남긴 문장 위에, 다음 시즌의 질문을 올립니다.<br>
+          시즌 1이 정하지 않은 답을, 시즌 2는 <em>함께</em> 찾아갑니다.</p>
       </div>
-      <div class="ns-r">
-        <span>질문하고, 연결하고, 미래를 <em>함께</em> 그리다</span>
-        <b>Future Curation · Season 1 〈윤리하다〉</b>
+
+      <div class="n2-track">
+        <div class="n2-season">
+          <span class="k">Season 1 · 2026.06 – 12 · 지나온 자리</span>
+          <b>〈윤리하다〉</b>
+          <p>정규모임 10회 · 12인의 글자 · 46개의 생각 · 24쪽 소책자</p>
+          <div class="n2-word">통제 → 이해 · 소비 → 창조 · 단절 → 연결</div>
+        </div>
+        <div class="n2-arrow" aria-hidden="true"><i></i><span>next</span><i></i></div>
+        <div class="n2-season next">
+          <span class="k">Season 2 · Coming 2027 · 열려 있는 자리</span>
+          <b>〈〇〇하다〉</b>
+          <p>제목의 빈칸은 아직 열려 있습니다. 함께 채워 갈 학부모를 기다립니다.</p>
+          <div class="n2-word">질문하고 · 연결하고 · 미래를 함께 그리다</div>
+        </div>
+      </div>
+
+      <div class="n2-hope">
+        <div class="k">시즌 2에 기대하는 것</div>
+        <div class="n2-hope-row">
+          <div><b>함께 읽고</b><span>책과 영상으로 같은 질문 앞에 서기</span></div>
+          <div><b>함께 묻고</b><span>정답 대신, 서로의 자리에서 다시 묻기</span></div>
+          <div><b>함께 남기고</b><span>쓴 기록이 다음 시즌의 재료가 되기</span></div>
+        </div>
+      </div>
+
+      <div class="n2-join">
+        <div class="k">다음 시즌 참여 · 안내</div>
+        <div class="n2-join-row">
+          <div><b>Instagram</b><span>@futurecuration.study</span></div>
+          <div><b>Padlet</b><span>padlet.com/futurecurationstudy</span></div>
+          <div><b>Mail</b><span>futurecuration.study@gmail.com</span></div>
+        </div>
+        <p>시즌 2는 서울시교육청 학부모지원센터 미래교육과정을 수료한 학부모와 함께 시작합니다 · 참여 문의는 메일로</p>
       </div>
     </div>
-    <div class="fin-credit"><i></i><span>Directed by</span><b>yiruri studio</b><i></i></div>
+    <div class="fin-credit"><i></i><span>제작 · Directed by</span><b>yiruri studio</b><i></i></div>
   </div>
 </div>
 
@@ -1419,18 +1526,29 @@ function build(){
   const C4=chs.arc;
   const SUBS=[
     ['10','열 번의 질문','Ten questions',-95,'10'],
-    ['12','열두 명의 글자','Twelve letters',-30,'12'],
-    ['46','마흔여섯 개의 생각','Thoughts',30,'46'],
-    ['24','24쪽 소책자','Pages',82,'24']
+    ['12','열두 명의 글자','Twelve letters',-32,'12'],
+    ['46','마흔여섯 개의 생각','Thoughts',26,'46'],
+    ['한','한 줄 정리','One line',72,'sum'],
+    ['24','24쪽 소책자','Pages',104,'24']
   ];
   const subN={};
   SUBS.forEach((s)=>{
     const ang=s[3];
-    const p=pol(C4.x,C4.y,ang,192);
+    const rr=s[4]==='sum'?258:192;
+    const p=pol(C4.x,C4.y,ang,rr);
     const n=mk({id:'sh'+s[0],type:'sub',x:p.x,y:p.y,amp:26,r:13,glyph:s[0],
       label:s[1], sub:s[2]+' · 클릭해서 펼치기',
       act:{k:'arc',tab:s[4]}});
     subN[s[0]]=n; link(C4,n,'ax');
+  });
+
+  /* 한 줄 정리 — 빈칸 채우기 서브 점 (04 아카이브 성단) */
+  const SSUM=subN['한'], aSum=72;
+  BLANKS.forEach((b,i)=>{
+    const p=pol(SSUM.x,SSUM.y,aSum+(i-1)*26,100);
+    const n=mk({id:'bl'+i,type:'spot',x:p.x,y:p.y,amp:24,r:4.2,color:'#D9BE6A',
+      label:b.q, sub:'한 줄 정리 · 빈칸 채우기 '+(i+1), act:{k:'arc',tab:'sum'}});
+    link(SSUM,n,'ax');
   });
 
   /* 10 — 회차 + 질문 */
@@ -1461,7 +1579,7 @@ function build(){
   });
 
   /* 46 — 생각 */
-  const S46=subN['46'], a46=30;
+  const S46=subN['46'], a46=26;
   THOUGHTS.forEach((p,i)=>{
     const ang=a46+(rnd()-0.5)*126;
     const rr=76+Math.sqrt(rnd())*140;
@@ -1474,7 +1592,7 @@ function build(){
 
   /* 24 — 소책자 */
   const S24=subN['24'];
-  const pb=pol(S24.x,S24.y,75,132);
+  const pb=pol(S24.x,S24.y,148,202);
   const book=mk({id:'book24',type:'photo2',x:pb.x,y:pb.y,amp:22,r:9,
     label:'24쪽 소책자', sub:'2026.12 · 퓨처큐레이션 〈윤리하다〉', act:{k:'arc',tab:'24'}});
   link(S24,book,'ax');
@@ -1512,12 +1630,6 @@ function build(){
 
   /* ── 06 다음 시즌 ── */
   const C6=chs.next, d6=dirOf(C6);
-  BLANKS.forEach((b,i)=>{
-    const p=pol(C6.x,C6.y,d6+(i-1)*30,150);
-    const n=mk({id:'bl'+i,type:'spot',x:p.x,y:p.y,amp:24,r:3.8,color:'#CE8798',
-      label:b.q, sub:'빈칸 채우기 '+(i+1), act:{k:'next'}});
-    link(C6,n,'ax');
-  });
   [['시즌 2 〈〇〇하다〉',d6+56,222,'#EBD48F'],['함께 그리는 미래',d6,120,'#F6F2E9'],
    ['DIRECTED BY yiruri studio',d6-56,206,'#D4AF37'],['성과공유회 2026.12',d6+30,268,'#D9BE6A'],
    ['인스타 @futurecuration.study',d6-30,268,'#8AA6D8'],['QR로 바로 연결',d6+80,240,'#7FB8AE']].forEach((s,i)=>{
@@ -1528,7 +1640,7 @@ function build(){
   });
 
   /* ── 챕터 사이 옅은 신경망 + 교차 시냅스 ── */
-  const order=['why','how','arc','next','act'];
+  const order=['why','how','arc','act','next'];
   for(let i=0;i<order.length;i++) link(chs[order[i]],chs[order[(i+1)%order.length]],'web');
 
   const pool=nodes.filter(n=>n.type==='spot'||n.type==='post'||n.type==='ltr'||n.type==='ses'||n.type==='q');
@@ -2235,7 +2347,7 @@ function closeOverlays(){ Object.keys(OVS).forEach(id=>closeOv(id,true)); active
 function closeAll(){ closeOverlays(); selected=null; }
 $$('.ov').forEach(ov=>{
   ov.addEventListener('click',e=>{
-    if(e.target.closest('[data-close]')||e.target.classList.contains('scrim')){
+    if(e.target===ov||e.target.closest('[data-close]')||e.target.classList.contains('scrim')){
       const id=Object.keys(OVS).find(k=>OVS[k]==='#'+ov.id);
       if(id) closeOv(id);
     }
@@ -2331,15 +2443,16 @@ const Arc=(function(){
   function countUp(){
     cancelAnimationFrame(rafId);
     card.classList.remove('counted');
-    $$('.anum b',card).forEach(b=>b.textContent='0');
+    $$('.anum b',card).forEach(b=>{ b.textContent = b.dataset.n ? '0' : (b.dataset.glyph||b.textContent); });
     void card.offsetWidth;
     card.classList.add('counted');
     const t0=performance.now();
-    const targets=btns.map(b=>+$('b',b).dataset.n);
+    const targets=btns.map(b=>{ const el=$('b',b); return el.dataset.n? +el.dataset.n : null; });
     function tick(t){
       const p=clamp((t-t0)/1250,0,1);
       const e=1-Math.pow(1-p,3);
-      btns.forEach((b,i)=>{ $('b',b).textContent=String(Math.round(targets[i]*e)); });
+      btns.forEach((b,i)=>{ if(targets[i]==null) return;
+        $('b',b).textContent=String(Math.round(targets[i]*e)); });
       if(p<1) rafId=requestAnimationFrame(tick);
     }
     card.classList.remove('lit');
@@ -2363,6 +2476,7 @@ const Arc=(function(){
     if(t==='24') Flip.open();
     if(t!=='12') Twelve.closeDetail();
     if(t!=='46') T46.close();
+    if(t==='sum'){ const sc=$('.sum-scroll'); if(sc) sc.scrollTop=0; }
   }
 
   function open(){
@@ -2376,6 +2490,8 @@ const Arc=(function(){
   function close(){ Twelve.stop(); T46.stop(); Flip.close(); Twelve.closeDetail(); T46.close(); }
 
   btns.forEach(b=>b.addEventListener('click',()=>select(b.dataset.tab)));
+  const sumReset=$('#sumReset');
+  if(sumReset) sumReset.addEventListener('click',()=>Next.reset());
 
   function letter(i){ select('12'); setTimeout(()=>Twelve.detail(i), 120); }
   function thought(i){ select('46'); setTimeout(()=>T46.select(i), 380); }
@@ -2827,6 +2943,16 @@ const Next=(function(){
   return {reset};
 })();
 
+/* ── 하위 상세창 — 창 바깥을 누르면 닫기 ── */
+(function(){
+  const cardEl=$('.arc-card');
+  if(!cardEl) return;
+  cardEl.addEventListener('click',e=>{
+    if(!e.target.closest('#twDetail') && !e.target.closest('.tw-card')) Twelve.closeDetail();
+    if(!e.target.closest('#t46Detail') && !e.target.closest('.t46-dot')) T46.close();
+  });
+})();
+
 /* ══════════════════════════════════════════════════════════
    QR · 전체화면 · 키보드
    ══════════════════════════════════════════════════════════ */
@@ -2895,7 +3021,7 @@ window.__neuron={
   step:i=>goStep(i), open:id=>openOv(id), close:()=>closeAll(),
   arc:t=>{ openOv('arc'); Arc.select(t); },
   state:()=>({curStep, activeOv, tab:Arc.tab, merged:Arc.merged,
-    nums:$$('.anum b').map(b=>+b.textContent),
+    nums:$$('.anum b').map(b=>b.dataset.n?+b.textContent:b.textContent),
     cards:Arc.cards()}),
   click:id=>{ const n=byId[id]; if(n) activate(n); }
 };
