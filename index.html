@@ -841,8 +841,10 @@ em{font-style:normal}
 .vp-tab b{ font-family: var(--disp); font-weight: 500; font-size: .92em; letter-spacing: .05em;
   margin-left: 3px; opacity: .9; }
 .vp-tab:hover{ color: var(--ivory); }
+/* 활성 탭에서도 글자 두께를 바꾸지 않아 탭 바 너비가 흔들리지 않게 한다 */
+.vp-tab, .vp-tab.on{ font-weight: 600; }
 .vp-tab.on{ background: linear-gradient(180deg, var(--gold3), var(--gold)); color: #141006;
-  font-weight: 700; box-shadow: 0 8px 22px rgba(212,175,55,.22); }
+  text-shadow: 0 0 .5px currentColor; box-shadow: 0 8px 22px rgba(212,175,55,.22); }
 .vp-tab.on b{ opacity: .78; }
 .vp-tab .t-extra{ white-space: nowrap; }.vp-pane{ display: none; flex: 1 1 auto; min-height: 0; }
 .vp-pane.on{ display: flex; flex-direction: column; }
@@ -876,7 +878,12 @@ em{font-style:normal}
 /* 탭 2 · 운영 가이드 1~10 */
 .vp-g-title{ font-size: clamp(21px, 2.05vw, 31px); margin-bottom: clamp(4px,.8vh,10px); }
 .vp-guide{ flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1fr 1fr;
-  column-gap: clamp(22px, 2.6vw, 52px); }
+  column-gap: clamp(22px, 2.6vw, 52px);
+  overflow-y: auto; overflow-x: hidden; padding-right: 7px; overscroll-behavior: contain;
+  scrollbar-width: thin; scrollbar-color: rgba(212,175,55,.34) transparent; }
+.vp-guide::-webkit-scrollbar{ width: 5px; }
+.vp-guide::-webkit-scrollbar-track{ background: transparent; }
+.vp-guide::-webkit-scrollbar-thumb{ background: rgba(212,175,55,.34); border-radius: 99px; }
 .vcol{ display: flex; flex-direction: column; justify-content: space-between;
   min-height: 0; gap: clamp(2px,.55vh,7px); }
 .vcol > .vg:first-child{ border-top: 0; }
@@ -1765,7 +1772,7 @@ const STEPS=[
  {n:'01',t:'맞이하기',e:'Welcome',d:'주제와 질문, 일정을 함께 엽니다.',tool:{k:'notion',label:'노션',en:'Notion'}},
  {n:'02',t:'생각쓰기',e:'Write',d:'사전 질문과 경험을 기록합니다.',tool:{k:'padlet',label:'패들렛',en:'Padlet'}},
  {n:'03',t:'의견나누기',e:'Share',d:'기록을 바탕으로 밀도 있게 토론합니다.'},
- {n:'04',t:'한 줄 정리',e:'Archive',d:'오늘의 통찰을 나만의 한 문장으로.',tool:{k:'canva',label:'5회차 카드뉴스',en:'Canva'}}
+ {n:'04',t:'한 줄 정리',e:'Archive',d:'오늘의 통찰을 나만의 한 문장으로.',tool:{k:'canva',label:'캔바',en:'Canva'}}
 ];;
 
 const QS=[
@@ -2974,8 +2981,7 @@ const Intro=(function(){
   const panes=Array.from(card.querySelectorAll('.vp-pane'));
   function show(k){
     if(!k) k='about';
-    const grid=$('.vp-01',card);
-    if(grid) grid.classList.toggle('g-wide', k==='guide');
+    /* 표지·탭 위치 고정 — 탭 전환은 오른쪽 본문 영역만 바꾼다 */
     tabs.forEach(t=>{
       const on=t.dataset.pane===k;
       t.classList.toggle('on',on);
@@ -3035,7 +3041,7 @@ const Intro=(function(){
     let html='<div class="n">'+s.n+'</div><div class="e">'+esc(s.e)+'</div>'+
       '<div class="t">'+esc(s.t)+'</div><div class="d">'+esc(s.d)+'</div>';
     html+='<div class="a">'+(s.tool
-      ? '<button class="vp-btn'+(s.tool.k==='canva'?'':' ghost')+'" type="button" data-mm="'+s.tool.k+'">'+esc(s.tool.label)+' <span class="en">'+esc(s.tool.en)+'</span></button>'
+      ? '<button class="vp-btn ghost" type="button" data-mm="'+s.tool.k+'">'+esc(s.tool.label)+' <span class="en">'+esc(s.tool.en)+'</span></button>'
       : '<span class="vp-tag">함께 이야기</span>')+'</div>';
     d.innerHTML=html;
     flow.appendChild(d);
@@ -3589,7 +3595,7 @@ const Next=(function(){
    도구 모달 — 노션(이미지) · 패들렛(iframe) · 캔바(슬라이드)
    ══════════════════════════════════════════════════════════ */
 const NOTION_URL='https://lkoarchive.notion.site/_-33d194030dbf80d7a009fbc1cbf4e36b';
-const CANVA_URL='https://canva.link/fovlahvt8n6ykmm';
+const CANVA_URL='https://www.canva.com/design/DAHS1GG--X0/9K-q02I3O3WdBlNB0ORiqw/view';
 const MMCAPS=['네 번째 생각정리 · 질문','[lala] · [벼리]','[앨리스] · [contexter]','[퓨처큐레이터] · [sunshine]',
   '[김은진T] · [지혜바퀴]','[Annie] · [오하다]','[피오레] · [옥]','‘멈춤의 시간’은 · 마무리'];
 const MMCAPS_N=['학습 일정 · 1~10회차','우리가 만든 기록 · 학습 모임 진행 순서 · 자료 공유','퓨처큐레이션 운영 가이드 1~10'];
@@ -3599,7 +3605,7 @@ const MM=(function(){
   const thumbs=$('#mmThumbs'), count=$('#mmCount'), kicker=$('#mmKicker'), title=$('#mmTitle');
   const openLink=$('#mmOpen'), foot=$('#mmFoot');
   const PADLET_EMBED='https://padlet.com/embed/how8limyf34qq0fi';
-  const PADLET_URL='https://padlet.com/how8limyf34qq0fi';
+  const PADLET_URL='https://padlet.com/futurecurationstudy/_-how8limyf34qq0fi';
   const INFO={
     notion:{k:'NOTION · 온라인 집', t:'여기가 퓨처큐레이션의 온라인 집입니다', url:NOTION_URL,
       foot:'노션은 다른 사이트 안에서 직접 열리지 않습니다(X-Frame 차단) · 학습 일정부터 운영 가이드까지 캡처 3장으로 담았습니다 · 원본은 ‘새 창에서 원본 보기’로 열 수 있습니다.'},
@@ -3653,6 +3659,18 @@ const MM=(function(){
   function step(d){ if(kind==='canva'||kind==='notion') setSlide(i+d); }
   $('#mmPrev').addEventListener('click',()=>step(-1));
   $('#mmNext').addEventListener('click',()=>step(1));
+  /* 새 창에서 원본 보기 — 인앱 웹뷰(target=_blank 무시)에서도 반드시 열리게 */
+  openLink.addEventListener('click',e=>{
+    const href=openLink.getAttribute('href');
+    if(!href||href==='#'||href.charAt(0)==='#') return;
+    e.preventDefault();
+    const ua=navigator.userAgent||'';
+    const inApp=/(KAKAOTALK|NAVER|Instagram|FBAN|FBAV|wv)/i.test(ua)
+      || (/iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua));
+    let w=null;
+    try{ w=window.open(href,'_blank'); if(w) w.opener=null; }catch(err){ w=null; }
+    if(inApp||!w){ window.location.href=href; }
+  });
   el.addEventListener('click',e=>{ if(e.target===el||e.target.closest('[data-mm-close]')) close(); });
   document.addEventListener('click',e=>{
     const b=e.target.closest('[data-mm]');
