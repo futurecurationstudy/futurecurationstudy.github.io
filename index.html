@@ -652,8 +652,9 @@ em{font-style:normal}
 .tip b i{font-style:normal;font-family:var(--disp);font-size:9px;letter-spacing:.18em;color:var(--gold);margin-right:6px}
 
 /* ── responsive ──────────────────────────────────────────── */
-@media (max-width:1200px){
-  .credit{left:clamp(14px,2.6vw,26px);bottom:64px}
+@media (max-width:1600px){
+  /* dock(가운데, 높이 ~57px)가 credit 폭 안까지 들어오는 구간 — credit을 dock 위로 올린다 */
+  .credit{left:clamp(14px,2.6vw,26px);bottom:78px}
 }
 @media (max-width:1180px){
   .why-grid{grid-template-columns:1fr;gap:18px}
@@ -1731,69 +1732,221 @@ em{font-style:normal}
 .env-replay:hover{color:#141006;background:linear-gradient(180deg,var(--gold3),var(--gold));border-color:var(--gold3)}
 
 /* ══════════════════════════════════════════════════════════
-   v9 · ③ 07 〈〇〇하다〉 피날레
+   v14 · 07 〈〇〇하다〉 — 3탭 피날레
+   01 시즌 1 돌아보기 · 02 왜 계속 배워야 할까 · 03 함께하실래요?
    ══════════════════════════════════════════════════════════ */
-.n3-wrap{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:clamp(9px,1.5vh,16px);
-  overflow-y:auto;overscroll-behavior:contain;padding-right:4px}
-.n3-wrap::-webkit-scrollbar{width:3px}
-.n3-wrap::-webkit-scrollbar-thumb{background:rgba(212,175,55,.28);border-radius:3px}
-.n3-head{padding-right:96px;flex:0 0 auto}
-.n3-lead{margin:8px 0 0;font-family:var(--serif);font-size:clamp(12px,.98vw,14px);line-height:1.85;
-  color:var(--muted);max-width:74ch}
-.n3-lead em{color:var(--gold2);font-style:italic}
-.n3-lead b{color:var(--gold3);font-weight:400}
-.n3-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(10px,1.4vw,20px);flex:0 0 auto}
-.n3-blank,.n3-verb{position:relative;border:1px solid var(--line2);border-radius:16px;
-  padding:clamp(13px,1.5vw,20px) clamp(15px,1.7vw,22px);
-  background:linear-gradient(160deg,rgba(255,255,255,.028),rgba(255,255,255,.008))}
-.n3-blank .k,.n3-verb .k,.n3-join .k{font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:10px}
-.n3-word{font-family:var(--serif);font-weight:300;font-size:clamp(30px,3.5vw,50px);line-height:1.1;
-  letter-spacing:.02em;color:rgba(246,242,233,.9);display:flex;align-items:baseline;gap:2px}
-.n3-word .oo{color:transparent;-webkit-text-stroke:1px rgba(235,212,143,.85);
-  text-shadow:0 0 30px rgba(212,175,55,.25);padding:0 2px;position:relative}
-.n3-word .oo::after{content:'';position:absolute;left:2px;right:2px;bottom:5px;height:1px;
-  background:repeating-linear-gradient(90deg,rgba(212,175,55,.7) 0 6px,transparent 6px 12px)}
-.n3-caret{display:inline-block;width:2px;height:.8em;margin-left:2px;align-self:center;
-  background:var(--gold3);animation:n3blink 1.15s steps(1,end) infinite}
-@keyframes n3blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-.n3-blank p{margin:12px 0 0;font-size:11.5px;line-height:1.85;color:var(--muted)}
-.n3-chips{display:flex;align-items:center;gap:9px;margin-top:12px;font-size:11px;color:var(--muted2)}
-.n3-chips span{padding:3px 11px;border:1px solid var(--line);border-radius:999px;color:rgba(246,242,233,.7)}
-.n3-chips span:last-child{border-color:rgba(212,175,55,.5);color:var(--gold3);
-  background:rgba(212,175,55,.08)}
-.n3-chips i{font-style:normal;color:rgba(212,175,55,.7);font-size:10px}
-.n3-rows{display:flex;flex-direction:column;gap:9px}
-.n3-rows div{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:baseline}
-.n3-rows b{font-family:var(--serif);font-weight:400;font-size:clamp(12px,1vw,14px);color:var(--ivory);
-  white-space:nowrap}
-.n3-rows span{font-size:10.5px;line-height:1.62;color:var(--muted2)}
-.n3-verbs{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;padding-top:11px;border-top:1px solid var(--line2)}
-.n3-verbs i{font-style:normal;font-family:var(--serif);font-size:clamp(11.5px,.95vw,13.5px);
-  color:var(--gold2);padding:4px 11px;border-radius:999px;border:1px solid rgba(212,175,55,.26);
-  background:rgba(212,175,55,.06)}
-.n3-join{flex:0 0 auto;padding-top:clamp(9px,1.3vh,14px);border-top:1px solid var(--line2)}
-.n3-join-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:10px}
-.n3-join-head .k{margin-bottom:0}
-.n3-join-head p{margin:0;font-size:10px;letter-spacing:.02em;color:var(--muted2)}
-.n3-qrs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:clamp(7px,1vw,13px)}
-.n3-qr{display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 8px 9px;
-  border-radius:12px;border:1px solid var(--line2);background:rgba(255,255,255,.022);
-  text-decoration:none;color:inherit;transition:.28s var(--ease)}
-.n3-qr:hover{border-color:rgba(212,175,55,.45);background:rgba(212,175,55,.075);transform:translateY(-2px)}
-.n3-qr img{width:100%;max-width:108px;border-radius:6px;background:#fff;padding:5px;display:block}
-.n3-qr b{font-size:11px;font-weight:500;letter-spacing:.02em;color:var(--ivory)}
-.n3-qr span{font-size:8.5px;line-height:1.35;color:var(--muted2);text-align:center;word-break:break-all}
+.nt-wrap{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:clamp(9px,1.4vh,16px)}
+.nt-head{flex:0 0 auto;padding-right:108px}
+.nt-head .eyebrow{margin-bottom:7px}
+.nt-head .ov-title{font-size:clamp(21px,2.05vw,31px);line-height:1.26}
+.nt-title-s{display:block;margin-top:6px;font-size:clamp(10px,.82vw,12px);letter-spacing:.01em;color:rgba(246,242,233,.44)}
+
+/* ── 탭 바 ──────────────────────────────────────────────── */
+.nt-tabs{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(3px,.55vw,9px);
+  border-bottom:1px solid var(--line2)}
+.nt-tab{position:relative;display:flex;align-items:baseline;gap:9px;
+  padding:9px clamp(8px,.9vw,14px) 12px;text-align:left;transition:.32s var(--ease)}
+.nt-tab .n{font-family:var(--disp);font-size:clamp(10px,.86vw,12.5px);letter-spacing:.16em;
+  color:rgba(246,242,233,.30);transition:.32s}
+.nt-tab .t{font-family:var(--serif);font-weight:400;font-size:clamp(12px,1.02vw,16px);
+  letter-spacing:-.015em;color:rgba(246,242,233,.55);transition:.32s;word-break:keep-all}
+.nt-tab::after{content:'';position:absolute;left:clamp(8px,.9vw,14px);right:clamp(8px,.9vw,14px);bottom:-1px;
+  height:1.5px;background:transparent;transition:.42s var(--ease)}
+.nt-tab:hover .t{color:rgba(246,242,233,.78)}
+.nt-tab:hover .n{color:rgba(235,212,143,.6)}
+.nt-tab[aria-selected="true"]{background:linear-gradient(180deg,rgba(212,175,55,.055),transparent)}
+.nt-tab[aria-selected="true"] .n{color:var(--gold)}
+.nt-tab[aria-selected="true"] .t{color:var(--gold3)}
+.nt-tab[aria-selected="true"]::after{
+  background:linear-gradient(90deg,transparent,var(--gold2) 18%,var(--gold3) 50%,var(--gold2) 82%,transparent);
+  box-shadow:0 0 16px rgba(235,212,143,.55)}
+.nt-tab:focus-visible{outline:1px solid rgba(212,175,55,.45);outline-offset:2px;border-radius:8px}
+
+/* ── 패널 ───────────────────────────────────────────────── */
+.nt-body{position:relative;flex:1 1 auto;min-height:0}
+.nt-panel{position:absolute;inset:0;display:flex;flex-direction:column;gap:clamp(9px,1.4vh,16px);
+  overflow-y:auto;overscroll-behavior:contain;padding:clamp(8px,1.4vh,16px) 3px 4px;
+  opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .42s var(--ease),transform .55s var(--ease),visibility .42s;
+  scrollbar-width:thin;scrollbar-color:rgba(212,175,55,.28) transparent}
+.nt-panel.on{opacity:1;visibility:visible;transform:none}
+.nt-panel::-webkit-scrollbar{width:3px}
+.nt-panel::-webkit-scrollbar-thumb{background:rgba(212,175,55,.28);border-radius:3px}
+.nt-kick{flex:0 0 auto;display:flex;align-items:center;gap:11px;
+  font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.nt-kick::after{content:'';width:clamp(20px,3vw,52px);height:1px;
+  background:linear-gradient(90deg,rgba(212,175,55,.5),transparent)}
+.nt-say{flex:0 0 auto;margin:0;font-family:var(--serif);font-weight:300;
+  font-size:clamp(23px,2.4vw,36px);line-height:1.36;letter-spacing:-.025em;color:var(--ivory)}
+.nt-say em{font-style:italic;color:var(--gold2)}
+.nt-say b{font-weight:400;color:var(--gold3)}
+
+/* ── 탭 1 · 시즌 1 돌아보기 ─────────────────────────────── */
+.nt-duo{flex:0 0 auto;margin-top:auto;display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(9px,1.1vw,16px)}
+.nt-box{position:relative;display:flex;flex-direction:column;border-radius:16px;border:1px solid var(--line2);
+  padding:clamp(12px,1.2vw,19px) clamp(14px,1.4vw,22px);
+  background:linear-gradient(160deg,rgba(255,255,255,.028),rgba(255,255,255,.006))}
+.nt-box.warm{border-color:rgba(212,175,55,.30);
+  background:linear-gradient(160deg,rgba(212,175,55,.10),rgba(212,175,55,.012));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055),0 18px 44px rgba(0,0,0,.36)}
+.nt-k2{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.nt-box.cool .nt-k2{color:rgba(206,135,152,.88)}
+.nt-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(4px,.6vw,10px);
+  margin-bottom:clamp(8px,1.2vh,14px)}
+.nt-stat b{display:block;font-family:var(--disp);font-weight:400;
+  font-size:clamp(20px,1.95vw,31px);line-height:1;color:var(--gold3);letter-spacing:-.01em}
+.nt-stat span{display:block;margin-top:5px;font-size:10px;line-height:1.35;letter-spacing:.05em;color:var(--muted2)}
+.nt-lines{display:flex;flex-direction:column;gap:clamp(4px,.7vh,8px);margin-top:auto}
+.nt-lines p{display:grid;grid-template-columns:12px 1fr;gap:7px;margin:0;
+  font-size:clamp(12px,1.08vw,15px);line-height:1.62;color:var(--muted)}
+.nt-lines p::before{content:'—';color:rgba(212,175,55,.5);font-size:9.5px;line-height:1.95}
+.nt-box.cool .nt-lines p{color:rgba(246,242,233,.60)}
+.nt-box.cool .nt-lines p::before{content:'·';color:rgba(246,242,233,.28);font-size:12px}
+.nt-flag{margin-top:clamp(8px,1.2vh,13px);padding-top:9px;border-top:1px solid var(--line2);
+  font-family:var(--serif);font-size:clamp(11px,.9vw,13.5px);letter-spacing:.01em;color:rgba(235,212,143,.72)}
+.nt-summary{flex:0 0 auto;margin-top:auto;padding-top:clamp(9px,1.3vh,15px);border-top:1px solid var(--line2)}
+.nt-summary .nt-k2{margin-bottom:7px}
+.nt-summary p{margin:0;font-family:var(--serif);font-weight:300;
+  font-size:clamp(14px,1.42vw,21px);line-height:1.55;letter-spacing:-.015em;color:rgba(246,242,233,.90)}
+.nt-summary p em{font-style:italic;color:var(--gold2)}
+.nt-summary small{display:block;margin-top:7px;font-size:clamp(10.5px,.9vw,12.5px);line-height:1.65;color:var(--muted2)}
+
+/* ── 탭 2 · 왜 계속 배워야 할까 ─────────────────────────── */
+.nt-three{flex:0 0 auto;margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,22px)}
+.nt-three article{display:flex;flex-direction:column;gap:5px;
+  padding-top:clamp(8px,1.1vh,13px);border-top:1px solid rgba(212,175,55,.24)}
+.nt-three .n{font-family:var(--disp);font-size:10.5px;letter-spacing:.22em;color:var(--gold)}
+.nt-three b{font-family:var(--serif);font-weight:400;font-size:clamp(13.5px,1.15vw,16.5px);
+  letter-spacing:-.01em;color:var(--ivory)}
+.nt-three p{margin:0;font-size:clamp(12px,1.08vw,15px);line-height:1.72;color:var(--muted);word-break:keep-all}
+.nt-stage{position:relative;flex:0 0 auto;margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(12px,2vw,32px);flex-wrap:wrap;overflow:hidden;border-radius:18px;
+  padding:clamp(13px,2vh,24px) clamp(16px,2vw,32px);border:1px solid rgba(212,175,55,.24);
+  background:radial-gradient(70% 130% at 18% 0%,rgba(212,175,55,.13),transparent 62%),
+             linear-gradient(160deg,rgba(255,255,255,.03),rgba(255,255,255,.006))}
+.nt-stage::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50% 90% at 92% 110%,rgba(127,184,174,.10),transparent 70%)}
+.nt-stage-l{position:relative;display:flex;flex-direction:column;gap:4px;max-width:30ch}
+.nt-stage-l .k{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.nt-stage-l .s{font-size:clamp(10px,.84vw,12px);line-height:1.6;letter-spacing:.01em;color:var(--muted2)}
+.nt-bigword{position:relative;display:flex;align-items:baseline;gap:2px;
+  font-family:var(--serif);font-weight:300;font-size:clamp(30px,3.4vw,54px);line-height:1.08;
+  letter-spacing:.02em;color:rgba(246,242,233,.92);text-shadow:0 0 44px rgba(212,175,55,.18)}
+.nt-bigword .oo{position:relative;color:transparent;-webkit-text-stroke:1px rgba(235,212,143,.85);
+  padding:0 2px;text-shadow:0 0 34px rgba(212,175,55,.3)}
+.nt-bigword .oo::after{content:'';position:absolute;left:3px;right:3px;bottom:6px;height:1px;
+  background:repeating-linear-gradient(90deg,rgba(212,175,55,.75) 0 7px,transparent 7px 14px)}
+.nt-caret{display:inline-block;width:2px;height:.78em;align-self:center;margin-left:3px;
+  background:var(--gold3);animation:ntblink 1.15s steps(1,end) infinite}
+@keyframes ntblink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.nt-verbs{position:relative;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.nt-verbs i{font-style:normal;font-family:var(--serif);font-size:clamp(10.5px,.9vw,13.5px);color:var(--gold2);
+  padding:4px 12px;border-radius:999px;border:1px solid rgba(212,175,55,.26);background:rgba(212,175,55,.055)}
+
+/* ── 탭 3 · 함께하실래요? ───────────────────────────────── */
+.nt-invite{flex:0 0 auto;margin-top:auto;display:flex;flex-direction:column;align-items:flex-start;
+  gap:clamp(10px,1.7vh,17px)}
+.nt-lead{margin:0;max-width:56ch;font-size:clamp(12.5px,1.1vw,15px);line-height:1.85;
+  color:var(--muted);word-break:keep-all}
+.nt-lead b{font-weight:500;color:rgba(235,212,143,.9)}
+.nt-mail{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:999px;
+  text-decoration:none;font-size:clamp(11px,.9vw,12.8px);letter-spacing:.02em;color:#141006;
+  background:linear-gradient(180deg,var(--gold3),var(--gold));border:1px solid rgba(246,231,188,.75);
+  box-shadow:0 14px 34px rgba(212,175,55,.20);transition:.28s var(--ease);white-space:nowrap}
+.nt-mail:hover{transform:translateY(-1px);box-shadow:0 18px 40px rgba(212,175,55,.34)}
+.nt-mail i{font-style:normal;font-size:1.15em;line-height:1}
+.nt-qrwrap{flex:0 0 auto;margin-top:auto;padding-top:clamp(8px,1.2vh,14px);border-top:1px solid var(--line2)}
+.nt-qrwrap .nt-k2{margin-bottom:9px}
+.nt-qrs{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(6px,.85vw,12px)}
+.nt-qr{display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:clamp(8px,.9vw,12px) 7px 10px;border-radius:13px;border:1px solid var(--line2);
+  background:rgba(255,255,255,.02);text-decoration:none;color:inherit;transition:.3s var(--ease)}
+.nt-qr:hover{border-color:rgba(212,175,55,.45);background:rgba(212,175,55,.07);transform:translateY(-3px)}
+.nt-qr img{width:100%;max-width:104px;border-radius:6px;background:#fff;padding:5px;display:block}
+.nt-qr b{font-size:clamp(11px,.9vw,13px);font-weight:500;letter-spacing:.01em;
+  color:var(--ivory);text-align:center;word-break:keep-all}
+.nt-qr span{font-size:clamp(9px,.75vw,10px);line-height:1.4;color:var(--muted2);
+  text-align:center;word-break:break-all}
+
+/* ── 반응형 ─────────────────────────────────────────────── */
 @media (max-width:1000px){
-  .n3-grid{grid-template-columns:1fr}
-  .n3-head{padding-right:0}
+  .nt-duo{grid-template-columns:1fr}
+  .nt-head{padding-right:86px}
 }
 @media (max-width:760px){
-  .n3-lead{font-size:11px;line-height:1.75}
-  .n3-word{font-size:32px}
-  .n3-rows div{grid-template-columns:1fr}
-  .n3-qrs{grid-template-columns:repeat(2,1fr)}
-  .n3-blank,.n3-verb{padding:12px 13px}
+  .nt-wrap{gap:8px}
+  .nt-head{padding-right:64px}
+  .nt-head .ov-title{font-size:17px;line-height:1.3}
+  .nt-title-s{display:none}
+  .nt-tabs{gap:2px}
+  .nt-tab{flex-direction:column;align-items:flex-start;gap:3px;padding:7px 3px 9px}
+  .nt-tab .n{font-size:8.5px;letter-spacing:.12em}
+  .nt-tab .t{font-size:10.5px;line-height:1.28}
+  .nt-tab::after{left:3px;right:3px}
+  .nt-panel{gap:10px;padding-top:8px}
+  .nt-kick{font-size:8px;letter-spacing:.18em;gap:8px}
+  .nt-say{font-size:19px;line-height:1.4}
+  .nt-duo{gap:8px}
+  .nt-box{padding:11px 12px}
+  .nt-stats{gap:4px}
+  .nt-stat b{font-size:17px}
+  .nt-stat span{font-size:7.5px}
+  .nt-lines p{font-size:10.5px}
+  .nt-three p{font-size:10.5px}
+  .nt-three b{font-size:12.5px}
+  .nt-k2{font-size:8px}
+  .nt-three{grid-template-columns:1fr;gap:9px}
+  .nt-three article{padding-top:7px}
+  .nt-stage{justify-content:flex-start;gap:10px;padding:12px 13px}
+  .nt-stage-l{max-width:none}
+  .nt-bigword{font-size:29px}
+  .nt-qrs{grid-template-columns:repeat(2,1fr);gap:7px}
+  .nt-qr{flex-direction:row;align-items:center;gap:9px;padding:7px 9px}
+  .nt-qr img{max-width:62px;padding:4px;border-radius:5px}
+  .nt-qr b,.nt-qr span{text-align:left;align-self:flex-start}
+  .nt-qr b{margin-top:2px;white-space:nowrap;font-size:10px}
+  .nt-qr span{display:none}
+  .nt-mail{padding:9px 16px;font-size:11px}
+}
+/* 노트북(720~768px 높이) — 한 화면에 담기도록 세로 리듬만 압축 */
+@media (min-width:761px) and (max-height:780px){
+  .nt-wrap{gap:8px}
+  .nt-head{padding-right:96px}
+  .nt-head .ov-title{font-size:clamp(19px,1.9vw,25px)}
+  .nt-tab{padding:7px 10px 9px}
+  .nt-kick{font-size:8.5px}
+  .nt-say{font-size:clamp(21px,2.05vw,30px);line-height:1.32}
+  .nt-panel{gap:9px;padding-top:7px}
+  .nt-box{padding:10px 15px}
+  .nt-k2{margin-bottom:7px}
+  .nt-stats{margin-bottom:7px}
+  .nt-stat b{font-size:clamp(19px,1.75vw,26px)}
+  .nt-stat span{font-size:9px}
+  .nt-lines{gap:3px}
+  .nt-lines p{font-size:clamp(11.5px,1vw,13px)}
+  .nt-flag{margin-top:7px;padding-top:7px}
+  .nt-summary{padding-top:8px}
+  .nt-summary p{font-size:clamp(14px,1.25vw,18px)}
+  .nt-summary small{margin-top:5px;font-size:10.5px}
+  .nt-three{padding-top:0}
+  .nt-three p{font-size:12px;line-height:1.62}
+  .nt-stage{padding:11px 18px;gap:14px}
+  .nt-bigword{font-size:clamp(28px,2.9vw,42px)}
+  .nt-lead{font-size:12px;line-height:1.7}
+  .nt-mail{padding:9px 18px;font-size:11.5px}
+  .nt-qrwrap{padding-top:8px}
+  .nt-qrwrap .nt-k2{margin-bottom:6px}
+  .nt-qr{padding:7px 6px 8px;gap:5px}
+  .nt-qr img{max-width:88px}
+  .nt-qr b{font-size:11px}
+  .nt-qr span{font-size:8.5px}
+}
+  .nt-lead{font-size:11px;line-height:1.72}
+  .nt-invite{gap:8px}
+  .nt-qrwrap{padding-top:8px}
+  .nt-qrwrap .nt-k2{margin-bottom:6px}
+  .nt-summary p{font-size:14px}
+}
   .env-wrap{padding:60px 10px 18px;gap:8px}
   .env-stage{height:min(540px,66vh)}
   .env{width:min(234px,58vw)}
@@ -2020,19 +2173,19 @@ em{font-style:normal}
 .fcap-m{ display:none }
 @media (max-width:900px){ .fcap-m{ display:inline } }
 
-.q10{ flex:1 1 auto; min-height:0; overflow-y:auto; margin:0; padding:0 2px 0 0; list-style:none;
+#ovWorks .q10{ flex:1 1 auto; min-height:0; overflow-y:auto; margin:0; padding:0 2px 0 0; list-style:none;
   display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:minmax(0,1fr); gap:5px 7px; align-content:start;
   scrollbar-width:thin; scrollbar-color:rgba(212,175,55,.22) transparent }
-.q10::-webkit-scrollbar{ width:3px }
-.q10::-webkit-scrollbar-thumb{ background:rgba(212,175,55,.22); border-radius:3px }
-.q10 li{ display:grid; grid-template-columns:20px minmax(0,1fr); align-content:center; gap:6px; padding:7px 10px 8px;
+#ovWorks .q10::-webkit-scrollbar{ width:3px }
+#ovWorks .q10::-webkit-scrollbar-thumb{ background:rgba(212,175,55,.22); border-radius:3px }
+#ovWorks .q10 li{ display:grid; grid-template-columns:20px minmax(0,1fr); align-content:center; gap:6px; padding:7px 10px 8px;
   border-radius:10px; border:1px solid var(--line2);
   background:linear-gradient(170deg,rgba(255,255,255,.028),rgba(255,255,255,.004)) }
-.q10 li > b{ font-family:var(--disp); font-weight:400; font-size:10.6px; color:rgba(212,175,55,.8);
+#ovWorks .q10 li > b{ font-family:var(--disp); font-weight:400; font-size:10.6px; color:rgba(212,175,55,.8);
   letter-spacing:.06em; padding-top:1px }
-.q10 .q-t{ margin:0; font-size:11px; line-height:1.56; color:rgba(246,242,233,.84);
+#ovWorks .q10 .q-t{ margin:0; font-size:11px; line-height:1.56; color:rgba(246,242,233,.84);
   letter-spacing:-.012em; word-break:keep-all }
-.q10 .q-m{ display:flex; align-items:baseline; gap:5px; margin-top:3px; flex-wrap:wrap }
+#ovWorks .q10 .q-m{ display:flex; align-items:baseline; gap:5px; margin-top:3px; flex-wrap:wrap }
 .q-badge{ font-size:8.2px; letter-spacing:.1em; border-radius:999px; padding:1px 6px;
   border:1px solid; white-space:nowrap; flex:0 0 auto }
 .q-badge.src{ color:rgba(127,184,174,.92); border-color:rgba(127,184,174,.34); background:rgba(127,184,174,.07) }
@@ -2067,14 +2220,14 @@ em{font-style:normal}
   .gf-frame{ flex:0 0 auto; height:min(76vh,700px) }
   .gf-frame.ds{ height:auto }
   .gf-frame.ds .fbody{ flex:0 0 auto; aspect-ratio:3 / 2 }
-  .q10{ overflow:visible; grid-template-columns:1fr; padding-right:0 }
+  #ovWorks .q10{ overflow:visible; grid-template-columns:1fr; padding-right:0 }
   .gf-cap{ text-align:left }
 }
 @media (max-width:760px){
   .gf-title{ font-size:16px }
   .gf-sub{ font-size:11px }
   .gf-areas li{ font-size:10.8px }
-  .q10 .q-t{ font-size:10.8px }
+  #ovWorks .q10 .q-t{ font-size:10.8px }
   .m-result .type{ font-size:17px }
   .m-h2{ font-size:13.5px }
 }
@@ -2759,67 +2912,129 @@ em{font-style:normal}
   </div>
 </div>
 
-<!-- ══════════ 07 · 〈〇〇하다〉 피날레 ══════════ -->
+<!-- ══════════ 07 · 〈〇〇하다〉 — 3탭 피날레 ══════════ -->
 <div class="ov ov-next" id="ovNext" role="dialog" aria-modal="true" aria-label="07 〈〇〇하다〉 — 다음 시즌">
   <div class="scrim" data-close></div>
   <div class="card next-card">
     <button class="closex" type="button" data-close aria-label="닫기">✕</button>
-    <div class="n3-wrap">
-      <div class="n3-head">
-        <div class="eyebrow">07 · 〈〇〇하다〉 — 시즌 1의 끝에서</div>
-        <h2 class="ov-title">〈윤리하다〉 다음 칸은,<br><em>〈〇〇하다〉</em></h2>
-        <p class="n3-lead">시즌 1은 열 번의 만남으로 기준을 세우는 <em>학습</em>이었습니다.
-          시즌 2의 제목은 아직 정하지 않았습니다. <b>빈칸이 비어 있으니, 무엇이든 될 수 있습니다.</b></p>
+    <div class="nt-wrap">
+      <div class="nt-head">
+        <div class="eyebrow">07 · 〈〇〇하다〉 — 시즌 1의 끝에서, 다음 문</div>
+        <h2 class="ov-title">〈윤리하다〉 다음 칸은, <em>〈〇〇하다〉</em></h2>
+        <span class="nt-title-s">돌아보고 · 이어가고 · 함께할 사람을 기다리는 세 장</span>
       </div>
 
-      <div class="n3-grid">
-        <section class="n3-blank">
-          <div class="k">The blank · 아직 비어 있는 제목</div>
-          <div class="n3-word">〈<span class="oo">〇〇</span>〉하다<i class="n3-caret" aria-hidden="true"></i></div>
-          <p>〇〇 안에 무엇이 들어갈지는 함께 정합니다. 시즌 1이 읽고 쓰고 나누는 학습이었다면,
-            시즌 2는 직접 해 보는 일에서 출발합니다.</p>
-          <div class="n3-chips"><span>읽고 쓰던 자리</span><i aria-hidden="true">→</i><span>해 보는 자리</span></div>
-        </section>
+      <div class="nt-tabs" role="tablist" aria-label="〈〇〇하다〉 세 개의 탭">
+        <button class="nt-tab" type="button" role="tab" id="ntTab0" aria-controls="ntPanel0" aria-selected="true"><span class="n">01</span><span class="t">시즌 1 돌아보기</span></button>
+        <button class="nt-tab" type="button" role="tab" id="ntTab1" aria-controls="ntPanel1" aria-selected="false"><span class="n">02</span><span class="t">왜 계속 배워야 할까</span></button>
+        <button class="nt-tab" type="button" role="tab" id="ntTab2" aria-controls="ntPanel2" aria-selected="false"><span class="n">03</span><span class="t">함께하실래요?</span></button>
+      </div>
 
-        <section class="n3-verb">
-          <div class="k">Why a verb · 왜 〈~하다〉인가</div>
-          <div class="n3-rows">
-            <div><b>명사는 멈춰 있습니다</b><span>지식은 쌓아 두는 순간 그 자리에 머뭅니다.</span></div>
-            <div><b>동사는 움직입니다</b><span>배우고, 실천하고, 사람에서 사람으로 옮겨 다니며 바뀝니다.</span></div>
-            <div><b>그래서 〈〇〇하다〉</b><span>무엇을 하게 될지 미리 정해 두지 않고, 그 자리를 열어 둡니다.</span></div>
+      <div class="nt-body">
+
+        <!-- 탭 1 · 시즌 1 돌아보기 -->
+        <section class="nt-panel on" id="ntPanel0" role="tabpanel" aria-labelledby="ntTab0">
+          <div class="nt-kick">Season 1 review · 객관적 평가</div>
+          <h3 class="nt-say">안쪽은 <em>밀도</em>,<br>바깥은 <em>숙제</em>.</h3>
+          <div class="nt-duo">
+            <section class="nt-box warm">
+              <div class="nt-k2">안쪽의 밀도 · 강점</div>
+              <div class="nt-stats">
+                <div class="nt-stat"><b>10</b><span>회차 · 대면 3 · 비대면 7</span></div>
+                <div class="nt-stat"><b>46</b><span>개의 생각</span></div>
+                <div class="nt-stat"><b>12</b><span>인의 에세이</span></div>
+                <div class="nt-stat"><b>24</b><span>쪽 소책자</span></div>
+              </div>
+              <div class="nt-lines">
+                <p>6월부터 11월까지, 질문 → 생각 → 한 줄 정리 → 에세이 → 소책자까지 끝까지 완결</p>
+                <p>자가진단 리포트 메일 · 신뢰도 통계 · 실시간 설문 시스템까지 직접 제작·운영</p>
+                <p>말로 끝나지 않고, 손에 쥘 수 있는 아카이브로 남김</p>
+              </div>
+            </section>
+            <section class="nt-box cool">
+              <div class="nt-k2">바깥으로의 확장 · 아쉬움</div>
+              <div class="nt-lines">
+                <p>12명의 내부 학습으로 시작해, 내부에서 완결</p>
+                <p>포럼·박람회 참관은 대부분 듣고 배우는 인풋</p>
+                <p>다른 학부모·학교·지역으로 번진 영향력은 아직 적음</p>
+              </div>
+              <div class="nt-flag">다음 시즌의 숙제 — 바깥과 연결되기</div>
+            </section>
           </div>
-          <div class="n3-verbs"><i>배우다</i><i>실천하다</i><i>움직이다</i></div>
+          <div class="nt-summary">
+            <div class="nt-k2">한 줄 정리</div>
+            <p>시즌 1은 빈손이 아니라, <em>세상에 내밀 언어와 도구를 깎아 둔 기초 공사.</em></p>
+            <small>다음 시즌에는 이 아쉬움을 보완해, 바깥과 더 연결되려 합니다.</small>
+          </div>
         </section>
-      </div>
 
-      <section class="n3-join">
-        <div class="n3-join-head">
-          <div class="k">Join us · 함께하고 싶다면</div>
-          <p>시즌 2는 서울시교육청 학부모지원센터 미래교육과정을 수료한 학부모와 함께 시작합니다 · 참여 문의는 메일로</p>
-        </div>
-        <div class="n3-qrs">
-          <a class="n3-qr" href="https://www.instagram.com/futurecuration.study/" target="_blank" rel="noopener">
-            <img data-qr="insta" alt="퓨처큐레이션 인스타그램 QR">
-            <b>인스타그램</b><span>@futurecuration.study</span>
-          </a>
-          <a class="n3-qr" href="mailto:futurecuration.study@gmail.com">
-            <img data-qr="mail" alt="문의 메일 QR">
-            <b>문의 메일</b><span>futurecuration.study@gmail.com</span>
-          </a>
-          <a class="n3-qr" href="https://futurecurationstudy.github.io/" target="_blank" rel="noopener">
-            <img data-qr="site" alt="시즌 1 아카이브 QR">
-            <b>시즌 1 아카이브</b><span>futurecurationstudy.github.io</span>
-          </a>
-          <a class="n3-qr" href="https://lkoarchive.notion.site/_-33d194030dbf80d7a009fbc1cbf4e36b" target="_blank" rel="noopener">
-            <img data-qr="notion" alt="퓨처큐레이션 노션 QR">
-            <b>노션 · 온라인 집</b><span>학습 일정 · 운영 가이드</span>
-          </a>
-          <a class="n3-qr" href="https://padlet.com/futurecurationstudy/_-how8limyf34qq0fi" target="_blank" rel="noopener">
-            <img data-qr="padlet" alt="패들렛 QR">
-            <b>패들렛</b><span>46개의 생각</span>
-          </a>
-        </div>
-      </section>
+        <!-- 탭 2 · 왜 계속 배워야 할까 -->
+        <section class="nt-panel" id="ntPanel1" role="tabpanel" aria-labelledby="ntTab1">
+          <div class="nt-kick">Why keep learning · 지속 학습</div>
+          <h3 class="nt-say">정답이 고정된 영역은,<br><em>한 번 배우고 끝나지 않습니다.</em></h3>
+          <div class="nt-three">
+            <article>
+              <div class="n">01 · 지속성</div>
+              <b>매달 기준이 바뀝니다</b>
+              <p>AI와 디지털 환경은 계속 움직입니다. 한 번 배운 것으로는 오늘의 판단을 감당할 수 없어, 우리 스스로 꾸준히 공부하며 기준을 업데이트합니다.</p>
+            </article>
+            <article>
+              <div class="n">02 · 동사</div>
+              <b>이름 뒤에 붙는 말</b>
+              <p>〈윤리하다〉처럼 퓨처큐레이션 뒤에 붙는 말은 멈춰 있는 명사가 아니라, 배우고 실천하며 움직이는 동사입니다.</p>
+            </article>
+            <article>
+              <div class="n">03 · 빈칸</div>
+              <b>아직 비어 있는 자리</b>
+              <p>시즌 1이 ‘윤리하다’였다면, 다음 시즌의 동사는 비워 둡니다. 무엇이든 함께 채울 수 있는 열린 자리입니다.</p>
+            </article>
+          </div>
+          <div class="nt-stage">
+            <div class="nt-stage-l">
+              <span class="k">Next season · 다음 시즌의 제목</span>
+              <span class="s">시즌 1이 ‘윤리하다’였다면, 다음 동사는 비어 있습니다</span>
+            </div>
+            <div class="nt-bigword">〈<span class="oo">〇〇</span>〉하다<i class="nt-caret" aria-hidden="true"></i></div>
+            <div class="nt-verbs"><i>배우다</i><i>실천하다</i><i>움직이다</i></div>
+          </div>
+        </section>
+
+        <!-- 탭 3 · 함께하실래요? -->
+        <section class="nt-panel" id="ntPanel2" role="tabpanel" aria-labelledby="ntTab2">
+          <div class="nt-kick">Open road · 참여 초대</div>
+          <h3 class="nt-say">앞으로 우리가 나아갈 길은 <em>열려 있습니다.</em></h3>
+          <div class="nt-invite">
+            <p class="nt-lead">함께 고민하고, 함께 채워 갈 분들을 기다립니다. 시즌 2는 <b>서울시교육청 학부모지원센터 미래교육과정을 수료한 학부모</b>와 함께 시작합니다.</p>
+            <a class="nt-mail" href="mailto:futurecuration.study@gmail.com"><i aria-hidden="true">✉</i>참여 문의 메일 보내기</a>
+          </div>
+          <div class="nt-qrwrap">
+            <div class="nt-k2">바로 열기 · QR · LINK</div>
+            <div class="nt-qrs">
+              <a class="nt-qr" href="https://www.instagram.com/futurecuration.study/" target="_blank" rel="noopener">
+                <img data-qr="insta" alt="퓨처큐레이션 인스타그램 QR">
+                <b>인스타그램</b><span>@futurecuration.study</span>
+              </a>
+              <a class="nt-qr" href="mailto:futurecuration.study@gmail.com">
+                <img data-qr="mail" alt="문의 메일 QR">
+                <b>문의 메일</b><span>futurecuration.study@gmail.com</span>
+              </a>
+              <a class="nt-qr" href="https://futurecurationstudy.github.io/" target="_blank" rel="noopener">
+                <img data-qr="site" alt="시즌 1 아카이브 QR">
+                <b>시즌 1 아카이브</b><span>futurecurationstudy.github.io</span>
+              </a>
+              <a class="nt-qr" href="https://lkoarchive.notion.site/_-33d194030dbf80d7a009fbc1cbf4e36b" target="_blank" rel="noopener">
+                <img data-qr="notion" alt="퓨처큐레이션 노션 QR">
+                <b>노션 · 온라인 집</b><span>학습 일정 · 운영 가이드</span>
+              </a>
+              <a class="nt-qr" href="https://padlet.com/futurecurationstudy/_-how8limyf34qq0fi" target="_blank" rel="noopener">
+                <img data-qr="padlet" alt="패들렛 QR">
+                <b>패들렛</b><span>46개의 생각</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
     </div>
   </div>
 </div>
@@ -5061,7 +5276,35 @@ const Time=(function(){
    06 · 다음 시즌 · 한 줄 정리
    ══════════════════════════════════════════════════════════ */
 /* ── 여정 · 1줄 정리 (다섯 갈래) ──────────────────────────── */
-const Next={ reset(){} };   /* v8 — 빈칸 채우기는 Sum 으로 이동 */
+/* 07 · 〈〇〇하다〉 — 3탭 (v14): 01 시즌1 돌아보기 · 02 왜 계속 배워야 할까 · 03 함께하실래요? */
+const Next=(function(){
+  const tabs=$$('#ovNext .nt-tab'), panels=$$('#ovNext .nt-panel');
+  let cur=0;
+  function select(i){
+    if(!tabs.length) return;
+    cur=clamp(i,0,tabs.length-1);
+    tabs.forEach((b,j)=>{
+      const on=j===cur;
+      b.setAttribute('aria-selected',on?'true':'false');
+      b.tabIndex=on?0:-1;
+    });
+    panels.forEach((p,j)=>{
+      p.classList.toggle('on',j===cur);
+      if(j===cur) p.scrollTop=0;
+    });
+  }
+  tabs.forEach((b,i)=>{ b.addEventListener('click',()=>select(i)); });
+  const card=$('#ovNext .card');
+  if(card) card.addEventListener('keydown',e=>{
+    if(!e.target.closest('.nt-tabs')) return;
+    if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+    e.preventDefault(); e.stopPropagation();
+    const n=(cur+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
+    select(n); tabs[n].focus();
+  });
+  select(0);
+  return { reset(){ select(0); }, select, step(d){ select(cur+d); }, get tab(){ return cur; } };
+})();
 
 /* ══════════════════════════════════════════════════════════
    v9 · QR 초대장 — 3D 편지봉투 열기
@@ -5412,6 +5655,7 @@ document.addEventListener('keydown',e=>{
     if(activeOv){ closeOv(activeOv); return; }
     return;
   }
+  if(/^[1-3]$/.test(k) && !e.metaKey && !e.ctrlKey && activeOv==='next'){ Next.select(Number(k)-1); return; }
   if(/^[1-7]$/.test(k) && !e.metaKey && !e.ctrlKey){ goStep(Number(k)-1); return; }
   if(k==='Home'){ e.preventDefault(); goHome(); return; }
   if(k==='f'||k==='F'){ $('#btnFs').click(); return; }
@@ -5423,6 +5667,7 @@ document.addEventListener('keydown',e=>{
     if(Fz.on){ Fz.step(dir); return; }
     if(MM.on){ MM.step(dir); return; }
     if(activeOv==='act'){ Time.step(dir); return; }
+    if(activeOv==='next'){ Next.step(dir); return; }
     if(activeOv==='works'){
       if(Works.tab==='24'){ Flip.step(dir); return; }
       return;
