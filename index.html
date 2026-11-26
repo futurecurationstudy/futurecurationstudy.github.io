@@ -1586,19 +1586,77 @@ em{font-style:normal}
   .ppt-links .dbtn{ font-size:10px; padding:6px 9px }
 }
 /* ══════════════════════════════════════════════════════════
+   아카이브 — 세 갈래 안내 허브 (ovArk)
+   ══════════════════════════════════════════════════════════ */
+.akh-card{width:min(1040px,94vw);height:auto;max-height:min(88vh,760px);
+  padding:clamp(22px,2.6vw,40px) clamp(22px,2.8vw,44px) clamp(18px,2.2vw,28px)}
+.akh-head{padding-right:96px;flex:0 0 auto}
+.akh-lead{margin:10px 0 0;font-family:var(--serif);font-size:clamp(12px,.98vw,14px);line-height:1.8;
+  color:var(--muted);max-width:74ch;word-break:keep-all}
+.akh-card .ov-title{font-size:clamp(22px,2.4vw,34px);line-height:1.28}
+.akh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.3vw,18px);
+  margin-top:clamp(14px,2.4vh,26px);flex:0 0 auto;align-items:stretch}
+.akh-item{position:relative;display:flex;flex-direction:column;gap:8px;text-align:left;
+  padding:clamp(15px,1.7vw,22px) clamp(15px,1.7vw,22px) clamp(13px,1.5vw,18px);border-radius:18px;
+  background:linear-gradient(160deg,rgba(255,255,255,.038),rgba(255,255,255,.008));
+  border:1px solid var(--line2);overflow:hidden;transition:.4s var(--ease)}
+.akh-item::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:.45s var(--ease);
+  background:radial-gradient(70% 54% at 18% 0%,rgba(212,175,55,.13),transparent 72%)}
+.akh-item:hover{transform:translateY(-3px);border-color:rgba(235,212,143,.58);
+  box-shadow:0 22px 46px rgba(0,0,0,.52), 0 0 34px rgba(212,175,55,.10)}
+.akh-item:hover::after{opacity:1}
+.akh-item:hover .akh-go{color:var(--gold2);border-color:var(--gold-dim)}
+.akh-item:hover .akh-mark svg{stroke:var(--gold2);filter:drop-shadow(0 0 6px rgba(212,175,55,.55))}
+.akh-mark{display:block;width:38px;height:38px;margin-bottom:2px}
+.akh-mark svg{width:100%;height:100%;fill:none;stroke:rgba(235,212,143,.72);stroke-width:1.15;
+  stroke-linecap:round;stroke-linejoin:round;transition:.4s var(--ease)}
+.akh-mark svg circle{fill:rgba(235,212,143,.8);stroke:none}
+.akh-kicker{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(212,175,55,.86)}
+.akh-title{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(17px,1.7vw,22px);
+  letter-spacing:-.01em;color:var(--ivory);line-height:1.3}
+.akh-desc{display:block;font-size:clamp(10.5px,.92vw,12px);line-height:1.8;color:var(--muted);
+  word-break:keep-all;letter-spacing:-.005em}
+.akh-desc em{color:var(--gold3);font-style:normal}
+.akh-meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.akh-meta i{font-style:normal;font-size:8.5px;letter-spacing:.04em;color:rgba(246,242,233,.62);
+  border:1px solid rgba(212,175,55,.22);border-radius:999px;padding:3px 8px;background:rgba(212,175,55,.055);white-space:nowrap}
+.akh-go{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);
+  transition:.3s var(--ease)}
+.akh-go em{font-style:normal;font-size:13px;letter-spacing:0;transition:transform .35s var(--ease)}
+.akh-item:hover .akh-go em{transform:translateX(4px)}
+.akh-foot{margin-top:clamp(12px,1.8vh,18px);padding-top:12px;border-top:1px solid var(--line2);
+  font-size:9.5px;letter-spacing:.06em;color:var(--muted2);text-align:center;flex:0 0 auto}
+@media (max-width:1000px){ .akh-meta{display:none} }
+@media (max-width:760px){
+  .akh-card{width:96vw;height:auto;max-height:calc(100dvh - 92px);overflow-y:auto}
+  .akh-head{padding-right:78px}
+  .akh-card .ov-title{font-size:18.5px;word-break:keep-all}
+  .akh-title{font-size:17px}
+  .akh-grid{grid-template-columns:1fr;gap:8px;margin-top:12px}
+  .akh-item{gap:5px;padding:12px 14px;border-radius:14px;flex-direction:column}
+  .akh-mark{width:26px;height:26px;margin-bottom:0}
+  .akh-desc{font-size:10.5px;line-height:1.65}
+  .akh-go{position:absolute;right:14px;bottom:11px;padding-top:0;font-size:8.5px}
+  .akh-foot{margin-top:10px;font-size:8.5px}
+}
+
+/* ══════════════════════════════════════════════════════════
    v9 · ④ QR 초대장 — 3D 편지봉투
    ══════════════════════════════════════════════════════════ */
 .ov-invite{z-index:64}
 .ov-invite .closex{top:76px;right:22px}
 .env-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;
   justify-content:center;gap:clamp(12px,2.2vh,26px);width:100%;min-height:100%;padding:72px clamp(12px,3vw,40px) 26px}
-.env-stage{position:relative;display:grid;place-items:center;perspective:1500px;perspective-origin:50% 44%;
-  width:min(780px,94vw);height:min(640px,78vh);
+.env-stage{position:relative;display:grid;place-items:center;perspective:1700px;perspective-origin:50% 38%;
+  width:min(820px,94vw);height:min(700px,82vh);
   opacity:0;transform:translateY(18px) scale(.97);
   transition:opacity .7s var(--ease),transform .85s var(--ease)}
 .ov.on .env-stage{opacity:1;transform:none}
-.env{position:relative;width:min(460px,78vw);aspect-ratio:1.56/1;transform-style:preserve-3d;
-  transform:rotateX(8deg);cursor:pointer}
+.env{position:relative;z-index:4;width:min(252px,56vw);aspect-ratio:148/210;transform-style:preserve-3d;
+  transform:translateY(0) scale(1);cursor:pointer;
+  transition:opacity .9s var(--ease),transform 1.05s var(--ease)}
+.env-stage.letter .env{opacity:.08;transform:translateY(26px) scale(.9);z-index:1}
 .env-back{position:absolute;inset:0;border-radius:9px;
   background:linear-gradient(160deg,#15120b,#0a0907 55%,#100d08);
   border:1px solid rgba(212,175,55,.34);
@@ -1611,69 +1669,66 @@ em{font-style:normal}
   border:1px solid rgba(212,175,55,.24);pointer-events:none}
 .env-front::after{content:'';position:absolute;left:0;right:0;bottom:0;height:46%;
   background:linear-gradient(180deg,transparent,rgba(212,175,55,.05));pointer-events:none}
-.ef-to{position:absolute;left:24px;bottom:20px;font-family:var(--serif);font-size:clamp(11px,1vw,13px);
-  letter-spacing:.06em;color:rgba(246,242,233,.62)}
-.ef-to span{font-family:var(--disp);letter-spacing:.22em;font-size:9.5px;color:var(--gold);margin-right:7px}
-.ef-from{position:absolute;right:24px;bottom:20px;font-size:8.5px;letter-spacing:.24em;
-  text-transform:uppercase;color:rgba(246,242,233,.3)}
-.ef-from i{font-family:var(--disp);font-style:normal;font-size:11px;letter-spacing:.14em;
+.ef-to{position:absolute;left:0;right:0;bottom:13%;text-align:center;
+  font-family:var(--serif);font-size:10.5px;letter-spacing:.04em;color:rgba(246,242,233,.72)}
+.ef-to span{font-family:var(--disp);letter-spacing:.22em;font-size:8px;color:var(--gold);margin-right:5px}
+.ef-from{position:absolute;left:0;right:0;bottom:6.5%;text-align:center;font-size:7px;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(246,242,233,.34)}
+.ef-from i{font-family:var(--disp);font-style:normal;font-size:9.5px;letter-spacing:.14em;
   text-transform:none;color:rgba(235,212,143,.7)}
+.env-seam{position:absolute;inset:0;width:100%;height:100%;fill:none;
+  stroke:rgba(212,175,55,.34);stroke-width:.7;vector-effect:non-scaling-stroke;pointer-events:none}
 /* 봉투 덮개 — 위쪽 모서리를 축으로 3D로 열린다 */
-.env-flap{position:absolute;top:-1px;left:-1px;right:-1px;height:58%;z-index:5;
+.env-flap{position:absolute;top:-1px;left:-1px;right:-1px;height:44%;z-index:5;
   transform-origin:50% 0;transform:rotateX(0deg);transform-style:preserve-3d;
   transition:transform .95s var(--ease),filter .6s;
   clip-path:polygon(0 0,100% 0,50% 100%);
-  background:linear-gradient(176deg,#1c170e 0%,#120f09 55%,#0b0906 100%);
+  background:linear-gradient(176deg,#241d12 0%,#17130c 55%,#100d08 100%);
   border-top:1px solid rgba(212,175,55,.55);
-  filter:drop-shadow(0 10px 18px rgba(0,0,0,.6))}
+  filter:drop-shadow(0 14px 22px rgba(0,0,0,.75))}
 .env-flap::after{content:'';position:absolute;inset:0;
   background:linear-gradient(118deg,rgba(255,241,199,.10),transparent 44%)}
-.env.flap .env-flap{transform:rotateX(-132deg)}
-.env.letter .env-flap{z-index:1}
-.ef-mark{position:absolute;left:0;right:0;top:30%;text-align:center;pointer-events:none;
-  opacity:0;transition:opacity .5s var(--ease) .15s;
-  font-family:var(--disp);font-size:clamp(24px,2.6vw,34px);letter-spacing:.34em;color:rgba(212,175,55,.20)}
-.env.flap .ef-mark{opacity:1}
+.env-stage.flap .env-flap{transform:rotateX(-132deg)}
+.env-stage.letter .env-flap{z-index:1}
+.ef-mark{position:absolute;left:0;right:0;top:22%;text-align:center;pointer-events:none;
+  opacity:.75;transition:opacity .6s var(--ease) .15s;
+  font-family:var(--disp);font-size:clamp(20px,2.2vw,26px);letter-spacing:.34em;color:rgba(235,212,143,.30)}
 .ef-mark span{display:block;font-family:var(--sans);font-size:7px;letter-spacing:.42em;
   color:rgba(246,242,233,.15);margin-top:6px}
-.env-seal{position:absolute;left:50%;top:calc(58% - 21px);z-index:6;width:44px;height:44px;margin-left:-22px;
+.env-seal{position:absolute;left:50%;top:calc(44% - 21px);z-index:6;width:44px;height:44px;margin-left:-22px;
   border-radius:50%;display:grid;place-items:center;
   background:radial-gradient(circle at 34% 28%,#F6E7BC,#D4AF37 46%,#8A6F1E 100%);
   border:1px solid rgba(255,246,210,.8);
   box-shadow:0 6px 18px rgba(0,0,0,.55), 0 0 26px rgba(212,175,55,.35);
   transition:opacity .4s var(--ease),transform .55s var(--ease)}
 .env-seal span{font-family:var(--serif);font-size:16px;color:#20180a;line-height:1}
-.env.flap .env-seal{opacity:0;transform:scale(.55) translateY(-12px)}
-/* 봉투 속 초대장 — 봉투에 꽂힌 채로 시작해 위로 올라와 펼쳐진다 */
-.env-letter{position:absolute;left:5.5%;right:5.5%;top:8%;z-index:2;
-  transform:translateY(6%) scale(.97);
-  transition:transform 1.15s var(--ease);
+.env-stage.flap .env-seal{opacity:0;transform:scale(.55) translateY(-12px)}
+/* 봉투 속 세로 A5 초대장 — 기울기 없이 똑바로 위로 올라와 화면 가운데 크게 펼쳐진다 */
+.env-letter{position:absolute;left:50%;top:50%;z-index:3;
+  width:calc(var(--lh,520px) * .70476);height:var(--lh,520px);
+  transform:translate(-50%,-50%) translateY(var(--cly,46px)) scale(var(--cls,.5));
+  transform-origin:50% 50%;opacity:0;pointer-events:none;
+  transition:transform 1.25s var(--ease),opacity .55s var(--ease) .05s;
   will-change:transform}
-.env.letter .env-letter{z-index:8;transform:translateY(-128%) scale(1.38) rotate(-1deg)}
-.elet{display:grid;grid-template-columns:1fr auto;gap:clamp(10px,1.6vw,18px);align-items:center;
-  border-radius:8px;padding:clamp(12px,1.5vw,18px) clamp(13px,1.7vw,20px);
-  background:linear-gradient(158deg,#1d1810,#0d0b08 62%,#171208);
-  border:1px solid rgba(235,212,143,.55);
-  box-shadow:0 44px 90px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.08),
-    0 0 60px rgba(212,175,55,.22)}
-.elet-l{min-width:0}
-.elet-k{font-size:7.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
-.elet-t{margin:6px 0 0;font-family:var(--serif);font-weight:300;letter-spacing:-.01em;
-  font-size:clamp(14px,1.45vw,17px);color:var(--ivory);line-height:1.35;white-space:nowrap}
-.elet-t span{color:var(--gold2)}
-.elet-s{margin:5px 0 0;font-size:9px;letter-spacing:.03em;color:var(--muted);white-space:nowrap}
-.elet-url{margin-top:10px;padding-top:8px;border-top:1px solid rgba(246,242,233,.09);
-  font-size:8.5px;letter-spacing:.1em;color:rgba(246,242,233,.58);white-space:nowrap}
-.elet-credit{margin-top:5px;font-size:6.5px;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(246,242,233,.26);white-space:nowrap}
-.elet-qr{width:clamp(88px,9vw,108px);background:#fff;border-radius:6px;padding:6px;
-  box-shadow:0 0 0 1px rgba(212,175,55,.5),0 10px 24px rgba(0,0,0,.55)}
-.elet-qr img{width:100%;display:block}
-.env-shadow{position:absolute;left:50%;bottom:8%;width:min(460px,78vw);height:34px;
-  margin-left:calc(min(460px,78vw) / -2);
-  border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.7),transparent 70%);
-  filter:blur(6px);z-index:0}
-.env-hint{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,242,233,.28);text-align:center}
+.env-stage.letter .env-letter{opacity:1;pointer-events:auto;
+  transform:translate(-50%,-50%) translateY(0) scale(1)}
+.env-letter img{width:100%;height:100%;display:block;border-radius:6px;
+  box-shadow:0 52px 120px rgba(0,0,0,.86), 0 0 0 1px rgba(235,212,143,.34), 0 0 72px rgba(212,175,55,.16)}
+.env-shadow{position:absolute;left:50%;bottom:6%;width:min(252px,56vw);height:30px;
+  margin-left:calc(min(252px,56vw) / -2);
+  border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.72),transparent 70%);
+  filter:blur(7px);z-index:0;transition:opacity .8s var(--ease)}
+.env-stage.letter .env-shadow{opacity:0}
+.env-foot{display:flex;flex-direction:column;align-items:center;gap:9px}
+.env-hint{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,242,233,.28);text-align:center;
+  transition:opacity .5s var(--ease)}
+.env-stage.letter ~ .env-foot .env-hint{opacity:0}
+.env-replay{display:inline-flex;align-items:center;gap:7px;padding:6px 16px;border-radius:999px;
+  border:1px solid rgba(235,212,143,.42);color:rgba(235,212,143,.86);font-size:10px;letter-spacing:.1em;
+  background:rgba(212,175,55,.06);opacity:0;visibility:hidden;transform:translateY(6px);
+  transition:.45s var(--ease)}
+.env-stage.letter ~ .env-foot .env-replay{opacity:1;visibility:visible;transform:none}
+.env-replay:hover{color:#141006;background:linear-gradient(180deg,var(--gold3),var(--gold));border-color:var(--gold3)}
 
 /* ══════════════════════════════════════════════════════════
    v9 · ③ 07 〈〇〇하다〉 피날레
@@ -1739,13 +1794,14 @@ em{font-style:normal}
   .n3-rows div{grid-template-columns:1fr}
   .n3-qrs{grid-template-columns:repeat(2,1fr)}
   .n3-blank,.n3-verb{padding:12px 13px}
-  .env-wrap{padding:64px 10px 20px;gap:10px}
-  .env-stage{height:min(430px,60vh)}
-  .env{width:min(330px,88vw)}
-  .env-shadow{width:min(330px,88vw);margin-left:calc(min(330px,88vw) / -2)}
-  .env.letter .env-letter{transform:translateY(-112%) scale(1.06) rotate(-.6deg)}
-  .env.letter .env-flap{z-index:1}
-  .env-seal{width:36px;height:36px;margin-left:-18px;top:calc(58% - 18px)}
+  .env-wrap{padding:60px 10px 18px;gap:8px}
+  .env-stage{height:min(540px,66vh)}
+  .env{width:min(234px,58vw)}
+  .env-shadow{width:min(234px,58vw);margin-left:calc(min(234px,58vw) / -2)}
+  .ef-to{font-size:9.5px}
+  .ef-to span{font-size:7px;margin-right:6px}
+  .ef-from{font-size:6.5px}
+  .env-seal{width:36px;height:36px;margin-left:-18px;top:calc(44% - 18px)}
   .ef-to{left:14px;bottom:14px;font-size:10px}
   .ef-from{right:14px;bottom:14px}
   .elet-t{font-size:13px}
@@ -1974,6 +2030,52 @@ em{font-style:normal}
       </div>
       <div class="vp-flow" id="howFlow"></div>
     </div>
+  </div>
+</div>
+
+<!-- ══════════ 아카이브 — 세 갈래 안내 허브 ══════════ -->
+<div class="ov ov-arkhub" id="ovArk" role="dialog" aria-modal="true" aria-label="아카이브 — 세 갈래 기록">
+  <div class="scrim" data-close></div>
+  <div class="card akh-card">
+    <button class="closex" type="button" data-close aria-label="닫기">✕</button>
+    <div class="akh-head">
+      <div class="eyebrow">Archive · 세 갈래 기록</div>
+      <h2 class="ov-title">한 해의 기록은 <em>세 갈래</em>로 남았습니다</h2>
+      <p class="akh-lead">여정에서 시작해 작업물이 되고, 활동으로 이어졌습니다. 카드를 누르면 그 갈래가 열립니다.</p>
+    </div>
+    <div class="akh-grid">
+      <button class="akh-item" type="button" data-open="arc">
+        <span class="akh-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M5 20h11" /><path d="M16 20 26 10.5" /><path d="M16 20h12" /><path d="M16 20 26 29.5" /><circle cx="27" cy="10" r="2.1" /><circle cx="29.5" cy="20" r="2.1" /><circle cx="27" cy="30" r="2.1" /></svg>
+        </span>
+        <span class="akh-kicker">Journey · 12 · 10 · 46 · 1</span>
+        <b class="akh-title">우리의 여정</b>
+        <span class="akh-desc">12명의 시선이 10개의 질문을 만나 <em>46개의 생각</em>과 다섯 번의 한 줄 정리가 되었습니다.</span>
+        <span class="akh-meta"><i>12명의 시선</i><i>10번의 질문</i><i>46개의 생각</i><i>5번의 한 줄 정리</i></span>
+        <span class="akh-go">여정 열기 <em>→</em></span>
+      </button>
+      <button class="akh-item" type="button" data-open="works">
+        <span class="akh-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><rect x="12" y="8" width="17" height="24" rx="1.8" /><path d="M17 8v24" /><path d="M21 15h5M21 20h5M21 25h3" /></svg>
+        </span>
+        <span class="akh-kicker">Works · 4</span>
+        <b class="akh-title">우리의 작업물</b>
+        <span class="akh-desc">여정에서 나온 네 가지 산출물 — <em>24쪽 소책자</em>와 구글폼 1·2, 실시간 설문 시스템.</span>
+        <span class="akh-meta"><i>24쪽 소책자</i><i>구글폼 1</i><i>구글폼 2</i><i>실시간 설문 시스템</i></span>
+        <span class="akh-go">작업물 열기 <em>→</em></span>
+      </button>
+      <button class="akh-item" type="button" data-open="act">
+        <span class="akh-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M8 20h24" /><circle cx="13" cy="20" r="2.3" /><circle cx="20" cy="20" r="3.1" /><circle cx="28" cy="20" r="1.8" /><path d="M13 25v3M20 26.5v3M28 24v3" /></svg>
+        </span>
+        <span class="akh-kicker">Activities · 2026</span>
+        <b class="akh-title">우리의 활동</b>
+        <span class="akh-desc">2026 한 해의 기록 사진 타임라인 — 정책제안·모임·포럼·연수·특강과 성과공유회까지.</span>
+        <span class="akh-meta"><i>2026.05–12</i><i>사진 타임라인</i><i>정책제안 · 포럼</i><i>성과공유회</i></span>
+        <span class="akh-go">활동 열기 <em>→</em></span>
+      </button>
+    </div>
+    <div class="akh-foot">세 갈래는 모두 같은 뿌리에서 나왔습니다 — 2026 퓨처큐레이션 〈윤리하다〉</div>
   </div>
 </div>
 
@@ -2301,19 +2403,10 @@ em{font-style:normal}
     <div class="env-stage" id="envStage">
       <div class="env" id="env" role="button" tabindex="0" aria-label="봉투 열기">
         <div class="env-back"></div>
-        <div class="env-letter" id="envLetter">
-          <div class="elet">
-            <div class="elet-l">
-              <div class="elet-k">2026 Future Curation · Season 1</div>
-              <h3 class="elet-t">퓨처큐레이션 <span>:</span> 윤리하다</h3>
-              <p class="elet-s">10번의 모임 · 12명의 시선 · 46개의 생각</p>
-              <div class="elet-url">futurecurationstudy.github.io</div>
-              <div class="elet-credit">Directed by yiruri studio</div>
-            </div>
-            <div class="elet-qr"><img data-qr="site" alt="퓨처큐레이션 아카이브 QR"></div>
-          </div>
-        </div>
         <div class="env-front">
+          <svg class="env-seam" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 58 L50 88 L100 58" />
+          </svg>
           <div class="ef-mark" aria-hidden="true">FC<span>FUTURE CURATION</span></div>
           <div class="ef-to"><span>TO.</span> 함께 배우는 어른에게</div>
           <div class="ef-from"><i>yiruri</i> studio</div>
@@ -2321,9 +2414,15 @@ em{font-style:normal}
         <div class="env-flap"></div>
         <div class="env-seal" aria-hidden="true"><span>〇</span></div>
       </div>
+      <div class="env-letter" id="envLetter">
+        <img id="invImg" alt="퓨처큐레이션 〈윤리하다〉 A5 세로 QR 초대장">
+      </div>
       <div class="env-shadow"></div>
     </div>
-    <div class="env-hint">봉투를 누르면 다시 열립니다 · ✕ · Esc 로 닫기</div>
+    <div class="env-foot">
+      <button class="env-replay" id="envReplay" type="button">↺ 다시 열기</button>
+      <span class="env-hint">봉투를 누르면 열립니다 · ✕ · Esc 로 닫기</span>
+    </div>
   </div>
 </div>
 
@@ -2768,15 +2867,15 @@ const colorFor = n => authorColor[n] || (authorColor[n]=PALETTE[ci++%PALETTE.len
 const CHAPTERS=[
   {id:'why', n:'02', t:'WHY · 윤리하다',      en:'SEASON 1 · 왜 윤리였나', x:-480, y:-140},
   {id:'how', n:'03', t:'HOW · 학습방식',      en:'4 STEPS · 어떻게 학습했나',  x:-120, y:-400},
-  {id:'arc', n:'04', t:'우리의 여정',  en:'12 · 10 · 46 · 1', x: 515, y:-205, parent:'archive'},
-  {id:'works',n:'05', t:'우리의 작업물', en:'WORKS · 4',        x: 780, y: 300, parent:'archive'},
-  {id:'act', n:'06', t:'우리의 활동',          en:'ACTIVITIES · p.22', x:-390, y: 285, parent:'archive'},
-  {id:'next',n:'07', t:'〈〇〇하다〉',          en:'NEXT SEASON · 빈칸',    x: 235, y: 520}
+  {id:'arc', n:'04', t:'우리의 여정',  en:'12 · 10 · 46 · 1', x: 500, y:-238, parent:'archive'},
+  {id:'works',n:'05', t:'우리의 작업물', en:'WORKS · 4',        x: 800, y: 285, parent:'archive'},
+  {id:'act', n:'06', t:'우리의 활동',          en:'ACTIVITIES · p.22', x: 690, y: 570, parent:'archive'},
+  {id:'next',n:'07', t:'〈〇〇하다〉',          en:'NEXT SEASON · 빈칸',    x:-250, y: 480}
 ];
 /* 아카이브 — 허브에서 이 노드 하나로만 뻗고, 여기서 다시 세 갈래로 갈라진다 */
 const ARCHIVE_N={ x: 355, y: 205, mx: 0, my: 26, t:'아카이브', en:'ARCHIVE · 세 갈래 기록' };
-const CHPOS_M = {   /* 모바일 배치 — 허브 아래 아카이브, 그 위로 세 갈래 */
-  why:[-150,-100], how:[4,-172], archive:[0,142], arc:[160,28], works:[155,148], act:[-155,60], next:[62,252]
+const CHPOS_M = {   /* 모바일 배치 — 허브 아래 아카이브, 그 오른쪽으로 세 갈래 */
+  why:[-150,-100], how:[4,-172], archive:[0,158], arc:[152,26], works:[152,154], act:[152,282], next:[40,356]
 };
 
 let nodes=[], links=[], byId={};
@@ -2810,20 +2909,20 @@ function build(){
   nodes=[]; links=[]; byId={};
   const mob=isMobile();
   const hub=mk({id:'hub',type:'hub',x:0,y:0,amp:24,r:0,
-    label:'퓨처큐레이션', sub:'01 · Community — 우리는 어떤 공동체인가', act:{k:'ov',id:'intro'}});
+    label:'퓨처큐레이션', sub:'Community — 우리는 어떤 공동체인가', act:{k:'ov',id:'intro'}});
 
   const chs={};
   /* ── 아카이브 — 세 갈래의 공통 줄기 ── */
   const arkP = mob? CHPOS_M.archive : [ARCHIVE_N.x, ARCHIVE_N.y];
   const ark=mk({id:'archive',type:'ark',x:arkP[0],y:arkP[1],amp:mob?10:20,
-    r:mob?13:22, label:ARCHIVE_N.t, sub:ARCHIVE_N.en, act:{k:'ov',id:'arc'}});
+    r:mob?13:22, label:ARCHIVE_N.t, sub:ARCHIVE_N.en, act:{k:'ov',id:'ark'}});
   chs.archive=ark; link(hub,ark,'hub');
 
   CHAPTERS.forEach(d=>{
     const p = mob? CHPOS_M[d.id] : [d.x,d.y];
     const n=mk({id:d.id,type:'ch',def:d,n:d.n,t:d.t,en:d.en,x:p[0],y:p[1],
       amp:mob?12:30, r:16,
-      label:d.n+' '+d.t, sub:d.en, act:{k:'ov',id:d.id}});
+      label:d.t, sub:d.en, act:{k:'ov',id:d.id}});
     chs[d.id]=n; link(d.parent? ark : hub, n, 'hub');
   });
 
@@ -2925,7 +3024,7 @@ function build(){
   const SUBS=[
     ['12','열두 명의 글자','Twelve letters',-95,'12'],
     ['10','열 번의 질문','Ten questions',-32,'10'],
-    ['46','마흔여섯 개의 생각','Thoughts',26,'46'],
+    ['46','마흔여섯 개의 생각','Thoughts',34,'46'],
     ['1','한 줄 정리 · 다섯 번의 생각정리','One line',72,'sum']
   ];
   const subN={};
@@ -2989,13 +3088,13 @@ function build(){
 
   /* ── 05 우리의 작업물 — 여정에서 나온 네 가지 산출물 ── */
   const C5W=chs.works;
-  const WB=pol(C5W.x,C5W.y,-50,158);
+  const WB=pol(C5W.x,C5W.y,-70,172);
   const book=mk({id:'book24',type:'sub',x:WB.x,y:WB.y,amp:24,r:12,glyph:'24',
     label:'24쪽 소책자', sub:'2026.12 · 〈윤리하다〉 · 클릭해서 펼치기', act:{k:'works',tab:'24'}});
   link(C5W,book,'ax');
-  [['구글폼 1','결과 · 통계 · 이메일',-10,200,'G1','g1'],
-   ['구글폼 2','Form · 준비 중',30,168,'G2','g2'],
-   ['실시간 설문 시스템','Live system · 준비 중',70,206,'SV','sv']].forEach((w,i)=>{
+  [['구글폼 1','결과 · 통계 · 이메일',-20,215,'G1','g1'],
+   ['구글폼 2','Form · 준비 중',22,205,'G2','g2'],
+   ['실시간 설문 시스템','Live system · 준비 중',70,205,'SV','sv']].forEach((w,i)=>{
     const p=pol(C5W.x,C5W.y,w[2],w[3]);
     const n=mk({id:'wk'+i,type:'sub',x:p.x,y:p.y,amp:26,r:11,glyph:w[4],
       label:w[0], sub:w[1]+' · 클릭해서 펼치기', act:{k:'works',tab:w[5]}});
@@ -3007,7 +3106,7 @@ function build(){
   TIME_ITEMS.forEach((it,i)=>{
     const t=TIME_ITEMS.length===1?0.5:i/(TIME_ITEMS.length-1);
     const ang=d5-34+t*78;
-    const r=206+(i%2)*40;
+    const r=178+(i%2)*28;
     const p=pol(C5.x,C5.y,ang,r);
     const n=mk({id:'act'+i,type:it.ph?(it.mile?'photo':'photo'):'mile',x:p.x,y:p.y,amp:26,
       r:it.mile?5:0, img:it.ph?PHOTO_IMG[it.ph]:null, mile:!!it.mile,
@@ -3016,8 +3115,8 @@ function build(){
   });
 
   /* 활동 기록 4 — 타임라인의 기록 노드 */
-  [['정책제안 2026.05',d5-62,318,'#EBD48F',0],['심화과정 2026.09–10',d5-24,330,'#8AA6D8',7],
-   ['특강 2026.10',d5+22,322,'#CE8798',8],['소책자·성과공유회 2026.12',d5+64,300,'#D9BE6A',9]].forEach((m,i)=>{
+  [['정책제안 2026.05',d5-62,272,'#EBD48F',0],['심화과정 2026.09–10',d5-24,292,'#8AA6D8',7],
+   ['특강 2026.10',d5+22,284,'#CE8798',8],['소책자·성과공유회 2026.12',d5+64,266,'#D9BE6A',9]].forEach((m,i)=>{
     const p=pol(C5.x,C5.y,m[1],m[2]);
     const n=mk({id:'actm'+i,type:'mile',x:p.x,y:p.y,amp:24,r:5.2,
       label:m[0], sub:'기록 · 클릭해서 타임라인 열기', act:{k:'time',i:m[4]}});
@@ -3080,7 +3179,7 @@ function layout(){
   const mob=isMobile();
   let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
   nodes.forEach(n=>{
-    const pad = n.type==='hub'?46:(n.type==='ch'?40:14);
+    const pad = n.type==='hub'?56:(n.type==='ch'?(mob?60:56):14);
     x0=Math.min(x0,n.hx-pad); x1=Math.max(x1,n.hx+pad);
     y0=Math.min(y0,n.hy-pad); y1=Math.max(y1,n.hy+pad);
   });
@@ -3625,7 +3724,7 @@ function drawHub(n,dim,isAct){
   ctx.restore();
 
   ctx.shadowColor='rgba(0,0,0,.95)'; ctx.shadowBlur=12;
-  txt('01 · WHO · 퓨처큐레이션', n.sx, y+h+20, '400 '+Math.round(isMobile()?11:13)+'px '+F_SERIF,
+  txt('WHO · 퓨처큐레이션', n.sx, y+h+20, '400 '+Math.round(isMobile()?11:13)+'px '+F_SERIF,
     'rgba(246,242,233,'+(0.96*dim)+')');
   if(!isMobile()){
     txt('WHO · COMMUNITY · WHAT WE ARE · CLICK', n.sx, y+h+34, '500 7.5px '+F_SANS,
@@ -3660,9 +3759,9 @@ tip.className='tip'; document.body.appendChild(tip);
 
 function tipText(n){
   if(!n) return '';
-  if(n.type==='hub') return '<b><i>01</i>WHO · 퓨처큐레이션</b><span>공동체 소개 · 표지와 정체성 열기</span>';
-  if(n.type==='ark') return '<b>아카이브</b><span>세 갈래 기록 · 우리의 여정 · 작업물 · 활동</span>';
-  const badge = n.type==='ch'?(n.n||''):(n.type==='sub'?(n.glyph||''):'');
+  if(n.type==='hub') return '<b>WHO · 퓨처큐레이션</b><span>공동체 소개 · 표지와 정체성 열기</span>';
+  if(n.type==='ark') return '<b>아카이브</b><span>세 갈래 기록 · 눌러서 우리의 여정 · 작업물 · 활동 열기</span>';
+  const badge = n.type==='sub'?(n.glyph||''):'';
   return '<b>'+(badge?'<i>'+esc(badge)+'</i>':'')+esc(n.label||'')+'</b>'+
     (n.sub?'<span>'+esc(n.sub)+'</span>':'');
 }
@@ -3755,8 +3854,8 @@ const dSteps=$('#dSteps');
 STEPS7.forEach((s,i)=>{
   const b=document.createElement('button');
   b.type='button'; b.className='dstep'; b.dataset.i=i;
-  b.innerHTML='<i>'+s.n+'</i><span class="lb-long">'+s.t+'</span><span class="lb-short">'+s.s+'</span>';
-  b.setAttribute('aria-label', s.n+' '+s.t+' 열기');
+  b.innerHTML='<span class="lb-long">'+s.t+'</span><span class="lb-short">'+s.s+'</span>';
+  b.setAttribute('aria-label', s.t+' 열기');
   b.addEventListener('click',()=>goStep(i));
   dSteps.appendChild(b);
 });
@@ -3777,7 +3876,7 @@ $('#dNext').addEventListener('click',()=>goStep((curStep<0?-1:curStep)+1));
 /* ══════════════════════════════════════════════════════════
    오버레이 공통
    ══════════════════════════════════════════════════════════ */
-const OVS={intro:'#ovIntro',why:'#ovWhy',how:'#ovHow',arc:'#ovArc',works:'#ovWorks',act:'#ovTime',next:'#ovNext',invite:'#ovInvite'};
+const OVS={intro:'#ovIntro',why:'#ovWhy',how:'#ovHow',ark:'#ovArk',arc:'#ovArc',works:'#ovWorks',act:'#ovTime',next:'#ovNext',invite:'#ovInvite'};
 let activeOv=null;
 
 function openOv(id){
@@ -3805,6 +3904,15 @@ function closeOv(id,silent){
 }
 function closeOverlays(){ Object.keys(OVS).forEach(id=>closeOv(id,true)); activeOv=null; markStep(-1); }
 function closeAll(){ closeOverlays(); selected=null; }
+
+/* 아카이브 3갈래 허브 — 카드를 누르면 그 갈래 모달로 이동 */
+$$('#ovArk .akh-item').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const id=b.dataset.open;
+    if(!id) return;
+    openOv(id);
+  });
+});
 
 /* ── 상단 타이틀 → 처음 뉴런 우주 화면으로 복귀 ─────────────── */
 function goHome(){
@@ -4496,38 +4604,56 @@ const Next={ reset(){} };   /* v8 — 빈칸 채우기는 Sum 으로 이동 */
    봉투 등장 → 덮개가 rotateX 로 열리고 → 초대장이 위로 올라와 펼쳐진다
    ══════════════════════════════════════════════════════════ */
 const Invite=(function(){
-  const env=$('#env');
-  let t1=0,t2=0,stage=0;   /* stage 0 닫힘 · 1 덮개 열림 · 2 초대장 펼침 */
+  const stage=$('#envStage'), env=$('#env'), letter=$('#envLetter'), replay=$('#envReplay');
+  let t1=0,t2=0,st=0;   /* 0 닫힘 · 1 덮개 열림 · 2 초대장 펼침 */
   function clear(){ clearTimeout(t1); clearTimeout(t2); t1=t2=0; }
+  /* 세로 A5 카드가 화면 가운데에서 가장 크게, 봉투 안에서는 봉투 속에 들어간 크기로 */
+  function fit(){
+    if(!stage||!env) return;
+    const sw=stage.clientWidth, sh=stage.clientHeight;
+    const vw=window.innerWidth, vh=window.innerHeight;
+    let lh=Math.min(sh*0.96, vh*0.74, 664);
+    lh=Math.min(lh, Math.min(sw*0.96, vw*0.9)*210/148);
+    lh=Math.max(220, Math.round(lh));
+    const lw=lh*148/210;
+    const cs=env.offsetWidth?Math.min((env.offsetWidth*0.88)/lw, (env.offsetHeight*0.62)/lh):0.4;
+    stage.style.setProperty('--lh', lh+'px');
+    stage.style.setProperty('--cls', Math.max(0.2,cs).toFixed(3));
+    stage.style.setProperty('--cly', Math.round((env.offsetHeight||300)*0.14)+'px');
+  }
   function reset(){
     clear();
-    if(!env) return;
-    env.classList.remove('flap','letter');
-    stage=0;
+    if(!stage) return;
+    stage.classList.remove('flap','letter');
+    st=0; fit();
   }
   function play(){
-    if(!env) return;
-    reset();
+    if(!stage) return;
+    reset(); fit();
     /* 같은 프레임에 reset → play 하면 transition 이 생략되므로 리플로우를 한 번 강제 */
-    void env.offsetWidth;
-    t1=setTimeout(()=>{ env.classList.add('flap'); stage=1; }, 260);
-    t2=setTimeout(()=>{ env.classList.add('letter'); stage=2; }, 1160);
+    void stage.offsetWidth;
+    t1=setTimeout(()=>{ stage.classList.add('flap'); st=1; }, 420);
+    t2=setTimeout(()=>{ stage.classList.add('letter'); st=2; }, 1330);
   }
-  if(env){
-    const front=env.querySelector('.env-front');
-    const again=()=>{ if(stage>=1) play(); };
-    if(front) front.addEventListener('click',again);
-    env.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); again(); } });
+  if(stage){
+    const again=()=>{ if(st>=1) play(); };
+    if(env) env.addEventListener('click',again);
+    if(env) env.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); again(); } });
+    if(replay) replay.addEventListener('click',()=>play());
     /* 봉투 바깥(빈 영역)을 누르면 닫기 — env-wrap 이 화면을 덮고 있어 별도로 처리 */
     const ov=$('#ovInvite');
     if(ov) ov.addEventListener('click',e=>{
       if(e.target.closest('.env')) return;
+      if(e.target.closest('.env-letter')) return;
+      if(e.target.closest('.env-foot')) return;
       if(e.target.closest('.closex')) return;
       if(!ov.classList.contains('on')) return;
       closeOv('invite');
     });
+    window.addEventListener('resize',()=>{ if(ov&&ov.classList.contains('on')) fit(); });
+    const img=$('#invImg'); if(img) img.addEventListener('load',fit);
   }
-  return { play, reset, state:()=>({stage, flap:!!(env&&env.classList.contains('flap')), letter:!!(env&&env.classList.contains('letter'))}) };
+  return { play, reset, fit, state:()=>({stage:st, flap:!!(stage&&stage.classList.contains('flap')), letter:!!(stage&&stage.classList.contains('letter'))}) };
 })();
 
 const Sum=(function(){
@@ -4823,6 +4949,7 @@ setTimeout(()=>{ const h=$('#hudHint'); if(h) h.style.opacity='.32'; },10000);
 window.__neuron={
   pos:()=>nodes.map(n=>({id:n.id||'hub',type:n.type,x:n.x,y:n.y,tx:n.tx,ty:n.ty,sx:n.sx,sy:n.sy,ox:n.ox,oy:n.oy,glyph:n.glyph,label:n.label})),
   count:()=>({nodes:nodes.length,links:links.length}),
+  view:()=>({baseS,zoom,bcx,bcy,W,H,shift,panX,panY,mob:isMobile()}),
   step:i=>goStep(i), open:id=>openOv(id), close:()=>closeAll(), home:()=>goHome(),
   arc:t=>{ openOv('arc'); Arc.select(t); },
   state:()=>({curStep, activeOv, tab:Arc.tab, merged:Arc.merged, panX, panY, zoom, zoomT,
