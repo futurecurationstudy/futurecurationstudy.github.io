@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#030407">
-<title>2026 퓨처큐레이션 · 윤리하다 — 소책자 순서 1~6</title>
+<title>2026 퓨처큐레이션 · 윤리하다 — 소책자 순서 1~7</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
@@ -12,7 +12,7 @@
 <style>
 /* ══════════════════════════════════════════════════════════
    2026 퓨처큐레이션 · 윤리하다 — 단일 화면 뉴런 우주
-   소책자 순서 1~6 × 방사형 성단 (v2)
+   소책자 순서 1~7 × 방사형 성단 (v3)
    ══════════════════════════════════════════════════════════ */
 :root{
   --bg:#030407; --bg2:#05060A;
@@ -265,7 +265,7 @@ em{font-style:normal}
 /* ══════════ 04 · archive ══════════ */
 .arc-card{width:min(1400px,95vw);height:min(86vh,800px);padding-bottom:clamp(10px,1.4vh,16px)}
 .arc-head{flex:0 0 auto}
-.arc-nums{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(6px,.8vw,12px);
+.arc-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1vw,16px);
   margin:clamp(12px,1.8vh,20px) 0 clamp(10px,1.6vh,16px);flex:0 0 auto}
 .anum{position:relative;text-align:left;padding:clamp(8px,1.1vw,14px) clamp(10px,1.2vw,16px) clamp(12px,1.5vw,16px);
   border-radius:12px;border:1px solid var(--line2);overflow:hidden;
@@ -670,7 +670,7 @@ em{font-style:normal}
   .tw-detail{right:0;left:0;bottom:0;top:auto;width:100%;max-height:62vh;transform:translateY(24px);
     border-radius:18px 18px 0 0}
   .tw-detail.on{transform:none}
-  .arc-nums{grid-template-columns:repeat(5,1fr)}
+  .arc-nums{grid-template-columns:repeat(4,1fr)}
   .a10-list{grid-template-columns:1fr}
   .t46-detail{width:min(320px,48%)}
   .time-card{height:min(90vh,760px)}
@@ -1406,21 +1406,200 @@ em{font-style:normal}
   .q10 .ppt{position:static;margin-top:8px}
 }
 
+/* ══════════════════════════════════════════════════════════
+   v8 · 아카이브 3갈래 — ① 우리의 여정(1줄정리 5갈래) ② 우리의 작업물
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 여정 · 탭 숫자·라벨 한 단계 크게 ─────────────────────── */
+.arc-card .ov-title{ font-size: clamp(21px, 2.3vw, 33px); line-height: 1.3; }
+.arc-nums .anum b{ font-size: clamp(32px, 4.1vw, 60px); }
+.arc-nums .anum span{ word-break: keep-all; }
+@media (max-width:760px){
+  /* 도크 7단계 — 390px에서도 마지막 항목까지 보이게 */
+  .dock{ padding:4px 3px; max-width:99vw; gap:0 }
+  .dsteps{ gap:0 }
+  .dstep{ padding:7px 4px; font-size:9.4px; gap:2px }
+  .dstep i{ font-size:9.4px }
+  .dnav{ width:22px; height:26px; font-size:13px }
+}
+.arc-nums .anum span{ font-family: var(--serif); font-size: clamp(12px, 1.08vw, 15.5px); color: rgba(246,242,233,.8); }
+.arc-nums .anum span em{ font-size: 8.6px; letter-spacing: .2em; color: rgba(235,212,143,.6); }
+.arc-nums .anum{ padding: clamp(10px,1.3vw,16px) clamp(12px,1.4vw,18px) clamp(14px,1.7vh,18px); }
+
+/* ── 1줄 정리 · 다섯 번의 생각정리 ────────────────────────── */
+.sum2{ flex:1 1 auto; min-height:0; display:grid; grid-template-columns:minmax(190px,21%) 1fr;
+  gap:clamp(14px,1.8vw,30px); }
+.sum2-list{ display:flex; flex-direction:column; gap:3px; min-height:0; overflow-y:auto;
+  padding-right:8px; border-right:1px solid var(--line2);
+  scrollbar-width:thin; scrollbar-color:rgba(212,175,55,.3) transparent; }
+.sum2-list::-webkit-scrollbar{ width:3px }
+.sum2-list::-webkit-scrollbar-thumb{ background:rgba(212,175,55,.3); border-radius:3px }
+.sum2-item{ display:grid; grid-template-columns:2.1em 1fr; gap:1px 8px; text-align:left;
+  padding:clamp(9px,1.15vh,13px) 10px; border-radius:11px; border:1px solid transparent;
+  transition:.24s var(--ease); }
+.sum2-item:hover{ background:rgba(246,242,233,.04) }
+.sum2-item b{ grid-row:span 2; font-family:var(--disp); font-weight:400; font-size:12px;
+  letter-spacing:.1em; color:rgba(212,175,55,.75); padding-top:3px }
+.sum2-item .t{ font-family:var(--serif); font-size:clamp(13.5px,1.1vw,16.5px); line-height:1.35;
+  color:rgba(246,242,233,.78); letter-spacing:-.01em; word-break:keep-all }
+.sum2-item .m{ font-size:9.6px; letter-spacing:.06em; color:var(--muted2); margin-top:2px }
+.sum2-item.on{ background:linear-gradient(150deg,rgba(212,175,55,.12),rgba(255,255,255,.01));
+  border-color:rgba(212,175,55,.36) }
+.sum2-item.on b{ color:var(--gold3) }
+.sum2-item.on .t{ color:var(--ivory) }
+.sum2-listcap{ margin-top:auto; padding:12px 10px 4px; font-size:9.6px; line-height:1.55;
+  letter-spacing:.04em; color:rgba(235,212,143,.5) }
+
+.sum2-pane{ display:flex; flex-direction:column; min-height:0; gap:clamp(9px,1.4vh,16px) }
+.sum2-kicker{ font-family:var(--disp); font-size:10.5px; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--gold) }
+.sum2-q{ margin:0; font-family:var(--serif); font-weight:300; font-size:clamp(17px,1.55vw,24px);
+  line-height:1.42; color:var(--ivory); letter-spacing:-.015em; word-break:keep-all }
+.sum2-q em{ font-style:italic; color:var(--gold2) }
+.sum2-meta{ font-size:10.5px; letter-spacing:.05em; color:var(--muted2) }
+.sum2-meta b{ color:rgba(235,212,143,.85); font-weight:400 }
+
+.sum2-sent{ position:relative; font-family:var(--serif); font-weight:300;
+  font-size:clamp(20px,1.95vw,31px); line-height:1.95; color:rgba(246,242,233,.94);
+  letter-spacing:-.02em; word-break:keep-all; margin-top:clamp(2px,.6vh,8px) }
+.sum2-sent .blank-line{ display:block; margin-top:2px; color:rgba(246,242,233,.55);
+  font-size:.62em; letter-spacing:.02em; font-family:var(--sans) }
+.sum2-sent input.slot-in{ display:inline-block; font:inherit; font-family:var(--serif); text-align:center;
+  color:var(--gold3); background:rgba(212,175,55,.07); border:0; border-bottom:1.5px solid rgba(212,175,55,.6);
+  border-radius:5px 5px 0 0; padding:0 8px 1px; margin:0 5px; min-width:5ch; max-width:min(100%,26em);
+  outline:none; transition:background .25s,border-color .25s }
+.sum2-sent input.slot-in::placeholder{ color:rgba(235,212,143,.45); font-size:.72em; letter-spacing:.06em }
+.sum2-sent input.slot-in:focus{ background:rgba(212,175,55,.15); border-bottom-color:var(--gold3);
+  box-shadow:0 8px 24px -14px rgba(212,175,55,.8) }
+.sum2-meas{ position:absolute; left:-9999px; top:0; white-space:pre; visibility:hidden;
+  font:inherit; font-family:var(--serif) }
+
+.sum2-opts{ display:flex; flex-wrap:wrap; gap:6px; align-content:flex-start; min-height:0;
+  overflow-y:auto; max-height:min(32vh,260px); padding-right:4px;
+  scrollbar-width:thin; scrollbar-color:rgba(212,175,55,.28) transparent }
+.sum2-opts::-webkit-scrollbar{ width:3px }
+.sum2-opts::-webkit-scrollbar-thumb{ background:rgba(212,175,55,.28); border-radius:3px }
+.sum2-opt{ font-family:var(--sans); font-size:clamp(12px,.98vw,14px); line-height:1.4;
+  padding:7px 13px; border-radius:999px; border:1px solid var(--line2);
+  color:rgba(246,242,233,.66); transition:.22s var(--ease); text-align:left }
+.sum2-opt:hover{ color:var(--ivory); border-color:rgba(212,175,55,.38); background:rgba(212,175,55,.05) }
+.sum2-opt.on{ color:#141006; border-color:transparent;
+  background:linear-gradient(180deg,var(--gold3),var(--gold)); font-weight:600 }
+
+.sum2-foot{ margin-top:auto; flex:0 0 auto; padding-top:clamp(8px,1.2vh,14px);
+  border-top:1px solid var(--line2); display:flex; align-items:center; gap:10px; flex-wrap:wrap }
+.sum2-foot .dbtn{ font-size:11.5px; padding:8px 15px }
+.sum2-foot .news-btn{ border-color:rgba(212,175,55,.5); color:var(--gold3);
+  background:linear-gradient(170deg,rgba(212,175,55,.16),rgba(212,175,55,.04)) }
+.sum2-foot .news-btn:hover{ background:linear-gradient(170deg,var(--gold3),var(--gold)); color:#141006 }
+.sum2-foot .news-btn .en{ font-family:var(--disp); font-size:.8em; letter-spacing:.14em; margin-left:6px; opacity:.75 }
+.sum2-note{ font-size:10px; line-height:1.5; color:var(--muted2); letter-spacing:.01em }
+
+/* ── 우리의 작업물 ───────────────────────────────────────── */
+.wk-head{ flex:0 0 auto }
+.wk-tabs{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(8px,1vw,16px);
+  margin:clamp(12px,1.8vh,20px) 0 clamp(10px,1.6vh,16px); flex:0 0 auto }
+.wk-tab{ position:relative; text-align:left; padding:clamp(9px,1.2vw,14px) clamp(11px,1.3vw,17px) clamp(12px,1.5vh,16px);
+  border-radius:12px; border:1px solid var(--line2); overflow:hidden;
+  background:linear-gradient(170deg,rgba(255,255,255,.022),rgba(255,255,255,.004)); transition:.4s var(--ease) }
+.wk-tab b{ display:block; font-family:var(--disp); font-weight:300; font-size:clamp(20px,2.1vw,30px);
+  line-height:1; color:rgba(246,242,233,.42); transition:.4s }
+.wk-tab span{ display:block; font-family:var(--serif); font-size:clamp(12px,1.05vw,15px);
+  color:rgba(246,242,233,.66); margin-top:4px }
+.wk-tab span em{ display:block; font-family:var(--disp); font-style:normal; font-size:8.4px;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--muted2); margin-top:3px }
+.wk-tab i.fill{ position:absolute; left:0; bottom:0; height:2px; width:0;
+  background:linear-gradient(90deg,var(--gold),var(--gold3)); transition:width .7s var(--ease) }
+.wk-tab:hover b{ color:rgba(246,242,233,.7) }
+.wk-tab.on{ border-color:rgba(212,175,55,.4); background:linear-gradient(170deg,rgba(212,175,55,.1),rgba(255,255,255,.01)) }
+.wk-tab.on b{ color:var(--gold3); text-shadow:0 0 30px rgba(212,175,55,.4) }
+.wk-tab.on span{ color:var(--ivory) }
+.wk-tab.on i.fill{ width:100% }
+.wk-tab .badge{ position:absolute; right:10px; top:10px; font-size:8.4px; letter-spacing:.16em;
+  text-transform:uppercase; color:rgba(235,212,143,.6); border:1px solid rgba(212,175,55,.28);
+  border-radius:999px; padding:2px 7px }
+.wk-panes{ position:relative; flex:1 1 auto; min-height:0; border-top:1px solid var(--line2);
+  padding-top:clamp(10px,1.6vh,16px) }
+.wpane{ display:none; height:100%; min-height:0 }
+.wpane.on{ display:flex; flex-direction:column; animation:paneIn .5s var(--ease) }
+.wpane[data-wpane="24"]{ align-items:center; justify-content:center }
+.wk-soon{ flex:1 1 auto; min-height:0; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:clamp(8px,1.4vh,16px); text-align:center;
+  border:1px dashed rgba(212,175,55,.24); border-radius:20px;
+  background:radial-gradient(120% 100% at 50% 0%, rgba(212,175,55,.08), rgba(255,255,255,.01) 60%);
+  padding:clamp(18px,3vw,40px) }
+.wk-soon .n{ font-family:var(--disp); font-weight:300; font-size:clamp(30px,3.4vw,52px);
+  line-height:1; color:rgba(212,175,55,.5) }
+.wk-soon .t{ font-family:var(--serif); font-weight:300; font-size:clamp(20px,2vw,31px);
+  color:var(--ivory); letter-spacing:-.02em }
+.wk-soon .t em{ font-style:italic; color:var(--gold2) }
+.wk-soon p{ margin:0; max-width:46ch; font-size:clamp(12px,1.02vw,14.5px); line-height:1.85;
+  color:rgba(246,242,233,.6); word-break:keep-all }
+.wk-soon ul{ margin:2px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap;
+  gap:6px; justify-content:center }
+.wk-soon li{ font-size:clamp(11px,.92vw,13px); color:rgba(246,242,233,.55);
+  border:1px solid var(--line2); border-radius:999px; padding:6px 12px }
+.wk-soon .chip{ margin-top:4px; font-family:var(--disp); font-size:9.5px; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--gold); border:1px solid rgba(212,175,55,.34);
+  border-radius:999px; padding:5px 13px }
+
+@media (max-width:1180px){
+  .sum2{ grid-template-columns:minmax(160px,23%) 1fr; gap:14px }
+  .sum2-item .t{ font-size:13.5px }
+}
+@media (max-width:900px){
+  .wk-tabs{ grid-template-columns:repeat(2,1fr) }
+}
+@media (max-width:760px){
+  .arc-nums .anum b{ font-size:26px }
+  .arc-nums .anum span{ font-size:9.6px }
+  .sum2{ grid-template-columns:1fr; grid-template-rows:auto minmax(0,1fr); gap:9px }
+  .sum2-list{ flex-direction:row; overflow-x:auto; overflow-y:hidden; border-right:0;
+    border-bottom:1px solid var(--line2); padding:0 0 7px; gap:5px; flex:0 0 auto }
+  .sum2-item{ flex:0 0 auto; grid-template-columns:1fr; padding:6px 9px }
+  .sum2-item b{ grid-row:auto; font-size:9px; padding:0 }
+  .sum2-item .t{ font-size:11.5px; white-space:nowrap }
+  .sum2-item .m{ display:none }
+  .sum2-kicker{ font-size:8.6px; letter-spacing:.2em }
+  .sum2-q{ font-size:14.5px; line-height:1.45 }
+  .sum2-sent{ font-size:17px; line-height:1.85 }
+  .sum2-opts{ max-height:24vh }
+  .sum2-opt{ font-size:11.5px; padding:6px 10px }
+  .sum2-foot{ gap:7px }
+  .sum2-foot .dbtn{ font-size:10.5px; padding:7px 11px }
+  .sum2-note{ font-size:9px; flex:1 1 100% }
+  .sum2-listcap{ display:none }
+  .wk-tabs{ grid-template-columns:repeat(2,1fr); gap:6px }
+  .wk-tab{ padding:7px 9px 10px }
+  .wk-tab b{ font-size:17px }
+  .wk-tab span{ font-size:10.5px }
+  .wk-tab span em{ font-size:7.4px }
+  .wk-tab .badge{ display:none }
+  .wk-soon .t{ font-size:17px }
+  .wk-soon p{ font-size:11.5px; line-height:1.7 }
+  /* 카드뉴스 · PPT 뷰어 하단 줄 — 좁은 화면에서 버튼이 세로로 찢어지지 않게 */
+  .ppt-foot{ flex-direction:column; align-items:stretch; gap:7px; padding-bottom:10px }
+  .ppt-nav{ justify-content:space-between; gap:6px }
+  .ppt-nav button{ font-size:10px; padding:7px 8px; white-space:nowrap; flex:1 1 auto }
+  .ppt-nav span{ flex:0 0 auto; font-size:10px }
+  .ppt-links{ justify-content:flex-end; gap:6px }
+  .ppt-links .dbtn{ font-size:10px; padding:6px 9px }
+}
 </style>
 </head>
 <body>
 
-<canvas id="space" aria-label="소책자 순서 1~6이 방사형으로 펼쳐진 뉴런 우주 — 노드를 클릭하면 내용이 열립니다"></canvas>
+<canvas id="space" aria-label="소책자 순서 1~7이 방사형으로 펼쳐진 뉴런 우주 — 노드를 클릭하면 내용이 열립니다"></canvas>
 <div class="grain" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
 
 <header class="hud">
   <button class="brand" id="brandHome" type="button" aria-label="2026 퓨처큐레이션 — 처음 화면으로 돌아가기" title="처음 화면으로 (Home)">
     <b>2026 퓨처큐레이션</b><i></i><em>윤리하다</em>
-    <span>Season 1 · 소책자 순서 1–6</span>
+    <span>Season 1 · 소책자 순서 1–7</span>
   </button>
   <div class="hud-r">
-    <span class="hud-hint" id="hudHint"><b>노드를 클릭</b> · ← → · 1–6 · Esc</span>
+    <span class="hud-hint" id="hudHint"><b>노드를 클릭</b> · ← → · 1–7 · Esc</span>
     <button class="iconbtn" id="btnFs" type="button" aria-label="전체화면 전환" title="전체화면 (F)">⤢</button>
   </div>
 </header>
@@ -1627,16 +1806,16 @@ em{font-style:normal}
   </div>
 </div>
 
-<!-- ══════════ 04 · 10 · 12 · 46 · 24 아카이브 ══════════ -->
-<div class="ov ov-arc" id="ovArc" role="dialog" aria-modal="true" aria-label="아카이브 — 12 · 10 · 46 · 1 · 24">
+<!-- ══════════ 04 · 우리의 여정 (12 · 10 · 46 · 1 줄 정리) ══════════ -->
+<div class="ov ov-arc" id="ovArc" role="dialog" aria-modal="true" aria-label="우리의 여정 — 12명 · 10질문 · 46생각 · 1줄 정리">
   <div class="scrim" data-close></div>
   <div class="card arc-card">
     <button class="closex" type="button" data-close aria-label="닫기">✕</button>
     <div class="arc-head">
-      <div class="eyebrow">04 · Archive — 소책자 p.8 – 24</div>
-      <h2 class="ov-title">질문이 쌓여 생각이 되고, 생각이 모여 <em>한 권</em>이 되었습니다</h2>
+      <div class="eyebrow">04 · Our journey — 소책자 p.8 – 21</div>
+      <h2 class="ov-title">12명의 시선이 10개의 질문을 만나, 46개의 생각과 <em>한 줄 정리</em>가 되었습니다</h2>
     </div>
-    <div class="arc-nums" role="tablist" aria-label="아카이브 선택">
+    <div class="arc-nums" role="tablist" aria-label="우리의 여정 선택">
       <button class="anum on" type="button" role="tab" data-tab="12" aria-selected="true">
         <b data-n="12">0</b><span>명의 글자<em>Twelve letters</em></span><i class="fill"></i>
       </button>
@@ -1647,10 +1826,7 @@ em{font-style:normal}
         <b data-n="46">0</b><span>개의 생각<em>Thoughts</em></span><i class="fill"></i>
       </button>
       <button class="anum" type="button" role="tab" data-tab="sum" aria-selected="false">
-        <b data-n="1">0</b><span>줄 정리<em>One line</em></span><i class="fill"></i>
-      </button>
-      <button class="anum" type="button" role="tab" data-tab="24" aria-selected="false">
-        <b data-n="24">0</b><span>쪽의 소책자<em>Pages</em></span><i class="fill"></i>
+        <b data-n="1">0</b><span>줄 정리<em>One line · 5 thoughts</em></span><i class="fill"></i>
       </button>
     </div>
 
@@ -1697,22 +1873,59 @@ em{font-style:normal}
         <div class="t46-chips" id="t46Chips"></div>
       </section>
 
-      <!-- ④ 한 줄 정리 (빈칸 채우기) -->
-      <section class="apane" data-pane="sum" role="tabpanel" aria-label="한 줄 정리 — 빈칸 채우기">
-        <div class="pane-note">소책자 p.21 · 빈칸을 채우면 당신의 윤리가 됩니다 <em>정답은 없습니다 · 다른 표현을 골라도 좋습니다</em></div>
-        <div class="sum-scroll">
-          <p class="sum-lead">열 번의 만남에서 우리가 서로에게 남긴 문장들입니다. 빈칸을 눌러 <em>지금의 내 언어</em>로 채워 보세요.</p>
-          <div class="blanks" id="blanks"></div>
-        </div>
-        <div class="pane-foot sum-foot">
-          <button class="dbtn" id="sumReset" type="button">빈칸 다시 채우기</button>
-          <span>고른 문장은 이 화면에만 남습니다 · 소책자 p.21</span>
+      <!-- ④ 한 줄 정리 — 다섯 번의 생각정리 -->
+      <section class="apane" data-pane="sum" role="tabpanel" aria-label="한 줄 정리 — 다섯 번의 생각정리">
+        <div class="pane-note">소책자 p.21 · 다섯 번의 만남에서 우리가 서로에게 남긴 문장 <em>빈칸을 눌러 지금의 내 언어로 채워 보세요 · 정답은 없습니다</em></div>
+        <div class="sum2">
+          <div class="sum2-list" id="sumList" role="tablist" aria-label="생각정리 목록"></div>
+          <div class="sum2-pane">
+            <div>
+              <div class="sum2-kicker" id="sumKicker"></div>
+              <h3 class="sum2-q" id="sumQ"></h3>
+              <div class="sum2-meta" id="sumMeta"></div>
+            </div>
+            <div class="sum2-sent" id="sumSent"><span class="sum2-meas" id="sumMeas" aria-hidden="true"></span></div>
+            <div class="sum2-opts" id="sumOpts" role="list" aria-label="다른 표현 고르기"></div>
+            <div class="sum2-foot">
+              <button class="dbtn" id="sumReset" type="button">빈칸 다시 채우기</button>
+              <button class="dbtn news-btn" id="sumNews" type="button">카드뉴스 보기 <span class="en">Canva ↗</span></button>
+              <span class="sum2-note" id="sumNewsNote"></span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- ⑤ 24 -->
-      <section class="apane" data-pane="24" role="tabpanel" aria-label="24쪽 소책자">
-        <div class="flip-wrap">
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ 05 · 우리의 작업물 (24쪽 소책자 · 구글폼 1·2 · 실시간 설문) ══════════ -->
+<div class="ov ov-works" id="ovWorks" role="dialog" aria-modal="true" aria-label="우리의 작업물 — 여정에서 나온 네 가지 산출물">
+  <div class="scrim" data-close></div>
+  <div class="card wk-card">
+    <button class="closex" type="button" data-close aria-label="닫기">✕</button>
+    <div class="wk-head">
+      <div class="eyebrow">05 · Our works — 여정에서 나온 네 가지 산출물</div>
+      <h2 class="ov-title">쌓인 기록이 <em>손에 잡히는 결과</em>가 되었습니다</h2>
+    </div>
+    <div class="wk-tabs" role="tablist" aria-label="작업물 선택">
+      <button class="wk-tab on" type="button" role="tab" data-wtab="24" aria-selected="true">
+        <b>01</b><span>24쪽 소책자<em>Booklet · Vol.01</em></span><i class="fill"></i>
+      </button>
+      <button class="wk-tab" type="button" role="tab" data-wtab="g1" aria-selected="false">
+        <b>02</b><span>구글폼 1<em>Form · 결과 · 통계</em></span><i class="fill"></i><span class="badge">준비 중</span>
+      </button>
+      <button class="wk-tab" type="button" role="tab" data-wtab="g2" aria-selected="false">
+        <b>03</b><span>구글폼 2<em>Form</em></span><i class="fill"></i><span class="badge">준비 중</span>
+      </button>
+      <button class="wk-tab" type="button" role="tab" data-wtab="sv" aria-selected="false">
+        <b>04</b><span>실시간 설문 시스템<em>Live system</em></span><i class="fill"></i><span class="badge">준비 중</span>
+      </button>
+    </div>
+    <div class="wk-panes">
+      <section class="wpane on" data-wpane="24" role="tabpanel" aria-label="24쪽 소책자">
+<div class="flip-wrap">
           <div class="flip-book" id="flipBook">
             <div class="flip-side left" id="flipL"><img id="fpl" alt=""></div>
             <div class="flip-side right" id="flipR"><img id="fpr" alt=""></div>
@@ -1732,18 +1945,45 @@ em{font-style:normal}
           <div class="flip-bar"><i id="flipBar" style="width:4%"></i></div>
         </div>
       </section>
-    </div>
 
+      <section class="wpane" data-wpane="g1" role="tabpanel" aria-label="구글폼 1">
+        <div class="wk-soon">
+          <div class="n">02</div>
+          <div class="t">구글폼 1 — 응답이 <em>결과 · 통계 · 이메일</em>로</div>
+          <p>폼으로 모은 응답이 결과 메일과 통계 화면으로 이어지는 흐름을 이 자리에 담을 예정입니다. 화면 자료를 받으면 그대로 채워 넣습니다.</p>
+          <ul><li>응답 결과</li><li>통계 화면</li><li>자동 결과 메일</li></ul>
+          <span class="chip">Placeholder · 준비 중</span>
+        </div>
+      </section>
+
+      <section class="wpane" data-wpane="g2" role="tabpanel" aria-label="구글폼 2">
+        <div class="wk-soon">
+          <div class="n">03</div>
+          <div class="t">구글폼 2</div>
+          <p>두 번째 구글폼입니다. 소개할 내용을 준비하고 있어 이 자리만 먼저 만들어 두었습니다.</p>
+          <span class="chip">Placeholder · 내용 추가 예정</span>
+        </div>
+      </section>
+
+      <section class="wpane" data-wpane="sv" role="tabpanel" aria-label="실시간 설문 시스템">
+        <div class="wk-soon">
+          <div class="n">04</div>
+          <div class="t">실시간 설문 시스템</div>
+          <p>직접 만든 실시간 설문·의견취합 시스템입니다. 소개 화면을 준비하고 있어 이 자리만 먼저 만들어 두었습니다.</p>
+          <span class="chip">Placeholder · 내용 추가 예정</span>
+        </div>
+      </section>
+    </div>
   </div>
 </div>
 
-<!-- ══════════ 05 · 우리의 활동 모습 (타임라인) ══════════ -->
-<div class="ov ov-time" id="ovTime" role="dialog" aria-modal="true" aria-label="우리의 활동 모습">
+<!-- ══════════ 06 · 우리의 활동 모습 (타임라인) ══════════ -->
+<div class="ov ov-time" id="ovTime" role="dialog" aria-modal="true" aria-label="우리의 활동 — 2026 한 해의 기록">
   <div class="scrim" data-close></div>
   <div class="card time-card">
     <button class="closex" type="button" data-close aria-label="닫기">✕</button>
     <div class="time-head">
-      <div class="eyebrow">05 · Our activities — 소책자 p.22 · 2026</div>
+      <div class="eyebrow">06 · Our activities — 소책자 p.22 · 2026</div>
       <h2 class="ov-title">배움은 <em>시간</em>을 타고 흐릅니다</h2>
       <p class="time-lead">한 해의 기록이 이어져 지금의 우리가 되었습니다 · 사진을 누르면 크게 볼 수 있습니다</p>
     </div>
@@ -1791,7 +2031,7 @@ em{font-style:normal}
     <button class="closex" type="button" data-close aria-label="닫기">✕</button>
     <div class="n2-wrap">
       <div class="n2-head">
-        <div class="eyebrow">06 · Next season — 시즌 1의 끝에서</div>
+        <div class="eyebrow">07 · Next season — 시즌 1의 끝에서</div>
         <h2 class="ov-title">〈윤리하다〉에서,<br><em>〈〇〇하다〉</em>로</h2>
         <p class="n2-lead">열 번의 만남이 남긴 문장 위에, 다음 시즌의 질문을 올립니다.<br>
           시즌 1이 정하지 않은 답을, 시즌 2는 <em>함께</em> 찾아갑니다.</p>
@@ -1935,6 +2175,29 @@ em{font-style:normal}
         <button type="button" id="pptNext">다음 회차 ›</button>
       </div>
       <div class="ppt-links" id="pptLinks"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ 생각정리 카드뉴스 뷰어 ══════════ -->
+<div class="ppt-modal" id="news" role="dialog" aria-modal="true" aria-label="생각정리 카드뉴스">
+  <div class="ppt-scrim" id="newsScrim"></div>
+  <div class="ppt-card">
+    <button class="closex sm" id="newsClose" type="button" aria-label="닫기">✕</button>
+    <div class="ppt-head">
+      <div class="eyebrow" id="newsKicker">카드뉴스 · 2회차</div>
+      <h2 class="ov-title" id="newsTitle"></h2>
+      <p class="ppt-sub" id="newsSub"></p>
+    </div>
+    <div class="ppt-body"><iframe id="newsFrame" title="생각정리 카드뉴스 — Canva" allow="fullscreen" referrerpolicy="no-referrer"></iframe></div>
+    <div class="ppt-foot">
+      <div class="ppt-nav">
+        <button type="button" id="newsPrev">‹ 이전 생각정리</button>
+        <span id="newsCount">1 / 5</span>
+        <button type="button" id="newsNext">다음 생각정리 ›</button>
+      </div>
+      <div class="ppt-links" id="newsLinks"></div>
     </div>
   </div>
 </div>
@@ -2112,16 +2375,44 @@ const PHOTOS=[
  {img:IMG['photo-act9'],t:'특강 강사 초청 및 미래교육 12기 초대 비대면 모임',d:'2026.10'}
 ];
 
-const BLANKS=[
- {q:'나는 어떤 기준을 가진 부모가 되고 싶은가?',
-  pre:'나는 ', post:' 기준을 가진 부모가 되고 싶다.',
-  opts:['강녕한','유연한 사고의','친구같은','대화를 잘 하는 지혜로운','디지털 시민성을 실천하는','회복탄력성이 좋은 아이가 되도록 본보기를 보인다는','디지털을 제대로 잘 사용할 줄 알고 하게 만든','기기를 현명하게 지혜롭게 사용하는','협상과 대화가 항상 원활한']},
- {q:'하루 중 잠시 멈출 수 있다면, 무엇을 하고 싶으신가요?',
-  pre:'나는 멈춤의 시간을 갖는다면, ', post:' 하겠습니다.',
-  opts:['오늘 하늘과 풍경들을 그리겠다','나무 그늘 평상에 대자로 누워 하늘을 보겠다','사랑하는 사람들과 함께 시간을 보내겠다','하늘, 해, 별을 보며 자연의 숭고함을 느끼겠다','소중한 사람들과 대화의 시간을 더 많이 갖겠다','아이와 눈 마주치며 함께하는 활동을 하겠다','기도와 묵상을 하겠다','푸른 하늘도, 회색빛 하늘도, 까만 밤하늘도 올려다보겠다','나의 걸음을 최대한 느리게 하여 한 발 뗄 때마다 우주의 온 기운을 느껴 보겠다','하천에 나가 오리의 헤엄을 보며 멍하니 바라보겠다']},
- {q:'내가 바라보는 AI는 어떤 존재인가요?',
-  pre:'나에게 AI란, ', post:' 이다.',
-  opts:['빅 히어로','한 발 뒤에 있는 동반자','나를 도와주고 정보를 주는 것','다정하게 다가오지만 가깝고도 먼 친구','필요할 때 요긴하게 쓰는 요술봉','내 밥줄 뺏을까 두렵지만, 그래도 좋은 도구']}
+/* ① 1줄 정리 — 다섯 번의 생각정리 (노션 「회차별 자료」의 카드뉴스 2~6회차와 1:1) */
+const SUM_ITEMS=[
+ {k:'첫 번째 생각정리', n:2, tag:'부모상태점검', date:'2026.06.26',
+  q:'나는 어떤 디지털 윤리 의식을 가진 부모인가?',
+  pre:'나는 ', post:' 기준을 가진 부모가 되고 싶다.', ph:'나만의 기준',
+  opts:['강녕한','유연한 사고의','친구같은','대화를 잘 하는 지혜로운','디지털 시민성을 실천하는','회복탄력성이 좋은 아이가 되도록 본보기를 보인다는','디지털을 제대로 잘 사용할 줄 알고 하게 만든','기기를 현명하게 지혜롭게 사용하는','협상과 대화가 항상 원활한'],
+  news:{link:'https://canva.link/ujrm1kn6z1t882v',
+        embed:'https://www.canva.com/design/DAHMp0XZs5s/D_hLmVZ9Jsf9nZGLRkOdXg/view?embed',
+        design:'https://www.canva.com/design/DAHMp0XZs5s/D_hLmVZ9Jsf9nZGLRkOdXg/view'}},
+ {k:'두 번째 생각정리', n:3, tag:'진짜와 가짜', date:'2026.07.17',
+  q:'우리는 무엇을 근거로 진짜와 가짜를 판단하는가?',
+  pre:'나는 무엇보다 ', post:'부터 확인하는 편이다.', ph:'나만의 근거',
+  opts:['출처','증거','직감','경험','여러 경로의 교차 검색','믿을 만한 기관의 발표','지금의 내 감정'],
+  news:{link:'https://canva.link/aqqw13fday1nwi3',
+        embed:'https://www.canva.com/design/DAHPisvng2g/XQOK4dw7T5lsTVhZRnNC_Q/view?embed',
+        design:'https://www.canva.com/design/DAHPisvng2g/XQOK4dw7T5lsTVhZRnNC_Q/view'}},
+ {k:'세 번째 생각정리', n:4, tag:'그 순간의 말', date:'2026.08.07',
+  q:'마주하는 상황 속에서 부모는 무엇을 확인하고, 아이에게 어떤 말을 건네야 할까?',
+  pre:'내 아이가 잘못을 털어놓았을 때, 나는 ', post:' 부모가 되고 싶다.', ph:'어떤 부모',
+  opts:['아이를 지켜주는','먼저 들어주는','함께 기준을 세우는','잘못은 짚고 넘어가는'],
+  news:{link:'https://canva.link/i6dc1ksb3afsw4t',
+        embed:'https://www.canva.com/design/DAHRkfIq6DE/V9tH_lF46qATyS6XOXNmEw/view?embed',
+        design:'https://www.canva.com/design/DAHRkfIq6DE/V9tH_lF46qATyS6XOXNmEw/view'}},
+ {k:'네 번째 생각정리', n:5, tag:'멈춤의 시간', date:'2026.08.28',
+  q:'우리는 아이의 ‘멈춤’을 어떻게 도울 수 있을까?',
+  pre:'나는 멈춤의 시간을 갖는다면, ', post:' 하겠습니다.', ph:'하고 싶은 일',
+  opts:['오늘 하늘과 풍경들을 그리겠다','나무 그늘 평상에 대자로 누워 하늘을 보겠다','사랑하는 사람들과 함께 시간을 보내겠다','하늘, 해, 별을 보며 자연의 숭고함을 느끼겠다','소중한 사람들과 대화의 시간을 더 많이 갖겠다','아이와 눈 마주치며 함께하는 활동을 하겠다','기도와 묵상을 하겠다','푸른 하늘도, 회색빛 하늘도, 까만 밤하늘도 올려다보겠다','나의 걸음을 최대한 느리게 하여 한 발 뗄 때마다 우주의 온 기운을 느껴 보겠다','하천에 나가 오리의 헤엄을 보며 멍하니 바라보겠다'],
+  news:{link:'https://canva.link/fovlahvt8n6ykmm',
+        embed:'https://www.canva.com/design/DAHS1GG--X0/9K-q02I3O3WdBlNB0ORiqw/view?embed',
+        design:'https://www.canva.com/design/DAHS1GG--X0/9K-q02I3O3WdBlNB0ORiqw/view'}},
+ {k:'다섯 번째 생각정리', n:6, tag:'기회와 위험', date:'2026.09.18',
+  q:'같은 디지털 환경이 누구에게는 기회가 되고, 누구에게는 위험이 되는 이유는 무엇일까?',
+  pre:'나에게 AI란, ', post:' 이다.', ph:'AI는 어떤 존재',
+  opts:['일상과 교육을 돕는 편리한 도구','기회이자 조심해야 할 대상','최종 판단은 내가 하는 동반자','지능은 있지만 지성은 없는 존재','편리함까지만 받아들이는 도구','빅 히어로','한 발 뒤에 있는 동반자','필요할 때 요긴하게 쓰는 요술봉','내 밥줄 뺏을까 두렵지만, 그래도 좋은 도구'],
+  news:{link:'https://canva.link/fovlahvt8n6ykmm',
+        embed:'https://www.canva.com/design/DAHS1GG--X0/9K-q02I3O3WdBlNB0ORiqw/view?embed',
+        design:'https://www.canva.com/design/DAHS1GG--X0/9K-q02I3O3WdBlNB0ORiqw/view',
+        note:'노션 「회차별 자료」에 6회차 카드뉴스가 5회차와 같은 링크로 들어 있어, 같은 카드뉴스를 엽니다.'}},
 ];
 
 /* 패들렛 게시글 46개 (2026-11-23 확인) */
@@ -2210,7 +2501,7 @@ const TYPO12=[
 const ESSAY_FULL = { "한선영": { "page": 9, "title": "AI 시대, 우리가 지켜야 할 마지막 경계선", "paras": [ "생성형 AI가 처음 등장했을 때, 나에게 AI는 마치 ‘무(無)에서 유(有)’를 창조하는 새로운 세계로 들어가는 관문처럼 느껴졌다. 인류가 이룩한 21세기 기술 문명의 눈부신 발전에 감탄하며 그저 신기해했던 기억이 있다. 머릿속에 상상하던 것을 목구멍으로 논리적인 프롬프트만 작성하면 순식간에 눈앞에 구현해 주는, 마치 ‘팅커벨의 요술봉’과도 같은 존재였다.", "그러나 지금의 현실은 어떠한가. 상상을 초월하는 속도로 AI 기술이 발전하고 우리의 일상 깊숙이 스며드는 사이, 그 편리함 이면에 가려져 있던 윤리적 문제들은 점점 더 복잡하고 심각해지고 있다. 유럽에서 발생한 사이버 해킹 사건부터 AI를 악용한 각종 범죄, 최근 논란이 된 디지털 기기를 이용한 시험 부정행위에 이르기까지, 인간의 양심과 윤리적 기준이 흔들리는 현실을 마주할 때면 막연한 불안과 두려움이 밀려오기도 한다. 나 역시 일상에서 AI의 혜택을 누리면서도, 언제나 윤리적으로 올바른 판단을 내리고 있다고 자신할 수는 없다.", "기술은 이토록 빠르게 진화하는데, 과연 인간의 윤리 의식도 그만큼 성숙해지고 있는 것일까? 이런 질문을 스스로에게 던지며, 효율과 편리함, 성과와 성공이 우선시되는 사회에서 우리는 정작 무엇을 소중히 여겨야 하고 무엇을 잃어가고 있는지 되돌아보게 된다.", "그동안 학부모 리더교육관 ‘미래교육 길잡이’ 기본·심화 과정을 수료 후 미래교육에 대한 기본적인 지식을 차근차근 쌓아왔다. 이후 학부모 학습공동체 ‘퓨처큐레이션’에서 배움에 대한 열정이 가득한 학부모님들과 다양한 관점에서 깊이 있는 의견을 나누면서, 그동안 충분히 고민하지 못했던 디지털 윤리의 중요성을 다시 한번 깨닫게 되었다.", "무엇보다 AI 시대를 살아가는 한 개인이라 부모로서 어떤 역할을 해야 하는지 돌아보고, 나만의 윤리적 기준을 생각해보는 계기가 되었다. 앞으로 일상에서 사춘기 자녀와 디지털 윤리에 대해 꾸준히 대화하며, 아이가 성장하는 과정에서 AI를 주체적으로 사용하며, 시행착오를 통해 옳고 그름을 스스로 판단하고, 자신의 행동에 책임지는 태도를 기를 수 있도록 돕고 싶다. 나아가 스스로 생각하고 판단하는 힘을 지닌, 내면이 단단한 사람으로 성장하기를 바란다.", "AI가 아무리 뛰어난 능력을 갖추더라도 인간의 양심과 도덕적 판단까지 대신할 수는 없다. 결국 최첨단 기술을 어떤 목적으로, 어떻게 사용할 것인지를 결정하고 그 결과에 책임져야 하는 주체는 인간이다. [[우리가 끝까지 지켜야 할 마지막 경계선, 그것은 생명의 안전과 인간다움 그리고 정의를 향한 인간의 양심인 것이다.]]" ] }, "윤은주": { "page": 10, "title": "우리는 지금, 인간답게 살아가고 있을까?", "paras": [ "『완벽한 원시인』을 읽으면서 우리가 살아가는 방식에 대해 많은 공감을 하게 되었습니다. 책을 읽다 보니 문득 지금 우리의 생활은 어떤 모습일까 하는 생각이 들었습니다.", "우리는 하루의 대부분을 의자에 앉아서 보내고, 스마트폰과 SNS를 끊임없이 확인합니다. 햇빛을 충분히 쬐지 못하고, 몸을 움직이는 시간도 점점 줄어들고 있습니다. 사람들과 직접 만나 소통하기보다는 온라인으로 관계를 맺는 데 익숙해졌으며, 자극적인 음식과 영상에 끊임없이 노출되어 살아갑니다.", "이러한 생활 방식이 반복되면서 우리의 뇌와 몸은 본래의 리듬을 잃어가고 있는 것은 아닐까?", "책에서는 이러한 현대인의 생활에서 벗어나기 위한 회복의 시작이 바로 ‘움직임’에 있다고 이야기합니다. 걷고, 몸을 움직이고, 자연 속에서 햇빛을 쬐는 것처럼 인간이 본래 살아왔던 자연스러운 생활 방식으로 돌아가는 것이 뇌와 몸을 회복하는 중요한 출발점이라는 것입니다.", "주변의 아이들을 보아도 이러한 문제를 쉽게 발견할 수 있습니다. 스마트폰에 지나치게 의존하는 아이들은 집중하는 데 어려움을 겪고, 스스로 생각하고 기다리는 것을 힘들어하기도 합니다. 작은 일에도 쉽게 짜증을 내거나 감정을 조절하지 못하는 모습도 볼 수 있습니다.", "물론 이러한 행동을 모두 스마트폰 때문에라고 단정할 수는 없지만, 디지털 기기에 지나치게 의존하는 생활이 아이들의 집중력과 정서 발달에 어떤 영향을 미치는지 우리 모두가 생각해 볼 필요가 있습니다.", "결국 우리가 회복해야 할 것은 단순히 뇌의 기능만이 아닙니다. 뇌의 건강을 되찾고, 몸의 생체리듬을 회복하며, 자연 속에서 움직이고 사람들과 직접 교감하는 인간 본래의 생활 방식에 조금씩 가까워지는 것입니다.", "[[어쩌면 AI와 디지털 기술이 더욱 발달하는 시대일수록 우리에게 필요한 것은 더 많은 자극과 편리함이 아니라, 걷고 생각하고 느끼며 사람들과 소통하는 아주 기본적인 인간의 삶인지도 모르겠습니다.]]" ] }, "전희연": { "page": 11, "title": "시간의 여유와 틈", "paras": [ "찬 바람이 불며 샐쌀해진 ‘수능 한파’의 아침..어김없이 시바견 메시와 함께 낙엽비가 내리는 봉제산으로 산책을 다녀왔답니다. 바람에 날리거나 길 위에 소복이 쌓인 다채로운 가을 낙엽들이 어찌나 운치 있고 멋스럽던지요! 특히 ‘사색의 공간’과 곧게 뻗은 잣나무 숲은 울창한 나무 사이로 깊어진 가을 공기를 들이마시며 걷기에 정말 좋았어요. 풀잎냄새로 행복한 메시와 산책 나온 친구 강아지도 인사하느라 뱅글뱅글 도는 모습이 어찌나 귀여웠는지 한참 놀리고 정상 부근 산마루공원에 오르니 바람에 살랑이는 억새 너머로 우장산, 증미산 같은 이웃 산줄기와 도심 풍경이 한눈에 들어와 가슴이 탁 트이더라고요. 얼마 전 공사를 마친 둘레길도 걷기에 편했답니다. 드디어 비오는 날에도 산책할 수 있게 되었어요!!", "산 초입 야외 헬스장과 황토길에는 아침부터 맨발로 걷거나 운동하시는 어르신들의 활기가 가득했어요. 그 옆에서 간식을 맛있게 얻어먹고 있는 들고양이 두 마리와, 주변을 정성껏 청소해 주시는 따뜻한 아주머니의 모습까지... 학교에 가는 이삼일을 빼고는 매일 아침 마주하는 참 고맙고 소중한 풍경들이에요. 이제는 세상의 거창하고 복잡한 뉴스들보다 이렇게 우리 곁을 지키는 소소하고 다정한 이야기들이 훨씬 더 즐겁고 귀하게 느껴져요.", "오늘 아침 수능 시험장에서 AI로 부정행위를 하려는 수험생들과 그걸 막으려는 정부의 첩보전 같은 뉴스들을 보며 마음이 참 씁쓸했어요. 우리 공교육도 아이들이 이렇게 산을 오르내리며 산책하듯 세상의 다채로움을 경험하고, 스스로 배울 수 있도록 충분한 시간과 마음의 틈을 내어주면 좋겠다는 생각이 간절해졌어요. 고(故) 이어령 선생님 말씀처럼, 인공지능 시대일수록 기계가 결코 대신할 수 없는 [[‘질문을 던지는 힘’과 ‘타인의 아픔에 공감하는 따뜻한 윤리’]]를 깨우는 교육이 정말 중요하잖아요. “이 선택이 사람에게 이로운가, 정의로운가”를 스스로 묻고 책임지는 도덕적 감수성은 오직 살아 숨 쉬는 사람과 사람의 관계 속에서만 길러진다고 하셨듯... 이제는 정말 정답만 쫓는 입시 중심의 교육은 멈추고, 배움 본연의 기쁨과 사람다운 따뜻함을 함께 가꾸는 교육으로 나아가야 할 때인 것 같아요.", "요즘 한자 공부와 디지털 윤리를 공부하며 세상의 이치를 하나씩 깨달아가는 재미에 푹 빠져 있는데요. 스스로 알아가는 즐거움을 무엇과 비교할 수 있을까요? 우리 아이들이 정답보다 질문을, 경쟁보다 다채로운 세상을 스스로 즐겁게 탐색하며 자라나길 기도합니다. 쌀쌀한 날씨에 감기 조심하시고 오늘도 따뜻하고 평안한 하루 보내세요! 감사합니다." ], "quote": [ "“타인의 아픔에 공감하는 따뜻한 윤리”", "“스스로 묻고 책임지는 도덕적 감수성”" ] }, "송에스더": { "page": 12, "title": "나는 함께 갈 준비가 되었나?", "paras": [ "하루 하루 삶이 쌓이고 엄마로 지내다 보니 여행은 더없이 특별하고 소중하다. 요즘엔 매일이 여행이구나! 싶은 자세로 산다. 출근했다 퇴근해서 돌아오고 산책갔다가 돌아온다. 미술관, 전시관, 도서관 등의 작품과 책 속에서 돌아온다. 숙소를 잡고 며칠씩 새로운 곳을 탐험하고 돌아온다. 돌아올 곳으로 돌아오는 것이 여행이라고 어디선가 들었다. '이번 여행도 좋았어!' 각자의 여행으로 얻은 경험으로 또 다른 여행을 준비한다.", "여행이야기를 하는 건, [[AI세계로의 여행]] 시작되었기 때문이다. 진입부터가 쉽지가 않았다. 모 아이스크림 가게 키오스크 앞에 가만히 서 있었던 막막함이 아직도 선하다. 생활 전반에 AI의 도움은 어마무시하다. 교육에도 AI의 도움으로 학습능력을 끌어올리고, 예전에는 접하지 못했던 방대한 정보로 대부분의 사람들, 남녀노소를 비롯하여 박학다식해졌다. 미래교육길잡이를 만나 눈깜짝하면 코베어가는 헌 시대에 주위를 둘아보며 가만가만 걸어갈 수 있는 AI여행친구를 만났다.", "AI세계로의 여행이 시작되었다. 나는 여행준비가 되어있나? 여행준비 리스트를 작성해 본다. 다양한 AI프로그램 사용법을 익히고, 활용하고 생산물을 내고, AI적용된 곳에서 헛갈리지 않게 미리 익히고, 토큰구입 비용 마련, 오픈된 마음자세로 세상을 바라보는 등. 아, 내 사고는 여전히 갇혀있다.", "AI의 신나고 판타스틱한 여행에서 나와 우리를 지키는 것. 인간의 깊은 내면에 바탕을 둔 예의와 존중과 교육이 아닐까? 빠른 AI물살에 휩쓸려 도착한 곳에서도 주의를 살필 수 있도록 천천히 여유있게 나와 우리를 돌아보며 여전히 따뜻한 손과 말을 건널 수 있으면 좋겠다. 내가 불편한 것은 상대도 불편할 것을 알고 우리가 유치원 시절 배웠던 예의와 존중을 지켜가면 지금보다는 AI를 이용한 '나쁜 짓'이 줄지 않을까?", "돌아올 곳이 어딘지 아는 AI여행이 되었으면 좋겠다. 내가 돌아갈 곳은 나와 사랑하는 내 가족과 지금 이 시간, 나와 함께 하는 사람들의 맑은 웃음과 행복이다. 돌아올 곳이 있으니 떠나볼까?", "AI 여행의 안내자는 AI 이지만, 그 여행을 선택하고 걸어가는 역할은 나와 우리이다. 예의와 존중으로 무장하여 주도적이고 도덕적으로 활용하게 될 때, 가장 소중한 우리 아이들도 AI의 발전된 여행에서 남용하지 않고 해악에 대처하는 준비가 될 것이라고 믿는다. 적어도 지금까지. 앞으로도." ], "sub": "‘여행은 즐겁다!’" }, "김은호": { "page": 13, "title": "정답을 넘어 마침을 꺼안으며: AI의 시대, 인간의 존엄은", "paras": [ "세상이 온통 AI 이야기로 떠들어대고 있다. 진짜와 가짜가 뒤섞여 어떤 것도 쉽게 믿을 수 없는 이 번람의 시대에, 나의 호기심은 기계와 인간의 다름으로 향했다. ‘무엇이 인간인가?’라는 질문이 생겨났다. 완벽한 연산과 매끄러운 결과물이 이제 기계의 몫이라면, 우리는 무엇을 해야 하는가. 이 뒤죽박죽인 세상에서 기계가 결코 흉내 낼 수 없는 인간만의 가치는 과연 어디에서 오는가.", "그 출발점은 바로 ‘주도성’과 ‘목적성’이다. AI는 강력한 도구이지만, 그것을 어디에 어떻게 쓸 것인지 결정하는 분명한 목적이 없다면 인간은 결국 기술에 종속되고 만다. 기계가 뽑아내는 결과값에 끌려가지 않고 도구를 부리는 뻔뻔한 주도성을 쥐었을 때, 비로소 나의 의도는 선명하게 드러난다. 그리고 우리에게 마지막으로 요구되는 것은 다음 아닌 ‘도덕성’이다. 기준과 제도가 기술의 속도를 따라가지 못하며, 도구의 편리함 뒤에 숨어 자격시험을 통과하거나 거짓을 만들어내는 쓸쓸한 현상들이 넘친다. 감시하는 눈이 없으면 쉽게 무너지는 알량한 기준이 아니라, ‘남이 보지 않아도 나 스스로 알고 있다’는 서늘한 자각으로 선을 넘지 않는 꼿꼿한 도덕성. 나는 그것이 기술의 번람 속에서도 잃지 말아야 할 인간의 ‘존엄’이라 믿는다.", "이 거대한 변화 속에서 스마트폰을 쥔 아이들의 세상을 마주하며, 통제하는 부모가 아닌 이해하는 조력자가 되기 위해 나는 무엇을 해야 할까. 퓨처큐레이션에서 배움을 거듭하며 내가 가장 먼저 한 일은, 내 안의 익숙한 생각들을 지우는 ‘[[언러닝(Unlearning)]]’이었다. ‘부모인 내가 통제할 수 있다’거나 ‘어떤 문제든 완벽한 정답이 존재한다’는 선부른 확신부터 덜어내야 했다. 기존의 틀을 비우고 인지적 유연성을 기르는 일은 서툴고 매 순간 흔들리지만, 기계의 완벽한 정답에 기대는 대신 나와 아이 모두 스스로 중심을 잡아가기 위한 필수적이지만 고난의 과정 중이다.", "남은 정답을 지워낸 자리에는 도덕적 딜레마 속 ‘합의’라는 묵직한 과제가 남았다. 합의는 기계처럼 갈등을 단숨에 없애주는 기술이 아니다. 나와 다른 가치와 부딪히는 결끄러운 마찰을 피하지 않고 마주하며 조율해 나가는 일이다. 타인과 부딪히며 합의점을 찾아가는 이 울퉁불퉁한 궤적을 견뎌낼 때, 바로 기계가 복제할 수 없는 우리만의 질은 ‘[[고유성]]’이 빛어진다고 믿는다.", "기계는 연산을 마치면 멈추지만, 인간인 나의 배움은 멈추지 않는다. 부족한 내가 당장 딜레마 속에서 완벽한 결론을 낼 수는 없겠지만, 매끄러운 정답 앞에서도 멈추지 않고 꼬리를 무는 질문을 던지려 한다. 마침을 꺼안고 합의를 향해 나아가는 이 끝없는 질문이야말로 흉내 낼 수 없는 인간의 고유성이자, 시대를 건너는 가장 단단한 존재가 될 테니까." ] }, "이경옥": { "page": 14, "title": "할 수 있다는 것과 해도 된다는 것", "paras": [ "우리는 기술이 무엇을 할 수 있는지에 열광하는 시대를 살고 있다. 인공지능은 질문에 답하고, 글을 쓰고, 그림을 그리고, 때로는 인간의 판단까지 대신한다. 불과 얼마 전까지 상상 속에 머물렀던 일들이 어느새 일상이 되었다. 기술의 발전은 분명 우리 삶을 풍요롭게 만들었다. 더 많은 정보에 접근할 수 있게 되었고, 시간과 공간의 제약을 넘어 새로운 가능성을 경험하고 있다. 나 역시 기술의 발전을 긍정하며, 앞으로 펼쳐질 미래를 기대하는 사람 중 하나다. 그러나 기술이 할 수 있는 일이 많아질수록 우리에게는 또 다른 질문이 필요해진다.", "인공지능으로 누군가의 얼굴과 목소리를 재현할 수 있다. 다른 사람의 글과 그림을 손쉽게 변형할 수도 있다. 알고리즘은 우리의 취향을 분석하고 행동을 예측하며 선택을 유도한다. 이 모든 것이 기술적으로 가능하다는 이유만으로 정당화될 수 있을까? 이 질문은 기술을 개발하는 전문가에게만 해당하지 않는다. 아이들이 AI로 과제를 해결할 때, 어른들이 확인되지 않은 정보를 공유할 때, 누군가의 사진을 동의 없이 활용할 때 우리는 모두 같은 질문 앞에 선다.", "우리는 종종 기술을 얼마나 능숙하게 사용하는지에 관심을 기울인다. 새로운 도구를 빠르게 배우고 효율적으로 활용하는 능력을 중요하게 여긴다. 하지만 그 기술을 사용하기 전에 잠시 멈춰 생각하는 능력 역시 중요하지 않을까. 내가 하려는 행동은 누군가의 권리를 침해하지 않는가. 그 결과에 책임질 수 있는가. 편리함이라는 이유로 놓치고 있는 가치는 없는가. 『도덕적인 AI』에서 읽었던 한 문장이 오래도록 마음에 남았다. “문제는 우리가 기술을 추구했는지의 여부가 아니라 기술을 추구한 방식에 있었다.”", "우리가 고민해야 할 것은 기술의 발전을 받아들일 것인가, 거부할 것인가의 문제가 아닐지도 모른다. 어떤 가치를 지키며 기술을 발전시키고, 어떤 기준으로 사용하며, 그 과정에서 발생하는 문제에 어떻게 책임질 것인가의 문제에 더 가깝다. 디지털 윤리는 기술을 사용하지 말라는 금지의 언어가 아니다. 무엇이 가능하고 무엇이 옳은지 스스로 질문하며, 다른 사람과 함께 살아가기 위한 기준을 세워 가는 과정이라고 생각한다. 기술이 더 많은 가능성을 열어 줄수록, 우리에게 필요한 것은 그 가능성을 무조건 따라가는 속도가 아니라 그 앞에서 [[스스로 판단할 수 있는 힘]]이다." ], "quote": [ "기술이 가능하게 했다는 이유만으로 우리의 선택까지 정당해지는 걸까?" ] }, "강형심": { "page": 15, "title": "가치의 충돌을 넘어, 미래교육이 길러야 할 힘", "paras": [ "우리는 기술이 무엇을 할 수 있는지에 열광하는 시대를 살고 있다. 인공지능은 학습을 돕고, 정보를 분석하며, 인간이 해결하기 어려웠던 문제에도 새로운 가능성을 제시한다. 그러나 기술이 발전할수록 우리가 마주하는 고민도 복잡해진다. 기술의 발전은 단순히 새로운 기능을 더하는 일이 아니라, 서로 다른 가치들이 충돌하는 상황을 만들어 낸다는 생각을 했다.", "예를 들어 AI를 활용하면 학습의 효율성은 높아지지만 학생 스스로 생각하는 기회는 줄어들 수 있다. 학습 데이터를 활용하면 맞춤형 교육이 가능해지지만, 개인정보 보호와 감시의 문제도 함께 따라온다. 효율성과 자율성, 편리함과 책임, 공정성과 평등. 모두 중요하지만 때로는 동시에 지키기 어려운 가치들이다. 그렇다면 우리는 무엇을 기준으로 선택해야 할까?", "나는 미래교육이 이 질문에서 출발해야 한다고 생각한다. 하나의 정답을 빠르게 찾는 능력보다 서로 다른 가치를 이해하고, 다양한 관점에서 문제를 바라보며, 자신의 선택에 책임지는 능력이 더욱 중요해질 것이다. 나와 다른 생각을 듣고 토론하며, 때로는 자신의 생각을 수정하는 경험도 필요하다.", "미래교육은 기술을 잘 사용하는 사람을 넘어 기술을 올바르게 판단하고 활용하는 사람을 길러내야 한다. 정답을 알려주는 교육에서 스스로 질문하고 함께 답을 찾아가는 교육으로 변화해야 한다. [[기술이 무엇을 할 수 있는가를 넘어 무엇이 바람직한가를 고민하는 힘]], 그것이 미래를 살아갈 아이들에게 우리가 길러주어야 할 중요한 역량이라고 생각한다." ] }, "김은진": { "page": 16, "title": "AI 시대, 부모의 역할은 달라져야 한다.", "paras": [ "AI가 아이의 미래를 결정하는 것이 아니라, AI를 어떻게 활용하느냐를 결정하는 아이의 생각과 가치관이 미래를 만든다.", "즉, AI가 지식과 정보를 대신 찾아주는 시대, AI와 함께 공존하면서도 인간다움을 잃지 않기 위해 부모가 아이에게 가르쳐야 할 것은 무엇일까?", "1. AI에게 묻기 전에 먼저 스스로 생각하라.", "- AI는 생각을 대신하는 존재가 아니라 생각을 확장하는 도구임을 알려준다.", "- 핵심 가치: 자기주도성 · 사고력", "2. AI의 답을 무조건 믿지 말고 의심하고 확인하라.", "- 다양한 자료를 비교하고 사실인지 확인하는 비판적 사고를 가르친다.", "- 핵심 가치: 비판적 사고력 · 정보 판별력", "3. AI를 활용하되, 나만의 창의성을 잃지 마라.", "- AI의 답을 그대로 복사하기보다 새로운 질문을 만들고 다양한 방식으로 문제를 해결하는 경험을 제공한다.", "- 핵심 가치: 창의력 · 문제해결력", "4. 기술보다 사람을 먼저 생각하라.", "- AI가 발전해도 공감, 배려, 책임감, 소통과 같은 인간의 가치는 중요하다는 것을 가르친다.", "- 핵심 가치: 공감능력 · 인성 · 공동체 의식", "5. AI 사용에도 책임과 윤리를 지켜라.", "- AI를 활용한 결과물에 책임을 지고, 개인정보 보호, 저작권, 초상권 등 디지털 시민의식을 가르친다.", "- 핵심 가치: 디지털 윤리 · 책임감", "AI를 효과적으로 잘 사용하기 위해서는 무엇을 질문하고 어떻게 판단하며 어떤 가치를 선택할 것인지를 가르치는 것이 부모의 진정한 역할이다.", "[[AI가 대신할 수 없는 생각하는 힘, 공감하는 마음, 책임지는 태도!!]]" ] }, "김지연": { "page": 17, "title": "AI 시대, 우리는 무엇을 준비해야 할까?", "paras": [ "AI가 빠른 속도로 발전하고 있고, 이에 따른 여러 문제들도 많이 제기되고 있는 요즘, 우리는 무엇을 고민하고, 준비해야 할까?", "우선, AI를 알아야 할 것 같다. AI 그 자체는 인간이 만든 것인데, 인간보다 더 똑똑하게 느껴질 때가 있다. 그런 AI한테 압도 당하면 안 된다. AI가 보여주는 게 다 진실이 아니기 때문이다. AI를 만든 것도 인간, AI를 잘 사용해야 하는 것도 인간, AI가 내보낸 결과의 진위 여부를 판단해야 하는 것도 인간이다. 이런 점에서, AI를 사용하는 인간의 책임은 막대하다.", "따라서, 우리는 AI를 사용하기에 앞서, 여러 준비를 해야 한다. AI는 데이터를 통해서, 일방적으로 정해진 답을 제공해 주기 때문에, 모든 사람들의 요구를 딱 맞춰주는데 한계가 있을 수도 있다. 그러므로, [[인간은 AI만 의존할 게 아니라, 폭넓은 경험, 다양한 시도, 독서를 통해, 여러 배경지식을 쌓아야 한다.]]", "그리고, AI 시대에는 질문하는 능력, 글 쓰기 능력이 중요하다. ,AI를 활용할 때, 우리가 어떤 질문을 하는지, 어떤 글을 쓰는지에 따라, 결과가 각각 다르게 나오기 때문이다.", "모든 것이 자동화 되는 AI시대에 어쩌면, 디지털 보다는 아날로그가 더 의미있게 느껴지고, 꾸준히 독서하고, 질문, 대화하는 습관이 더 중요하게 여겨지는 요즘입니다." ], "imgnote": "17쪽 하단 포스터 — “AI 시대, 우리(아이와 내가) 반드시 지켜야 할 것” / AI는 도구일 뿐, 우리의 마음과 선택이 더 소중합니다. 함께 배우고, 함께 지키며, 더 빛나는 미래를 만들어가요!" }, "윤지현": { "page": 18, "title": "알고 있는 윤리와 지켜내는 윤리 사이에서 나의 가치 판단은?", "paras": [ "나는 디지털 기술과 AI를 가르친다. 수업에서 저작권을 이야기하고, AI로 만든 결과물에 대한 책임을 강조하고, 디지털 윤리의 중요성을 빠뜨리지 않고 말한다. 적어도 나는 그렇게 가르치고 있다고 믿었다. 그런데 퓨처 큐레이션에서 열 개의 질문을 함께 나누면서, 내가 가르치는 디지털 윤리와 내가 서 있는 현실 사이에 생각보다 큰 틀이 있다는 걸 마주하게 되었다.", "\"나는 내가 가르치는 윤리를 정말 지키고 있을까?\"", "솔직하게 말하면, 윤리적으로 무엇이 옳은지는 알고 있다. 하지만 실제 수업에서 그렇게만 가르칠 수는 없었다. 수강생들이 나를 찾아오는 이유는 대부분 분명하다. 더 빨리 배우고, 더 빨리 결과물을 내고, 그것으로 수익을 만들고 싶어서다. 현실의 기술 교육은 결국 돈과 연결되어 있다. 그 안에서 디지털 윤리를 먼저 한 틀의 양심적 회피도 없이 완벽하게 지키는 일은 생각보다 훨씬 어렵다.", "나만 해도 그렇다. 수업 중에 윤리 의식을 강조하지만, 윤리 원칙만 하나하나 따라가다 보면 돈을 벌 수 없거나 목표까지 가는 길이 너무 멀어지는 경우가 많다. 이 이미지는 괜찮은지, 이 스타일은 누군가를 너무 닮지 않았는지, 이 방식이 정말 멋있는지 일일이 따지다 보면 수강생들이 원하는 속도를 맞춰주기 어렵다. 그 사이에서 무의식적으로, 혹은 알면서도 순간의 잘못된 판단으로 마땅히 지켜야 할 것을 놓친 순간들이 분명히 있었다.", "아이들 교육에 대해 이야기할 때도 같은 괴리를 느꼈다. 진짜와 가짜를 어떻게 가려낼지, 아이의 데이터를 어떻게 지킬지, 도파민 자극 속에서 아이의 일상을 어떻게 지켜줄지에 대한 답은 이론으로는 어렵지 않다. 하지만 이미 AI가 과제를 대신 해주고, 영상을 알아서 다음 영상을 틀어주는 현실 속에서 그 답을 그대로 실천하기는 쉽지 않다. 교과서 속 디지털 윤리와 교실 안, 그리고 집 안의 현실 사이에는 언제나 거리가 있었다.", "그래서 이 모임이 내게 더 소중했다. 퓨처 큐레이션은 \"윤리를 지키자\"는 정답을 다시 확인하는 자리가 아니라, 지키기 어려운 현실을 솔직하게 꺼내놓고 함께 고민하는 자리였다. 다른 선생님들도 같은 지점에서 망설이고 있다는 걸 알게 되었고, 그 망설임을 외면하지 않고 이야기 나누는 과정에서 나만의 가치 판단 기준을 하나씩 세워갈 수 있었다. 완벽하게 지킬 수 없다고 해서 기준이 필요 없는 게 아니다. 오히려 흔들리기 쉬운 현실에 있을수록 돌아올 기준이 더 필요하다.", "[[AI 시대에 아이들에게 무엇을 남길 수 있을지 묻는 질문 앞에서, 나는 완벽한 윤리보다 정직한 고민을 남기고 싶다고 생각했다.]] 현실은 늘 타협을 요구하겠지만, 그 타협의 순간마다 \"이게 옳은가\"를 한 번이라도 묻는 사람과 그러지 않은 사람은 분명히 다른 길을 간다.", "내가 먼저 실천할 수 있는 디지털 윤리는 거창하지 않다. 수업에서 수익화 방법만 알려주지 않고, 그 방법이 누군가의 권리를 침해하지 않는지 함께 따져보는 시간을 단 몇 분이라도 넣는 것. AI의 도움을 받은 결과물을 솔직하게 밝히는 것. 그리고 내가 놓친 순간이 있었다면 그것을 인정하고 다음에는 조금 더 나은 선택을 하는 것. 알고 있는 윤리를 지켜내는 윤리로 바꾸는 일은 한 번에 되지 않는다. 다만 이번 모임을 통해 그 거리를 좁히려는 첫걸음을 띄었다고 믿는다." ] }, "권부영": { "page": 19, "title": "질문하는 인간, 책임지는 인간", "paras": [ "“우리는 답을 얻는 만큼, 스스로 생각하고 있을까?”", "우리는 이제 질문만 하면 답을 얻을 수 있는 시대를 살고 있습니다. 인공지능은 미처 생각하지 못한 관점을 제시하고, 복잡한 문제를 이해하는 데 도움을 줍니다. 저 역시 AI와 대화하여 새로운 가능성을 발견하지만, 그럴듯한 답을 믿었다가 뒤통수를 맞는 일도 종종 있습니다. 사실과 다른 정보를 자신 있게 말하거나 특정한 관점에 치우친 답을 내놓기 때문입니다.", "그래서 저는 AI 시대에 더욱 중요한 역량이 ‘질문하는 힘’이라고 생각합니다. 이는 원하는 답을 얻기 위해 명령어를 잘 입력하는 능력이 아닙니다. AI가 제시한 답의 전제와 근거를 살피고, 스스로 판단하기 위해 던지는 질문입니다.", "“이것은 사실인가? 정말 옳은가? 누구에게 어떤 영향을 미치는가?”", "이러한 질문은 기술이 제시한 답을 무조건 받아들이는 대신, 잠시 멈춰 생각하게 합니다. 무엇이 가능한지를 넘어 무엇이 바람직한지 고민하게 하고, 나의 선택이 타인과 사회에 미칠 영향까지 돌아보게 합니다. 저는 바로 이 지점에서 비판적 사고가 윤리적 책임과 만난다고 생각합니다.", "특히 아이들이 살아갈 미래를 생각하면 이 문제는 더욱 중요하게 다가옵니다. AI를 능숙하게 활용하는 것도 중요하지만, 저는 제 아기가 정답을 빠르게 찾아내는 사람보다 [[주어진 답에 의문을 품고, 다른 가능성을 탐색하며, 자신의 판단을 설명할 수 있는 사람]]으로 성장하기를 바랍니다. 그러기 위해서는 부모인 우리부터 기술이 제시하는 답 앞에서 질문하고 스스로 판단하는 모습을 보여주어야 하겠지요.", "제가 생각하는 디지털 윤리란 기술을 거부하거나 무조건 사용을 제한하는 규칙이 아닙니다. [[기술의 도움을 충분히 활용하되 생각의 주도권을 잃지 않는 것, 편리함에 기대어 판단을 포기하지 않는 것, 그리고 스스로 내린 선택에 책임지는 태도]]입니다.", "기술은 앞으로도 더 많은 일을 대신해 줄 것입니다. 그러나 무엇을 믿고, 무엇을 선택하며, 어떤 세상을 만들어 갈 것인지는 여전히 우리 스스로 답해야 할 질문입니다.", "[[AI는 답을 제시합니다. 인간은 질문하고, 판단하고, 책임집니다.]]" ] }, "오은정": { "page": 20, "title": "낯선 단어에서 시작된 나의 디지털 윤리", "paras": [ "AI라는 단어를 모르는 사람은 없을 것이다. 뉴스에서도, 엄마들 모임에서도, 아이와의 대화에서도 이제 AI는 자연스럽게 등장한다. 그런데 에상하게도 그 이야기는 늘 화제가 된 쇼츠를 두고 몇 마디 주고받는 데서 멈췄다. 그 기술을 어떻게 바라보는지, 우리는 어떤 생각을 가지고 있는지까지 이어지는 대화는 좀처럼 없었다. 그래서 궁금했다. 이 주제를 깊이 있게 나누는 자리가 있다면, 그곳의 사람들은 어떤 이야기를 하고 있을까. 그렇게 이 모임의 문을 두드렸다.", "그때의 나는 AI에 관심은 많았지만 깊이 파고들지는 않았다. 아이 사진으로 유행하는 스티커나 짤을 신나게 만들며 즐기는 정도였다. 무엇을 만들지보다 무엇이 만들어질지가 더 궁금했고, 생각보다 클릭이 앞섰다.", "[[“ 관심은 많았지만, 생각은 없었던 사용자. 그게 그때의 나였다. ”]]", "열 개의 질문 중 가장 오래 머문 질문은 '나는 어떤 디지털 윤리 의식을 가진 부모인가?'였다. 나는 어떤 부모인지, 아이에게 어떤 배움을 줄 수 있는지, 어떻게 지지하고 아이의 감정을 어떻게 받아줄지는 여러 번 고민해 봤다. 그런데 '디지털 윤리 의식'은 단어부터 낯설었다. 모두가 아는 AI와 달리, 그 곁에 있어야 할 이 단어는 한 번도 진지하게 떠올려 본 적이 없던 것이다. 그래서 이 질문을 이 활동에서 가장 먼저 붙잡아야 할 기본으로 삼았다.", "그 질문을 품고 돌아보니 우리 집에도 작은 변화가 있었다. 예전에는 아이가 아빠와 이미지를 만들거나 떠오르는 대로 프롬프트를 넣어 보는 일이 대부분이었다. 이제는 하고 싶은 주제를 먼저 함께 이야기하고, 우리 생각을 질문으로 만들어 GPT에게 묻고, 그 답으로 함께 결과물을 완성해 본다. AI가 먼저였던 자리에 우리 생각이 먼저 놓이게 된 것이다.", "[[“ 정답을 묻기 전에, 우리 생각부터 나누기. 그게 우리 집의 새로운 순서다. ”]]", "낯설게만 느껴졌던 디지털 윤리 의식은 어쩌면 이 작은 순서에서 시작되는 것인지도 모른다. 내가 생각하는 디지털 윤리 의식은 무조건 받아들이지 않는 것, 생각 없이 의도 없이 묻지 않는 것이다. 그리고 하나가 더 있다. 기술로 재미있는 것을 만들기는 쉽지만, 다른 사람의 것과 개인정보 앞에서는 한 번 더 멈춰야 한다. 아이 사진으로 스티커를 만들던 내 손끝에도 그 멈춤이 필요했는지 모른다.", "[[“ 재미있게 쓰는 것과 바르게 쓰는 것은 다르다. 나는 그 사이에서 멈춤 줄 아는 부모가 되고 싶다. ”]]", "활동을 마무리하며 다짐한다. 아이가 다양한 활동을 마음껏 접하게 하되, 그 앞에서 생각하고 묻고 멈추는 순서는 나부터 지키겠다고. 이런 이야기는 일상에서 너무 쉽게 잊히고 잘 꺼내지지도 않는다. 그래서 더 마음에 새기려 한다.", "모두가 아는 단어 'AI' 곁에, 이제 나는 낯설었던 단어 하나를 나란히 놓아 본다. '디지털 윤리 의식'." ] } };
 
 /* ══════════════════════════════════════════════════════════════
-   2026 퓨처큐레이션 · 윤리하다 — 소책자 순서 1~6 뉴런 우주
+   2026 퓨처큐레이션 · 윤리하다 — 소책자 순서 1~7 뉴런 우주
    ══════════════════════════════════════════════════════════════ */
 (function(){
 'use strict';
@@ -2267,12 +2558,13 @@ const colorFor = n => authorColor[n] || (authorColor[n]=PALETTE[ci++%PALETTE.len
 const CHAPTERS=[
   {id:'why', n:'02', t:'왜 〈윤리하다〉였나', en:'WHY · SEASON 1', x:-480, y:-140},
   {id:'how', n:'03', t:'어떻게 학습했나',      en:'HOW · 4 STEPS',  x:-120, y:-400},
-  {id:'arc', n:'04', t:'아카이브',    en:'12 · 10 · 46 · 1 · 24', x: 450, y:-170},
-  {id:'act', n:'05', t:'우리의 활동',          en:'ACTIVITIES · p.22', x:-390, y: 285},
-  {id:'next',n:'06', t:'다음 시즌',            en:'NEXT SEASON',    x: 300, y: 340}
+  {id:'arc', n:'04', t:'우리의 여정',  en:'12 · 10 · 46 · 1', x: 450, y:-170},
+  {id:'works',n:'05', t:'우리의 작업물', en:'WORKS · 4',        x: 780, y: 300},
+  {id:'act', n:'06', t:'우리의 활동',          en:'ACTIVITIES · p.22', x:-390, y: 285},
+  {id:'next',n:'07', t:'다음 시즌',            en:'NEXT SEASON',    x: 300, y: 340}
 ];
 const CHPOS_M = {   /* 모바일 배치 */
-  why:[-150,-112], how:[4,-196], arc:[152,-58], act:[-158,104], next:[92,192]
+  why:[-150,-112], how:[4,-196], arc:[152,-58], works:[118,-172], act:[-158,104], next:[92,192]
 };
 
 let nodes=[], links=[], byId={};
@@ -2416,8 +2708,7 @@ function build(){
     ['12','열두 명의 글자','Twelve letters',-95,'12'],
     ['10','열 번의 질문','Ten questions',-32,'10'],
     ['46','마흔여섯 개의 생각','Thoughts',26,'46'],
-    ['1','한 줄 정리','One line',72,'sum'],
-    ['24','24쪽 소책자','Pages',104,'24']
+    ['1','한 줄 정리 · 다섯 번의 생각정리','One line',72,'sum']
   ];
   const subN={};
   SUBS.forEach((s)=>{
@@ -2432,10 +2723,10 @@ function build(){
 
   /* 한 줄 정리 — 빈칸 채우기 서브 점 (04 아카이브 성단) */
   const SSUM=subN['1'], aSum=72;
-  BLANKS.forEach((b,i)=>{
+  SUM_ITEMS.forEach((b,i)=>{
     const p=pol(SSUM.x,SSUM.y,aSum+(i-1)*26,100);
     const n=mk({id:'bl'+i,type:'spot',x:p.x,y:p.y,amp:24,r:4.2,color:'#D9BE6A',
-      label:b.q, sub:'한 줄 정리 · 빈칸 채우기 '+(i+1), act:{k:'arc',tab:'sum'}});
+      label:b.q, sub:b.k+' · '+b.n+'회차 · 클릭해서 펼치기', act:{k:'arc',tab:'sum'}});
     link(SSUM,n,'ax');
   });
 
@@ -2478,12 +2769,20 @@ function build(){
     link(S46,n,'post');
   });
 
-  /* 24 — 소책자 */
-  const S24=subN['24'];
-  const pb=pol(S24.x,S24.y,148,202);
-  const book=mk({id:'book24',type:'photo2',x:pb.x,y:pb.y,amp:22,r:9,
-    label:'24쪽 소책자', sub:'2026.12 · 퓨처큐레이션 〈윤리하다〉', act:{k:'arc',tab:'24'}});
-  link(S24,book,'ax');
+  /* ── 05 우리의 작업물 — 여정에서 나온 네 가지 산출물 ── */
+  const C5W=chs.works;
+  const WB=pol(C5W.x,C5W.y,-50,158);
+  const book=mk({id:'book24',type:'sub',x:WB.x,y:WB.y,amp:24,r:12,glyph:'24',
+    label:'24쪽 소책자', sub:'2026.12 · 〈윤리하다〉 · 클릭해서 펼치기', act:{k:'works',tab:'24'}});
+  link(C5W,book,'ax');
+  [['구글폼 1','결과 · 통계 · 이메일',-10,200,'G1','g1'],
+   ['구글폼 2','Form · 준비 중',30,168,'G2','g2'],
+   ['실시간 설문 시스템','Live system · 준비 중',70,206,'SV','sv']].forEach((w,i)=>{
+    const p=pol(C5W.x,C5W.y,w[2],w[3]);
+    const n=mk({id:'wk'+i,type:'sub',x:p.x,y:p.y,amp:26,r:11,glyph:w[4],
+      label:w[0], sub:w[1]+' · 클릭해서 펼치기', act:{k:'works',tab:w[5]}});
+    link(C5W,n,'ax');
+  });
 
   /* ── 05 활동 (시간의 흐름) ── */
   const C5=chs.act, d5=dirOf(C5);
@@ -2528,7 +2827,7 @@ function build(){
   });
 
   /* ── 챕터 사이 옅은 신경망 + 교차 시냅스 ── */
-  const order=['why','how','arc','act','next'];
+  const order=['why','how','arc','works','act','next'];
   for(let i=0;i<order.length;i++) link(chs[order[i]],chs[order[(i+1)%order.length]],'web');
 
   const pool=nodes.filter(n=>n.type==='spot'||n.type==='post'||n.type==='ltr'||n.type==='ses'||n.type==='q');
@@ -3175,16 +3474,17 @@ function activate(n){
 /* ══════════════════════════════════════════════════════════
    발표 순서 · 독 · 키보드
    ══════════════════════════════════════════════════════════ */
-const STEPS6=[
+const STEPS7=[
   {id:'intro', n:'01', t:'퓨처큐레이션', s:'소개',     ov:'ovIntro'},
-  {id:'why',   n:'02', t:'왜 윤리하다',  s:'왜 윤리',  ov:'ovWhy'},
+  {id:'why',   n:'02', t:'왜 윤리하다',  s:'왜',       ov:'ovWhy'},
   {id:'how',   n:'03', t:'어떻게 학습',  s:'어떻게',   ov:'ovHow'},
-  {id:'arc',   n:'04', t:'아카이브',     s:'기록',     ov:'ovArc'},
-  {id:'act',   n:'05', t:'우리의 활동',  s:'활동',     ov:'ovTime'},
-  {id:'next',  n:'06', t:'다음 시즌',    s:'다음',     ov:'ovNext'}
+  {id:'arc',   n:'04', t:'우리의 여정',  s:'여정',     ov:'ovArc'},
+  {id:'works', n:'05', t:'우리의 작업물', s:'작업물',  ov:'ovWorks'},
+  {id:'act',   n:'06', t:'우리의 활동',  s:'활동',     ov:'ovTime'},
+  {id:'next',  n:'07', t:'다음 시즌',    s:'다음',     ov:'ovNext'}
 ];
 const dSteps=$('#dSteps');
-STEPS6.forEach((s,i)=>{
+STEPS7.forEach((s,i)=>{
   const b=document.createElement('button');
   b.type='button'; b.className='dstep'; b.dataset.i=i;
   b.innerHTML='<i>'+s.n+'</i><span class="lb-long">'+s.t+'</span><span class="lb-short">'+s.s+'</span>';
@@ -3198,10 +3498,10 @@ function markStep(i){
   $$('.dstep',dSteps).forEach((b,j)=>b.classList.toggle('on',j===i));
 }
 function goStep(i){
-  i=clamp(i,-1,STEPS6.length-1);
+  i=clamp(i,-1,STEPS7.length-1);
   if(i<0){ closeAll(); return; }
   markStep(i);
-  openOv(STEPS6[i].id);
+  openOv(STEPS7[i].id);
 }
 $('#dPrev').addEventListener('click',()=>goStep((curStep<0?0:curStep)-1));
 $('#dNext').addEventListener('click',()=>goStep((curStep<0?-1:curStep)+1));
@@ -3209,16 +3509,17 @@ $('#dNext').addEventListener('click',()=>goStep((curStep<0?-1:curStep)+1));
 /* ══════════════════════════════════════════════════════════
    오버레이 공통
    ══════════════════════════════════════════════════════════ */
-const OVS={intro:'#ovIntro',why:'#ovWhy',how:'#ovHow',arc:'#ovArc',act:'#ovTime',next:'#ovNext',invite:'#ovInvite'};
+const OVS={intro:'#ovIntro',why:'#ovWhy',how:'#ovHow',arc:'#ovArc',works:'#ovWorks',act:'#ovTime',next:'#ovNext',invite:'#ovInvite'};
 let activeOv=null;
 
 function openOv(id){
   if(activeOv && activeOv!==id) closeOv(activeOv,true);
   const el=$(OVS[id]); if(!el) return;
   el.classList.add('on'); activeOv=id;
-  const si=STEPS6.findIndex(s=>s.id===id);
+  const si=STEPS7.findIndex(s=>s.id===id);
   if(si>=0) markStep(si);
   if(id==='arc') Arc.open();
+  if(id==='works') Works.open();
   if(id==='act') Time.open();
   if(id==='next') Next.reset();
   if(id==='intro') Intro.enter();
@@ -3227,9 +3528,10 @@ function closeOv(id,silent){
   const el=$(OVS[id]); if(!el) return;
   el.classList.remove('on');
   if(id==='arc') Arc.close();
+  if(id==='works') Works.close();
   if(id==='act') Time.close();
   if(activeOv===id) activeOv=null;
-  if(!silent && curStep>=0 && STEPS6[curStep] && STEPS6[curStep].id===id) markStep(-1);
+  if(!silent && curStep>=0 && STEPS7[curStep] && STEPS7[curStep].id===id) markStep(-1);
 }
 function closeOverlays(){ Object.keys(OVS).forEach(id=>closeOv(id,true)); activeOv=null; markStep(-1); }
 function closeAll(){ closeOverlays(); selected=null; }
@@ -3238,6 +3540,7 @@ function closeAll(){ closeOverlays(); selected=null; }
 function goHome(){
   /* ① 도구 모달 · 하위 상세창 · 라이트박스 먼저 */
   MM.close();
+  News.close();
   Twelve.closeDetail();      /* 12인 작품 상세 */
   T46.close();               /* 46 생각 상세 */
   Time.closeLb();            /* 활동 사진 라이트박스 */
@@ -3427,7 +3730,6 @@ const Arc=(function(){
     panes.forEach(p=>p.classList.toggle('on',p.dataset.pane===t));
     if(t==='12') Twelve.play();
     if(t==='46') T46.play();
-    if(t==='24') Flip.open();
     if(t!=='12') Twelve.closeDetail();
     if(t!=='46') T46.close();
     if(t==='sum'){ const sc=$('.sum-scroll'); if(sc) sc.scrollTop=0; }
@@ -3440,6 +3742,7 @@ const Arc=(function(){
     btns.forEach(b=>b.classList.toggle('on',b.dataset.tab==='12'));
     panes.forEach(p=>p.classList.toggle('on',p.dataset.pane==='12'));
     Twelve.reset(); T46.reset(); T46.close(); Twelve.closeDetail();
+    if(typeof Sum!=='undefined') Sum.show(Sum.cur);
   }
   function close(){ Twelve.stop(); T46.stop(); Flip.close(); Twelve.closeDetail(); T46.close(); }
 
@@ -3448,7 +3751,7 @@ const Arc=(function(){
     /* v7 — 46은 방사형 화면만 연다. 패들렛은 화면 안 `패들렛 실시간 보드` 버튼으로만 */
   }));
   const sumReset=$('#sumReset');
-  if(sumReset) sumReset.addEventListener('click',()=>Next.reset());
+  if(sumReset) sumReset.addEventListener('click',()=>Sum.reset());
 
   function letter(i){ select('12'); setTimeout(()=>Twelve.detail(i), 120); }
   function thought(i){ select('46'); setTimeout(()=>T46.select(i), 380); }
@@ -3729,7 +4032,7 @@ const Flip=(function(){
   let sx=null;
   $('#flipBook').addEventListener('pointerdown',e=>{ sx=e.clientX; });
   $('#flipBook').addEventListener('pointerup',e=>{ if(sx===null) return; const dx=e.clientX-sx; sx=null; if(Math.abs(dx)>70) step(dx<0?1:-1); });
-  window.addEventListener('resize',()=>{ if($('#ovArc').classList.contains('on')&&$('.apane[data-pane="24"]').classList.contains('on')){ buildViews(); render(); } });
+  window.addEventListener('resize',()=>{ if($('#ovWorks').classList.contains('on')&&$('.wpane[data-pane="24"]').classList.contains('on')){ buildViews(); render(); } });
   return {open,close,step,pages:()=>views[v]||[null,1],num:()=>numEl.textContent};
 })();
 
@@ -3915,28 +4218,124 @@ const Time=(function(){
 /* ══════════════════════════════════════════════════════════
    06 · 다음 시즌 · 한 줄 정리
    ══════════════════════════════════════════════════════════ */
-const Next=(function(){
-  const wrap=$('#blanks');
-  BLANKS.forEach((b,i)=>{
-    const d=document.createElement('div'); d.className='blank';
-    d.innerHTML='<div class="bq"><b>Q'+(i+1)+'</b>'+esc(b.q)+'</div>'+
-      '<div class="line">'+esc(b.pre)+'<span class="slot empty" id="slot'+i+'">　</span>'+esc(b.post)+'</div>'+
-      '<div class="opts">'+b.opts.map((o,j)=>'<button type="button" class="opt" data-b="'+i+'" data-o="'+j+'">'+esc(o)+'</button>').join('')+'</div>';
-    wrap.appendChild(d);
+/* ── 여정 · 1줄 정리 (다섯 갈래) ──────────────────────────── */
+const Next={ reset(){} };   /* v8 — 빈칸 채우기는 Sum 으로 이동 */
+
+const Sum=(function(){
+  const list=$('#sumList'), kicker=$('#sumKicker'), qEl=$('#sumQ'), meta=$('#sumMeta'),
+        sent=$('#sumSent'), opts=$('#sumOpts'), newsBtn=$('#sumNews'), note=$('#sumNewsNote');
+  let cur=0, inp=null, meas=$('#sumMeas');
+
+  SUM_ITEMS.forEach((it,i)=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='sum2-item'+(i===0?' on':''); b.dataset.i=i;
+    b.setAttribute('role','tab'); b.setAttribute('aria-selected', i===0?'true':'false');
+    b.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b><span class="t">'+esc(it.k)+'</span>'+
+      '<span class="m">'+it.n+'회차 · '+esc(it.tag)+'</span>';
+    b.addEventListener('click',()=>show(i));
+    list.appendChild(b);
   });
-  wrap.addEventListener('click',e=>{
-    const o=e.target.closest('.opt'); if(!o) return;
-    const i=+o.dataset.b, j=+o.dataset.o;
-    $$('.opt[data-b="'+i+'"]',wrap).forEach(x=>x.classList.toggle('on',x===o));
-    const slot=$('#slot'+i);
-    slot.textContent=BLANKS[i].opts[j];
-    slot.classList.remove('empty','pop'); void slot.offsetWidth; slot.classList.add('pop');
+
+  const cap=document.createElement('div');
+  cap.className='sum2-listcap';
+  cap.textContent='2~6회차 · 노션 「회차별 자료」의 카드뉴스 5편과 이어집니다';
+  list.appendChild(cap);
+
+  function fit(){
+    if(!inp) return;
+    const txt = inp.value || inp.placeholder || '내 말로';
+    meas.textContent = txt;
+    const max = Math.max(90, sent.clientWidth - 80);
+    inp.style.width = Math.max(72, Math.min(meas.offsetWidth + 26, max)) + 'px';
+  }
+  function paint(){
+    $$('.sum2-opt',opts).forEach(o=>o.classList.toggle('on', inp && o.dataset.v===inp.value));
+  }
+  function show(i){
+    cur = clamp(+i||0, 0, SUM_ITEMS.length-1);
+    const it = SUM_ITEMS[cur];
+    $$('.sum2-item',list).forEach((b,j)=>{
+      b.classList.toggle('on', j===cur);
+      b.setAttribute('aria-selected', j===cur?'true':'false');
+    });
+    kicker.textContent = it.k+' · '+it.n+'회차 '+it.tag;
+    qEl.textContent = it.q;
+    meta.innerHTML = '<b>'+esc(it.date)+'</b> · 소책자 p.21 · 빈칸을 눌러 직접 채워 보세요';
+    sent.innerHTML = '<span class="sum2-meas" id="sumMeas" aria-hidden="true"></span>'+
+      esc(it.pre)+'<input class="slot-in" type="text" autocomplete="off" spellcheck="false" aria-label="'+
+      esc(it.k)+' 빈칸" placeholder="'+esc(it.ph||'내 말로')+'">'+esc(it.post);
+    meas = $('#sumMeas'); inp = sent.querySelector('input');
+    inp.addEventListener('input', ()=>{ fit(); paint(); });
+    inp.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); inp.blur(); } });
+    opts.innerHTML = it.opts.map(o=>'<button type="button" class="sum2-opt" role="listitem" data-v="'+
+      esc(o)+'">'+esc(o)+'</button>').join('');
+    opts.scrollTop = 0;
+    note.textContent = it.news && it.news.note ? it.news.note : (it.news ? '노션 「회차별 자료」의 실제 카드뉴스가 열립니다' : '');
+    newsBtn.dataset.i = cur;
+    newsBtn.disabled = !it.news;
+    fit(); paint();
+  }
+  opts.addEventListener('click',e=>{
+    const o=e.target.closest('.sum2-opt'); if(!o||!inp) return;
+    inp.value = o.dataset.v; fit(); paint(); inp.focus();
   });
   function reset(){
-    $$('.opt',wrap).forEach(o=>o.classList.remove('on'));
-    BLANKS.forEach((b,i)=>{ const s=$('#slot'+i); if(s){ s.textContent='　'; s.classList.add('empty'); s.classList.remove('pop'); } });
+    if(!inp) return;
+    inp.value=''; fit(); paint(); inp.focus();
   }
-  return {reset};
+  newsBtn.addEventListener('click',()=>{ if(SUM_ITEMS[cur].news) News.open(cur); });
+  window.addEventListener('resize',()=>{ if($('#ovArc').classList.contains('on')) fit(); });
+  show(0);
+  return {show,reset,fit,get cur(){ return cur; },get value(){ return inp?inp.value:''; }};
+})();
+
+/* ── 생각정리 카드뉴스 뷰어 ──────────────────────────────── */
+const News=(function(){
+  const el=$('#news'), frame=$('#newsFrame');
+  const kicker=$('#newsKicker'), title=$('#newsTitle'), sub=$('#newsSub'),
+        count=$('#newsCount'), links=$('#newsLinks');
+  let n=0;
+  function render(){
+    const it=SUM_ITEMS[n]; if(!it||!it.news) return;
+    kicker.textContent='카드뉴스 · '+it.n+'회차 · '+it.tag;
+    title.textContent=it.k+' — 카드뉴스';
+    sub.innerHTML='<b>'+esc(it.date)+'</b> · '+esc(it.q);
+    count.textContent=(n+1)+' / '+SUM_ITEMS.length;
+    frame.src=it.news.embed;
+    let h='';
+    if(it.news.design) h+='<a class="dbtn" href="'+it.news.design+'" target="_blank" rel="noopener">새 창에서 크게 보기 ↗</a>';
+    h+='<a class="dbtn" href="'+it.news.link+'" target="_blank" rel="noopener">노션 원본 링크 ↗</a>';
+    links.innerHTML=h;
+  }
+  function open(i){ n=clamp(+i||0,0,SUM_ITEMS.length-1); render(); el.classList.add('on'); }
+  function close(){ el.classList.remove('on'); frame.removeAttribute('src'); }
+  function step(d){ n=clamp(n+d,0,SUM_ITEMS.length-1); render(); }
+  $('#newsPrev').addEventListener('click',()=>step(-1));
+  $('#newsNext').addEventListener('click',()=>step(1));
+  $('#newsClose').addEventListener('click',close);
+  $('#newsScrim').addEventListener('click',close);
+  return {open,close,step,get on(){ return el.classList.contains('on'); },get n(){ return n; }};
+})();
+
+/* ── 우리의 작업물 ──────────────────────────────────────── */
+const Works=(function(){
+  const card=$('.wk-card');
+  const tabs=$$('.wk-tab',card), panes=$$('.wpane',card);
+  let tab='24';
+  function select(t){
+    tab=t;
+    tabs.forEach(b=>{
+      const on=b.dataset.wtab===t;
+      b.classList.toggle('on',on);
+      b.setAttribute('aria-selected', on?'true':'false');
+    });
+    panes.forEach(p=>p.classList.toggle('on', p.dataset.wpane===t));
+    if(t==='24') Flip.open(); else Flip.close();
+  }
+  tabs.forEach(b=>b.addEventListener('click',()=>select(b.dataset.wtab)));
+  function open(){ select('24'); }
+  function close(){ Flip.close(); }
+  return {open,close,select,get tab(){ return tab; }};
 })();
 
 
@@ -4066,6 +4465,7 @@ document.addEventListener('keydown',e=>{
   const k=e.key;
   if(k==='Escape'){
     if(Fz.on){ Fz.close(); return; }
+    if(News.on){ News.close(); return; }
     if(Ppt.on){ Ppt.close(); return; }
     if(MM.on){ MM.close(); return; }
     if(Time.lbOn){ Time.closeLb(); return; }
@@ -4074,18 +4474,22 @@ document.addEventListener('keydown',e=>{
     if(activeOv){ closeOv(activeOv); return; }
     return;
   }
-  if(/^[1-6]$/.test(k) && !e.metaKey && !e.ctrlKey){ goStep(Number(k)-1); return; }
+  if(/^[1-7]$/.test(k) && !e.metaKey && !e.ctrlKey){ goStep(Number(k)-1); return; }
   if(k==='Home'){ e.preventDefault(); goHome(); return; }
   if(k==='f'||k==='F'){ $('#btnFs').click(); return; }
   if(k==='ArrowRight'||k==='ArrowLeft'){
     const dir=k==='ArrowRight'?1:-1;
     e.preventDefault();
+    if(News.on){ News.step(dir); return; }
     if(Ppt.on){ Ppt.step(dir); return; }
     if(Fz.on){ Fz.step(dir); return; }
     if(MM.on){ MM.step(dir); return; }
     if(activeOv==='act'){ Time.step(dir); return; }
+    if(activeOv==='works'){
+      if(Works.tab==='24'){ Flip.step(dir); return; }
+      return;
+    }
     if(activeOv==='arc'){
-      if(Arc.tab==='24'){ Flip.step(dir); return; }
       if(Arc.tab==='12'&&Twelve.detailOn){ Twelve.step(dir); return; }
       if(Arc.tab==='46'){ return; }
     }
@@ -4117,6 +4521,8 @@ window.__neuron={
     cards:Arc.cards()}),
   click:id=>{ const n=byId[id]; if(n) activate(n); },
   invite:()=>openOv('invite'), ppt:n=>Ppt.open(n), pptStep:d=>Ppt.step(d),
+  works:t=>{ openOv('works'); Works.select(t); }, sum:i=>{ openOv('arc'); Arc.select('sum'); Sum.show(i); },
+  news:i=>News.open(i), sumValue:()=>Sum.value, steps:()=>STEPS7.map(x=>x.t),
   zoom:()=>Fz.open(), zoomStep:d=>Fz.step(d),
   letter:i=>Twelve.openDetail(i), letters:()=>LTR.map(t=>({l:t.l,n:t.n})),
   essay:k=>(typeof ESSAY_FULL!=='undefined'&&ESSAY_FULL[k])||null
