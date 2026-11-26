@@ -1317,6 +1317,9 @@ em{font-style:normal}
   background:rgba(212,175,55,.09);font-size:8.5px;letter-spacing:.12em;color:var(--gold2);transition:.24s}
 .q10 .ppt:hover{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#141006;border-color:var(--gold3)}
 .q10 .ppt svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:1.7}
+/* QR 래퍼가 빈 공간을 덮어 캔버스 탭을 가로채지 않도록 (v7) */
+.qr{pointer-events:none}
+.qr>*{pointer-events:auto}
 
 /* ── 회차 PPT 뷰어 ──────────────────────────────────────── */
 .ppt-modal{position:fixed;inset:0;z-index:78;display:grid;place-items:center;
