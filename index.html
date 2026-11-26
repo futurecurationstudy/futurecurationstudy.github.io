@@ -529,7 +529,7 @@ em{font-style:normal}
 @keyframes tlflow{to{stroke-dashoffset:-364}}
 #tlGlow{fill:#FFF3D2;filter:drop-shadow(0 0 7px rgba(255,232,170,.95))}
 .tl-items{position:absolute;inset:0}
-.tl-item{position:absolute;width:240px;text-align:left;transition:.4s var(--ease)}
+.tl-item{position:absolute;width:240px;text-align:left;transition:.4s var(--ease);cursor:default}
 .tl-item .mk{position:absolute;left:0;top:-24px;width:9px;height:9px;border-radius:50%;
   background:#0A0B10;border:1px solid rgba(235,212,143,.55);box-shadow:0 0 12px rgba(212,175,55,.35)}
 .tl-item.mile .mk{background:var(--gold2);border-color:var(--gold3)}
@@ -537,12 +537,11 @@ em{font-style:normal}
   background:linear-gradient(170deg,rgba(255,255,255,.03),rgba(255,255,255,.006));transition:.4s var(--ease)}
 .tl-item img{width:100%;height:152px;object-fit:cover;filter:saturate(.82) brightness(.84);transition:.5s var(--ease)}
 .tl-item:hover .tl-card{border-color:rgba(212,175,55,.4);transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.5)}
-.tl-item:hover img{transform:scale(1.04);filter:saturate(1) brightness(.95)}
 .tl-cap{padding:8px 10px 9px}
 .tl-date{font-family:var(--disp);font-size:9.5px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
 .tl-t{font-family:var(--serif);font-size:12px;line-height:1.5;color:rgba(246,242,233,.86);margin-top:2px;letter-spacing:-.01em}
-.tl-badge{display:inline-block;margin-top:4px;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold3);border:1px solid rgba(212,175,55,.4);border-radius:999px;padding:1px 6px}
+.tl-meta{margin-top:5px;font-family:var(--disp);font-size:9px;letter-spacing:.06em;color:var(--gold2)}
+.tl-dates{margin-top:3px;font-size:9.2px;line-height:1.62;letter-spacing:.01em;color:rgba(246,242,233,.66);word-break:keep-all}
 .tl-final{border:1px solid rgba(212,175,55,.4);background:linear-gradient(160deg,rgba(212,175,55,.12),rgba(255,255,255,.01));
   padding:14px 14px 16px;min-height:152px;display:flex;flex-direction:column;justify-content:flex-end}
 .tl-final .k{font-family:var(--disp);font-size:9px;letter/spacing:.2em;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
@@ -740,6 +739,8 @@ em{font-style:normal}
   .tl-item.v img{width:86px;height:66px;flex:0 0 auto;border-radius:6px;object-fit:cover}
   .tl-item.v .tl-cap{padding:0 4px 0 0;flex:1;min-width:0}
   .tl-item.v .tl-t{font-size:11px;line-height:1.4}
+  .tl-item.v .tl-meta{margin-top:3px;font-size:8.8px;letter-spacing:.04em}
+  .tl-item.v .tl-dates{margin-top:2px;font-size:8.6px;line-height:1.5;letter-spacing:0}
   .tl-item.v .tl-final{margin-left:58px;width:calc(100% - 58px);min-height:0;padding:10px 12px}
   .tl-item.v .tl-final b{font-size:11.5px}
   .tl-nav{display:none}
@@ -1041,7 +1042,6 @@ em{font-style:normal}
 .time-lead{ font-size: 13.5px; }
 .tl-date{ font-size: 11.5px; }
 .tl-t{ font-size: 14px; line-height: 1.45; }
-.tl-badge{ font-size: 9px; }
 .tl-legend{ font-size: 10.5px; }
 .tl-legend b{ font-size: 9.5px; }
 .tl-final b{ font-size: 15px; }
@@ -2258,7 +2258,7 @@ em{font-style:normal}
     <div class="time-head">
       <div class="eyebrow">06 · ARCHIVE — 우리의 활동 · 소책자 p.22 · 2026</div>
       <h2 class="ov-title">배움은 <em>시간</em>을 타고 흐릅니다</h2>
-      <p class="time-lead">한 해의 기록이 이어져 지금의 우리가 되었습니다 · 사진을 누르면 크게 볼 수 있습니다</p>
+      <p class="time-lead">한 해의 기록이 이어져 지금의 우리가 되었습니다</p>
     </div>
     <div class="tl-wrap">
       <div class="tl-water" aria-hidden="true">2026</div>
@@ -2834,9 +2834,9 @@ const LTR = (typeof TYPO12!=='undefined'?TYPO12:[]);
 
 /* 05 활동 타임라인 — 2026 한 해의 기록 (사진 9 + 소책자/성과공유회) */
 const TIME_ITEMS=[
+  {d:'2026.06–11', t:'학습공동체 정규 대면 모임', cnt:'총 3회', dates:'2026.06.12 · 10.16 · 11.27', ph:1},
+  {d:'2026.06–11', t:'학습공동체 정규 비대면 모임', cnt:'총 7회 (Zoom)', dates:'2026.06.26 · 07.17 · 08.07 · 08.28 · 09.18 · 10.30 · 11.13', ph:2},
   {d:'2026.05', t:'디지털 윤리교육 특별위원회 정책제안', note:'현장의 질문을 정책으로', ph:3, mile:true},
-  {d:'2026.06', t:'학습공동체 정규 대면 모임', note:'총 3회 · 2026.06–11', ph:1},
-  {d:'2026.06', t:'학습공동체 정규 비대면 모임', note:'총 7회 · Zoom', ph:2},
   {d:'2026.06', t:'초·중등 AI교육안 수련 정책 포럼 참석', note:'2026.06', ph:4},
   {d:'2026.06', t:'퓨처랩 컨퍼런스 2026 참석', note:'2026.06', ph:5},
   {d:'2026.07', t:'2026 AI디지털 러닝 콘페스타 참석', note:'2026.07', ph:6},
@@ -3112,16 +3112,16 @@ function build(){
     const p=pol(C5.x,C5.y,ang,r);
     const n=mk({id:'act'+i,type:it.ph?(it.mile?'photo':'photo'):'mile',x:p.x,y:p.y,amp:26,
       r:it.mile?5:0, img:it.ph?PHOTO_IMG[it.ph]:null, mile:!!it.mile,
-      label:it.t, sub:it.d+(it.mile?' · 기록':''), act:{k:'time',i:i}});
+      label:it.t, sub:it.d, act:{k:'time',i:i}});
     link(C5,n,i?'chain':'ax');
   });
 
   /* 활동 기록 4 — 타임라인의 기록 노드 */
-  [['정책제안 2026.05',d5-56,272,'#EBD48F',0],['심화과정 2026.09–10',d5-18,292,'#8AA6D8',7],
+  [['정책제안 2026.05',d5-56,272,'#EBD48F',2],['심화과정 2026.09–10',d5-18,292,'#8AA6D8',7],
    ['특강 2026.10',d5+28,284,'#CE8798',8],['소책자·성과공유회 2026.12',d5+70,266,'#D9BE6A',9]].forEach((m,i)=>{
     const p=pol(C5.x,C5.y,m[1],m[2]);
     const n=mk({id:'actm'+i,type:'mile',x:p.x,y:p.y,amp:24,r:5.2,
-      label:m[0], sub:'기록 · 클릭해서 타임라인 열기', act:{k:'time',i:m[4]}});
+      label:m[0], sub:'클릭해서 타임라인 열기', act:{k:'time',i:m[4]}});
     link(C5,n,'q');
   });
 
@@ -4481,11 +4481,12 @@ const Time=(function(){
     b.dataset.i=i;
     const cap='<div class="tl-cap"><div class="tl-date">'+esc(it.d)+'</div>'+
       '<div class="tl-t">'+esc(it.t)+'</div>'+
-      (it.mile?'<span class="tl-badge">기록</span>':'')+'</div>';
+      (it.cnt?'<div class="tl-meta">'+esc(it.cnt)+'</div>':'')+
+      (it.dates?'<div class="tl-dates">'+esc(it.dates)+'</div>':'')+'</div>';
     b.innerHTML='<span class="mk"></span>'+
       (it.ph? '<div class="tl-card"><img src="'+IMG['photo-act'+it.ph]+'" alt="'+esc(it.t)+'" loading="lazy">'+cap+'</div>'
             : '<div class="tl-card tl-final"><div class="k">December 2026</div><b>'+esc(it.t)+'</b><span>'+esc(it.note||'')+'</span></div>');
-    b.addEventListener('click',()=>{ setScroll(i*GAP, true); if(it.ph) openLb(i); });
+    b.addEventListener('click',()=>{ setScroll(i*GAP, true); });
     itemsEl.appendChild(b);
   });
 
@@ -4497,7 +4498,7 @@ const Time=(function(){
     view.classList.toggle('vert',mob);
     const pts=[];
     if(mob){
-      const IH=100, pad=16;
+      const IH=120, pad=16;
       const trackH=pad*2+n*IH;
       track.style.width=vw+'px'; track.style.height=trackH+'px';
       maxScroll=0; scroll=0; track.style.transform='none';
@@ -4567,7 +4568,7 @@ const Time=(function(){
     const it=TIME_ITEMS[i]; if(!it||!it.ph) return;
     idx=i;
     $('#lbImg').src=IMG['photo-act'+it.ph]; $('#lbImg').alt=it.t;
-    $('#lbTitle').textContent=it.t; $('#lbDesc').textContent=it.d+(it.mile?' · 기록':'');
+    $('#lbTitle').textContent=it.t; $('#lbDesc').textContent=it.d;
     lb.classList.add('on');
   }
   function closeLb(){ lb.classList.remove('on'); }
