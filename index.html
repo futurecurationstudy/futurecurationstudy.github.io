@@ -2726,7 +2726,7 @@ function build(){
   SUM_ITEMS.forEach((b,i)=>{
     const p=pol(SSUM.x,SSUM.y,aSum+(i-1)*26,100);
     const n=mk({id:'bl'+i,type:'spot',x:p.x,y:p.y,amp:24,r:4.2,color:'#D9BE6A',
-      label:b.q, sub:b.k+' · '+b.n+'회차 · 클릭해서 펼치기', act:{k:'arc',tab:'sum'}});
+      label:b.q, sub:b.k+' · '+b.n+'회차 · 클릭해서 펼치기', act:{k:'arc',tab:'sum',i:i}});
     link(SSUM,n,'ax');
   });
 
@@ -3466,7 +3466,7 @@ function activate(n){
   const a=n.act;
   if(!a) return;
   if(a.k==='ov'){ openOv(a.id); return; }
-  if(a.k==='arc'){ openOv('arc'); Arc.select(a.tab); if(a.tab==='10'&&a.n) Arc.focus10(a.n); if(a.tab==='12'&&a.i!=null) Arc.letter(a.i); if(a.tab==='46'&&a.i!=null) Arc.thought(a.i); return; }
+  if(a.k==='arc'){ openOv('arc'); Arc.select(a.tab); if(a.tab==='10'&&a.n) Arc.focus10(a.n); if(a.tab==='12'&&a.i!=null) Arc.letter(a.i); if(a.tab==='46'&&a.i!=null) Arc.thought(a.i); if(a.tab==='sum'&&a.i!=null) Sum.show(a.i); return; }
   if(a.k==='time'){ openOv('act'); Time.focus(a.i); return; }
   if(a.k==='next'){ openOv('next'); return; }
 }
