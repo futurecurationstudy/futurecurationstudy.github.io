@@ -4476,8 +4476,8 @@ const Time=(function(){
   const GAP=272, CW=240;
 
   TIME_ITEMS.forEach((it,i)=>{
-    const b=document.createElement('button');
-    b.type='button'; b.className='tl-item'+(it.mile?' mile':'');
+    const b=document.createElement('div');
+    b.className='tl-item'+(it.mile?' mile':'');
     b.dataset.i=i;
     const cap='<div class="tl-cap"><div class="tl-date">'+esc(it.d)+'</div>'+
       '<div class="tl-t">'+esc(it.t)+'</div>'+
@@ -4486,7 +4486,6 @@ const Time=(function(){
     b.innerHTML='<span class="mk"></span>'+
       (it.ph? '<div class="tl-card"><img src="'+IMG['photo-act'+it.ph]+'" alt="'+esc(it.t)+'" loading="lazy">'+cap+'</div>'
             : '<div class="tl-card tl-final"><div class="k">December 2026</div><b>'+esc(it.t)+'</b><span>'+esc(it.note||'')+'</span></div>');
-    b.addEventListener('click',()=>{ setScroll(i*GAP, true); });
     itemsEl.appendChild(b);
   });
 
