@@ -2315,7 +2315,7 @@ function build(){
   });
 
   /* ── 초대장 — 성과공유회 QR 안내판 (v7) ── */
-  const invP = mob ? {x:52,y:74} : pol(0,0,90,430);
+  const invP = mob ? {x:-26,y:168} : pol(0,0,90,430);
   const inv=mk({id:'invite',type:'ch',n:'QR',t:'초대장',en:'QR · INVITATION',
     x:invP.x,y:invP.y,amp:mob?12:24,r:mob?11:15,
     label:'QR 초대장', sub:'성과공유회 안내 · 눌러서 크게 보기', act:{k:'ov',id:'invite'}});
