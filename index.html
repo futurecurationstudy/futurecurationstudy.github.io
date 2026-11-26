@@ -2864,18 +2864,20 @@ const PALETTE=['#7FB8AE','#A2BE8B','#D69C77','#B99BD1','#8AA6D8','#D9BE6A','#CE8
 const authorColor={}; let ci=0;
 const colorFor = n => authorColor[n] || (authorColor[n]=PALETTE[ci++%PALETTE.length]);
 
+/* v11 — 왼쪽 위 초대장에서 시작해 시계방향으로 한 바퀴 (10시 → 12시 → 1~2시 → 4~7시 → 8~9시) */
 const CHAPTERS=[
-  {id:'why', n:'02', t:'WHY · 윤리하다',      en:'SEASON 1 · 왜 윤리였나', x:-480, y:-140},
-  {id:'how', n:'03', t:'HOW · 학습방식',      en:'4 STEPS · 어떻게 학습했나',  x:-120, y:-400},
-  {id:'arc', n:'04', t:'우리의 여정',  en:'12 · 10 · 46 · 1', x: 500, y:-238, parent:'archive'},
-  {id:'works',n:'05', t:'우리의 작업물', en:'WORKS · 4',        x: 800, y: 285, parent:'archive'},
-  {id:'act', n:'06', t:'우리의 활동',          en:'ACTIVITIES · p.22', x: 690, y: 570, parent:'archive'},
-  {id:'next',n:'07', t:'〈〇〇하다〉',          en:'NEXT SEASON · 빈칸',    x:-250, y: 480}
+  {id:'why', n:'02', t:'WHY · 윤리하다',      en:'SEASON 1 · 왜 윤리였나', x: -15, y:-350},              /* 12시 */
+  {id:'how', n:'03', t:'HOW · 학습방식',      en:'4 STEPS · 어떻게 학습했나',  x: 360, y:-295},          /* 1~2시 */
+  {id:'arc', n:'04', t:'우리의 여정',  en:'12 · 10 · 46 · 1', x: 440, y: 150, parent:'archive'},           /* 4시 */
+  {id:'works',n:'05', t:'우리의 작업물', en:'WORKS · 4',        x: 370, y: 445, parent:'archive'},        /* 5~6시 */
+  {id:'act', n:'06', t:'우리의 활동',          en:'ACTIVITIES · p.22', x:-280, y: 395, parent:'archive'},  /* 7시 */
+  {id:'next',n:'07', t:'〈〇〇하다〉',          en:'NEXT SEASON · 빈칸',    x:-490, y: 105}               /* 8~9시 */
 ];
 /* 아카이브 — 허브에서 이 노드 하나로만 뻗고, 여기서 다시 세 갈래로 갈라진다 */
-const ARCHIVE_N={ x: 355, y: 205, mx: 0, my: 26, t:'아카이브', en:'ARCHIVE · 세 갈래 기록' };
-const CHPOS_M = {   /* 모바일 배치 — 허브 아래 아카이브, 그 오른쪽으로 세 갈래 */
-  why:[-150,-100], how:[4,-172], archive:[0,158], arc:[152,26], works:[152,154], act:[152,282], next:[40,356]
+const ARCHIVE_N={ x: 140, y: 225, mx: 0, my: 26, t:'아카이브', en:'ARCHIVE · 세 갈래 기록' };
+const CHPOS_M = {   /* 모바일 배치 — 같은 시계방향 순서를 세로 화면에 옮겨 담아 */
+  invite:[-152,-165], why:[0,-238], how:[152,-168], archive:[0,160],
+  arc:[158,38], works:[166,178], act:[152,318], next:[-152,262]
 };
 
 let nodes=[], links=[], byId={};
@@ -2921,13 +2923,13 @@ function build(){
   CHAPTERS.forEach(d=>{
     const p = mob? CHPOS_M[d.id] : [d.x,d.y];
     const n=mk({id:d.id,type:'ch',def:d,n:d.n,t:d.t,en:d.en,x:p[0],y:p[1],
-      amp:mob?12:30, r:16,
+      amp:mob?12:(d.id==='works'?16:30), r:16,
       label:d.t, sub:d.en, act:{k:'ov',id:d.id}});
     chs[d.id]=n; link(d.parent? ark : hub, n, 'hub');
   });
 
   /* ── 초대장 — 성과공유회 QR 안내판 (v7) ── */
-  const invP = mob ? {x:-150,y:250} : pol(0,0,90,430);
+  const invP = mob ? {x:CHPOS_M.invite[0],y:CHPOS_M.invite[1]} : {x:-415,y:-278};   /* v11 — 10~11시, 시계방향 순환의 시작 */
   const inv=mk({id:'invite',type:'ch',n:'QR',t:'초대장',en:'QR · INVITATION',
     x:invP.x,y:invP.y,amp:mob?12:24,r:mob?11:15,
     label:'QR 초대장', sub:'성과공유회 안내 · 눌러서 크게 보기', act:{k:'ov',id:'invite'}});
@@ -2969,20 +2971,20 @@ function build(){
     ['Disconnect','단절에서 연결로','가족 간 대화가 사라지는 대신, 세대 간 건강한 대화의 주제로']
   ];
   AXES.forEach((a,i)=>{
-    const ang=d2+(i-1)*50;
+    const ang=d2+(i-1)*46;
     const p=pol(C2.x,C2.y,ang,150);
     const n=mk({id:'ax'+i,type:'spot',x:p.x,y:p.y,amp:26,r:5.2,color:'#D9BE6A',
       label:a[1], sub:a[2], act:{k:'ov',id:'why'}});
     link(C2,n,'ax');
     for(let j=0;j<3;j++){
-      const off=[-30,0,30][j], rr=[238,282,248][j];
+      const off=[-28,0,28][j], rr=[232,278,240][j];
       const q=pol(C2.x,C2.y,ang+off, rr);
       const leaf=mk({id:'axl'+i+j,type:'spot',x:q.x,y:q.y,amp:26,r:3,
         label:a[0]+' · '+a[1], sub:'시즌 1의 문제의식', act:{k:'ov',id:'why'}});
       link(n,leaf,'q');
     }
   });
-  [['시즌 1 〈윤리하다〉',d2+22,104],['정답 없는 질문',d2-22,104]].forEach((s,i)=>{
+  [['시즌 1 〈윤리하다〉',d2+20,104],['정답 없는 질문',d2-20,104]].forEach((s,i)=>{
     const p=pol(C2.x,C2.y,s[1],s[2]);
     const n=mk({id:'whyx'+i,type:'spot',x:p.x,y:p.y,amp:14,r:3,color:'#EBD48F',
       label:s[0], sub:'WHY', act:{k:'ov',id:'why'}});
@@ -2998,8 +3000,8 @@ function build(){
     ['Archive','한 줄 정리','Canva로 오늘의 통찰을 남김']
   ];
   STEP4.forEach((s,i)=>{
-    const ang=d3+(i-1.5)*38;
-    const p=pol(C3.x,C3.y,ang,148);
+    const ang=d3+(i-1.5)*34;
+    const p=pol(C3.x,C3.y,ang,150);
     const n=mk({id:'st'+i,type:'spot',x:p.x,y:p.y,amp:26,r:5,color:'#8AA6D8',
       label:s[1]+' · '+s[0], sub:s[2], act:{k:'ov',id:'how'}});
     link(C3,n,'ax');
@@ -3012,7 +3014,7 @@ function build(){
       label:s[0]+' · '+s[1], sub:'4단계 학습', act:{k:'ov',id:'how'}});
     link(n,leaf2,'q');
   });
-  [['대면 3회',d3+92,192],['비대면 7회',d3-92,192]].forEach((s,i)=>{
+  [['대면 3회',d3+96,190],['비대면 7회',d3-96,190]].forEach((s,i)=>{
     const p=pol(C3.x,C3.y,s[1],s[2]);
     const n=mk({id:'col'+i,type:'spot',x:p.x,y:p.y,amp:18,r:3.6,color:'#7FB8AE',
       label:s[0], sub:'공익활동지원센터 · Zoom', act:{k:'ov',id:'how'}});
@@ -3021,16 +3023,16 @@ function build(){
 
   /* ── 04 아카이브 ── */
   const C4=chs.arc;
-  const SUBS=[
-    ['12','열두 명의 글자','Twelve letters',-95,'12'],
-    ['10','열 번의 질문','Ten questions',-32,'10'],
-    ['46','마흔여섯 개의 생각','Thoughts',34,'46'],
-    ['1','한 줄 정리 · 다섯 번의 생각정리','One line',72,'sum']
+  const SUBS=[   /* 04 갈래 — arc(4시)에서 오른쪽·아래로 넓게 폅니다 */
+    ['12','열두 명의 글자','Twelve letters',-80,'12',195],
+    ['10','열 번의 질문','Ten questions',-30,'10',240],
+    ['46','마흔여섯 개의 생각','Thoughts',22,'46',250],
+    ['1','한 줄 정리 · 다섯 번의 생각정리','One line',65,'sum',195]
   ];
   const subN={};
   SUBS.forEach((s)=>{
     const ang=s[3];
-    const rr=s[4]==='sum'?258:192;
+    const rr=s[5];
     const p=pol(C4.x,C4.y,ang,rr);
     const n=mk({id:'sh'+s[0],type:'sub',x:p.x,y:p.y,amp:26,r:13,glyph:s[0],
       label:s[1], sub:s[2]+' · 클릭해서 펼치기',
@@ -3039,20 +3041,20 @@ function build(){
   });
 
   /* 한 줄 정리 — 빈칸 채우기 서브 점 (04 아카이브 성단) */
-  const SSUM=subN['1'], aSum=72;
+  const SSUM=subN['1'], aSum=8;
   SUM_ITEMS.forEach((b,i)=>{
-    const p=pol(SSUM.x,SSUM.y,aSum+(i-1)*26,100);
+    const p=pol(SSUM.x,SSUM.y,aSum+(i-1)*24,96);
     const n=mk({id:'bl'+i,type:'spot',x:p.x,y:p.y,amp:24,r:4.2,color:'#D9BE6A',
       label:b.q, sub:b.k+' · '+b.n+'회차 · 클릭해서 펼치기', act:{k:'arc',tab:'sum',i:i}});
     link(SSUM,n,'ax');
   });
 
   /* 10 — 회차 + 질문 */
-  const S10=subN['10'], a10=-32;
+  const S10=subN['10'], a10=-30;
   SESSIONS.forEach((s,i)=>{
     const t=SESSIONS.length===1?0.5:i/(SESSIONS.length-1);
-    const ang=a10+(t-0.5)*64;
-    const r=108+(i%2)*52;
+    const ang=a10+(t-0.5)*60;
+    const r=100+(i%2)*52;
     const p=pol(S10.x,S10.y,ang,r);
     const n=mk({id:'s'+s.n,type:'ses',x:p.x,y:p.y,amp:26,r:7.4,glyph:String(s.n),
       label:s.n+'회차 · '+s.tag, sub:s.q, act:{k:'arc',tab:'10',n:s.n}});
@@ -3067,7 +3069,7 @@ function build(){
   /* 12 — 글자 (한 줄로 이어지는 단어) */
   const S12=subN['12'];
   LTR.forEach((t,i)=>{
-    const p={x:S12.x+34+i*19, y:S12.y-70-i*13};
+    const p={x:S12.x+30+i*18, y:S12.y-62-i*12};
     const n=mk({id:'l'+i,type:'ltr',x:p.x,y:p.y,amp:20,r:5.6,glyph:t.l,
       color:colorFor(t.n), label:t.l+' · '+t.n, sub:'미래교육 '+t.g+' · 작품과 에세이',
       act:{k:'arc',tab:'12',i:i}});
@@ -3075,10 +3077,10 @@ function build(){
   });
 
   /* 46 — 생각 */
-  const S46=subN['46'], a46=26;
+  const S46=subN['46'], a46=18;
   THOUGHTS.forEach((p,i)=>{
-    const ang=a46+(rnd()-0.5)*126;
-    const rr=76+Math.sqrt(rnd())*140;
+    const ang=a46+(rnd()-0.5)*112;
+    const rr=80+Math.sqrt(rnd())*135;
     const pos=pol(S46.x,S46.y,ang,rr);
     const n=mk({id:'t'+i,type:'post',x:pos.x,y:pos.y,amp:32,r:3.8,
       color:colorFor(p.a||'운영'), label:(p.t||'').slice(0,40),
@@ -3088,15 +3090,15 @@ function build(){
 
   /* ── 05 우리의 작업물 — 여정에서 나온 네 가지 산출물 ── */
   const C5W=chs.works;
-  const WB=pol(C5W.x,C5W.y,-70,172);
-  const book=mk({id:'book24',type:'sub',x:WB.x,y:WB.y,amp:24,r:12,glyph:'24',
+  const WB=pol(C5W.x,C5W.y,150,180);
+  const book=mk({id:'book24',type:'sub',x:WB.x,y:WB.y,amp:12,r:12,glyph:'24',
     label:'24쪽 소책자', sub:'2026.12 · 〈윤리하다〉 · 클릭해서 펼치기', act:{k:'works',tab:'24'}});
   link(C5W,book,'ax');
-  [['구글폼 1','결과 · 통계 · 이메일',-20,215,'G1','g1'],
-   ['구글폼 2','Form · 준비 중',22,205,'G2','g2'],
-   ['실시간 설문 시스템','Live system · 준비 중',70,205,'SV','sv']].forEach((w,i)=>{
+  [['구글폼 1','결과 · 통계 · 이메일',22,162,'G1','g1'],
+   ['구글폼 2','Form · 준비 중',122,229,'G2','g2'],
+   ['실시간 설문 시스템','Live system · 준비 중',63,219,'SV','sv']].forEach((w,i)=>{
     const p=pol(C5W.x,C5W.y,w[2],w[3]);
-    const n=mk({id:'wk'+i,type:'sub',x:p.x,y:p.y,amp:26,r:11,glyph:w[4],
+    const n=mk({id:'wk'+i,type:'sub',x:p.x,y:p.y,amp:12,r:11,glyph:w[4],
       label:w[0], sub:w[1]+' · 클릭해서 펼치기', act:{k:'works',tab:w[5]}});
     link(C5W,n,'ax');
   });
@@ -3115,17 +3117,17 @@ function build(){
   });
 
   /* 활동 기록 4 — 타임라인의 기록 노드 */
-  [['정책제안 2026.05',d5-62,272,'#EBD48F',0],['심화과정 2026.09–10',d5-24,292,'#8AA6D8',7],
-   ['특강 2026.10',d5+22,284,'#CE8798',8],['소책자·성과공유회 2026.12',d5+64,266,'#D9BE6A',9]].forEach((m,i)=>{
+  [['정책제안 2026.05',d5-56,272,'#EBD48F',0],['심화과정 2026.09–10',d5-18,292,'#8AA6D8',7],
+   ['특강 2026.10',d5+28,284,'#CE8798',8],['소책자·성과공유회 2026.12',d5+70,266,'#D9BE6A',9]].forEach((m,i)=>{
     const p=pol(C5.x,C5.y,m[1],m[2]);
     const n=mk({id:'actm'+i,type:'mile',x:p.x,y:p.y,amp:24,r:5.2,
       label:m[0], sub:'기록 · 클릭해서 타임라인 열기', act:{k:'time',i:m[4]}});
     link(C5,n,'q');
   });
 
-  /* 기억에 남은 책과 영상 */
-  [['KBS 다큐인사이트 〈도파민 가족〉',192,318,'#7FB8AE'],['추적60분 〈AI와 범죄〉',214,336,'#8AA6D8'],
-   ['최재천 교수 강연 · 지능과 지성',238,306,'#D9BE6A'],['『도덕적인 AI』 북토크',260,332,'#CE8798']].forEach((m,i)=>{
+  /* 기억에 남은 책과 영상 — 03에서 위쪽 바깥으로 */
+  [['KBS 다큐인사이트 〈도파민 가족〉',250,325,'#7FB8AE'],['추적60분 〈AI와 범죄〉',265,345,'#8AA6D8'],
+   ['최재천 교수 강연 · 지능과 지성',282,335,'#D9BE6A'],['『도덕적인 AI』 북토크',300,320,'#CE8798']].forEach((m,i)=>{
     const p=pol(C3.x,C3.y,m[1],m[2]);
     const n=mk({id:'mat'+i,type:'spot',x:p.x,y:p.y,amp:26,r:3.2,color:m[3],
       label:m[0], sub:'함께 본 영상과 책', act:{k:'ov',id:'why'}});
@@ -3309,7 +3311,7 @@ const HALO=(function(){
 })();
 const SPARKS=(function(){
   const a=[]; const r=()=>((seed=(seed*16807)%2147483647)/2147483647);
-  const centers=[[0,0,420],[-480,-140,240],[-120,-400,230],[450,-170,330],[-390,285,250],[300,340,240]];
+  const centers=[[0,0,420],[-345,-250,220],[-15,-350,250],[440,150,330],[-240,390,260],[270,400,240]];
   centers.forEach(c=>{
     for(let i=0;i<34;i++){
       const ang=r()*TAU, rr=Math.pow(r(),0.6)*c[2];
